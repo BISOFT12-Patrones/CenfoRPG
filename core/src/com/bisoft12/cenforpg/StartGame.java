@@ -1,31 +1,19 @@
 package com.bisoft12.cenforpg;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.bisoft12.cenforpg.screen.HouseScreen;
+import com.bisoft12.cenforpg.utils.Render;
+import com.bisoft12.cenforpg.utils.Resources;
 
-public class StartGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-	}
+public class StartGame extends Game {
+
 
 	@Override
-	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+	public void create() {
+		Render._Batch = new SpriteBatch();
+		Resources.MAIN.setScreen(new HouseScreen());
 	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-	}
+
+
 }
