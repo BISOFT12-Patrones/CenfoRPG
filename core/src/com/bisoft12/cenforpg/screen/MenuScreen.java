@@ -112,7 +112,7 @@ public class MenuScreen implements Screen {
                 Resources.MAIN.setScreen(new HouseScreen());
                 this.dispose();
                 break;
-            case 3:
+            case 1:
                 Render.close();
                 break;
 
@@ -155,8 +155,6 @@ public class MenuScreen implements Screen {
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
         this.options.add(new Text("Nuevo juego", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Cargar juego", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Opciones", mFontSize, Resources.MENU_FONT));
         this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
 
         this.options.get(0).centerTextScreen();
