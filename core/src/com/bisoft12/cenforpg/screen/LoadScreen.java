@@ -17,9 +17,9 @@ public class LoadScreen implements Screen {
         this.companyLogo = new Images(Resources.COMPANY_LOGO);
         this.sum = 0.008F;
         this.alpha = 0;
-        this.loaded = false;
-        this.ready = false;
-        this.pause = false;
+        this.loaded = true;
+        this.ready = true;
+        this.pause = true;
         this.contador = 0;
     }
 

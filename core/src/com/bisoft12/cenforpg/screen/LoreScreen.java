@@ -25,11 +25,14 @@ public class LoreScreen implements Screen {
     private Images background;
 
     public LoreScreen() {
-        this.text = new Text(Resources.MENU_FONT, 80, 300, 22,
-                "Tras acabar con los reinos del agua, viento, tierra y aire," + "\n" +
-                        "los cuatro malvados elementos, van por mas, ellos quieren" + "\n" +
-                        "conquistar los cuatro reinos. Con la ayuda de los tres" + "\n" +
-                        "guerreros podremos derrotar a los malvados elementos.");
+        this.text = new Text(Resources.MENU_FONT, 50, 400, 22,
+                "¡Vamos despierta que vas a llegar tarde!" + "\n" +
+                        "…." + "\n" +
+                        "¡Qué bien, has despertado! Recuerda que hoy es el día " + "\n" +
+                        "donde escoges tu profesión, ya sabes caballero, mago o arquero. " + "\n" +
+                        "Vamos alístate que el comandante los reúne a todos " + "\n" +
+                        "en el gran palacio del reino y va a estar Nado, " + "\n" +
+                        "el rey del mundo onírico." + "\n");
         this.border = new ShapeRenderer();
         this.background = new Images(Resources.LORE_BACKGROUND);
         this.input = new Inputs();
@@ -42,7 +45,6 @@ public class LoreScreen implements Screen {
     public void show() {
         this.background.setsize(800, 800);
         this.text.setColor(Color.BLACK);
-        this.text.setCoordinates(50, 400);
         /*getLetter();*/
         Gdx.input.setInputProcessor(this.input);
     }
@@ -91,12 +93,18 @@ public class LoreScreen implements Screen {
 
     private void nextText() {
         this.alpha += this.sum;
-        if (this.alpha >= 0.4) {
-            this.text.setText("Los tres guerreros: El caballero, encargado de batallar" + "\n" +
-                    "duramente, El mago, encargado de la magia y de asuntos fuera" + "\n" +
-                    "de este mundo y El arquero, encargado" + "\n" +
-                    "de no equivocarse en ningun tiro contra enemigos");
+        if (this.alpha >= 0.6) {
+            this.text.setText("El rey Nado necesita tu ayuda para derrotar a los" + "\n" +
+                    "malvados elementos que se estan apoderando " + "\n" +
+                    "del reino onirico. Escoge de manera sabia," + "\n" +
+                    "Caballero, Mago o Arquero.");
+            this.text.setCoordinates(80, 400);
         }
+        if (this.alpha >= 1) {
+            this.text.setText("Armate de agallas y alistate para defender al reino onirico");
+            this.text.setCoordinates(80, 400);
+        }
+
     }
 
    /* private void getLetter() {
