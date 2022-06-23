@@ -21,7 +21,6 @@ public class HouseScreen implements Screen {
 
     @Override
     public void show() {
-
         Gdx.input.setInputProcessor(this.input);
     }
 
@@ -30,13 +29,12 @@ public class HouseScreen implements Screen {
 
         render.clearScreen();
         screen.update(delta);
+
     }
 
     @Override
     public void resize(int width, int height) {
-        screen.GAMEVIEW.update(width, height);
-
-    }
+        screen.resize(width, height);    }
 
     @Override
     public void pause() {
