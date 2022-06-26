@@ -73,7 +73,7 @@ public class MenuScreen implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 3)
+                if (this.actual > 1)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -81,7 +81,7 @@ public class MenuScreen implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 3;
+                    this.actual = 1;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
