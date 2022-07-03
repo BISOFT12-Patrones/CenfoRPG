@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="50" height="38" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="1">
- <tileset firstgid="1" source="../tsx.city/Ground.tsx"/>
- <tileset firstgid="4981" source="../tsx.city/Grass.tsx"/>
- <tileset firstgid="4990" source="../tsx.city/Village.tsx"/>
- <tileset firstgid="9086" source="../tsx.city/Castle.tsx"/>
- <tileset firstgid="9281" source="../tsx.city/Forest.tsx"/>
- <tileset firstgid="9821" source="../tsx.city/Props.tsx"/>
- <tileset firstgid="10845" source="../tsx.city/Texture2.tsx"/>
+ <tileset firstgid="1" source="../tsx/city/Ground.tsx"/>
+ <tileset firstgid="4981" source="../tsx/city/Grass.tsx"/>
+ <tileset firstgid="4990" source="../tsx/city/Village.tsx"/>
+ <tileset firstgid="9086" source="../tsx/city/Castle.tsx"/>
+ <tileset firstgid="9281" source="../tsx/city/Forest.tsx"/>
+ <tileset firstgid="9821" source="../tsx/city/Props.tsx"/>
+ <tileset firstgid="10845" source="../tsx/city/Texture2.tsx"/>
  <layer id="1" name="Ground" width="50" height="38">
   <data encoding="csv">
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,22,23,24,173,173,173,256,173,173,173,173,23,24,22,23,24,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,

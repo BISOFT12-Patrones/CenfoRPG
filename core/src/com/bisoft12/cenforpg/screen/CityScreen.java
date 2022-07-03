@@ -1,59 +1,55 @@
 package com.bisoft12.cenforpg.screen;
-
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.bisoft12.cenforpg.utils.Resources;
+import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.utils.Pantalla;
+import com.bisoft12.cenforpg.utils.Render;
+
 
 public class CityScreen implements Screen {
 
-    //Variables para cargar el mapa
-    private TiledMap mapa;
-    private OrthogonalTiledMapRenderer render;
-    private OrthographicCamera camera;
+    //Para el jugador
+    private Render render;
+    private Inputs input;
+    private Pantalla screen;
+
+    public CityScreen() {
+        input = new Inputs();
+        screen = new Pantalla("maps/map/city.tmx");
+    }
 
     @Override
     public void show() {
-        TmxMapLoader loader = new TmxMapLoader();
-        mapa = loader.load("maps/map/city.tmx");
-        render = new OrthogonalTiledMapRenderer(mapa);
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, (Resources.WIDTH / 2) + 100, Resources.HEIGHT / 2);
+        Gdx.input.setInputProcessor(this.input);
     }
 
     @Override
     public void render(float delta) {
-        render.setView(camera);
-        render.render();
+        render.clearScreen();
+        screen.update(delta);
     }
-
     @Override
     public void resize(int width, int height) {
-        camera.viewportWidth = width;
-        camera.viewportHeight = height;
-        camera.update();
-    }
+        screen.resize(width, height);    }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void hide() {
-
+        dispose();
     }
 
     @Override
     public void dispose() {
-        mapa.dispose();
-        render.dispose();
+        //Limpiamos cuando se salga de la pantalla
+        screen.dispose();
     }
+
+
 }//End of class
