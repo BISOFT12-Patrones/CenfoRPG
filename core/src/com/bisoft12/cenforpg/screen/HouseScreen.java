@@ -16,7 +16,7 @@ public class HouseScreen implements Screen {
 
     public HouseScreen() {
         input = new Inputs();
-        screen = new Pantalla("maps/map/house.tmx");
+        screen = new Pantalla("maps/map/city.tmx");
     }
 
     @Override
