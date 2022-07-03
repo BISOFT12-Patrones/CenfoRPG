@@ -6,7 +6,7 @@ import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 
-public class HouseScreen implements Screen {
+public class TerrainMonster implements Screen {
 
 
     //Para el jugador
@@ -14,9 +14,9 @@ public class HouseScreen implements Screen {
     private Inputs input;
     private Pantalla screen;
 
-    public HouseScreen() {
+    public TerrainMonster() {
         input = new Inputs();
-        screen = new Pantalla("maps/map/house.tmx");
+        screen = new Pantalla("maps/map/terrainMonster.tmx" , 561,950);
     }
 
     @Override
@@ -34,7 +34,8 @@ public class HouseScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        screen.resize(width, height);    }
+       screen.resize(width, height);
+    }
 
     @Override
     public void pause() {

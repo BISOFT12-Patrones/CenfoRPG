@@ -15,7 +15,6 @@ public class Resources {
 
     //Images
     public static final String CHARACTER_PATH = "characters/";
-    public static final String COMPANY_LOGO = "images/snorlax.png";
     public static final String MENU_BACKGROUND = "background/background1.png";
 
     //Fonts
