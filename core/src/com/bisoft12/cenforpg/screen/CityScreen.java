@@ -22,7 +22,6 @@ public class CityScreen implements Screen {
     public void show() {
         Gdx.input.setInputProcessor(this.input);
     }
-
     @Override
     public void render(float delta) {
         render.clearScreen();

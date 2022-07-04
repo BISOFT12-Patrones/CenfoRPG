@@ -7,8 +7,6 @@ import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 
 public class HouseScreen implements Screen {
-
-
     //Para el jugador
     private Render render;
     private Inputs input;
