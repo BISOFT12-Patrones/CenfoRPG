@@ -1,40 +1,36 @@
 package com.bisoft12.cenforpg.screen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
+import com.bisoft12.cenforpg.utils.Resources;
 
-public class HouseScreen implements Screen {
+public class TownScreen implements Screen {
 
-
-    //Para el jugador
     private Render render;
-    private Inputs input;
+    private Inputs inputs;
     private Pantalla screen;
 
-    public HouseScreen() {
-        input = new Inputs();
-        screen = new Pantalla("maps/map/house.tmx");
+    public TownScreen() {
+        this.screen = new Pantalla(Resources.TOWN_MAP);
     }
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(this.input);
+
     }
 
     @Override
     public void render(float delta) {
-
-        render.clearScreen();
-        screen.update(delta);
-
+        Render.clearScreen();
+        this.screen.update(delta);
     }
 
     @Override
     public void resize(int width, int height) {
-        screen.resize(width, height);    }
+        this.screen.resize(Resources.WIDTH, Resources.HEIGHT);
+    }
 
     @Override
     public void pause() {
@@ -53,9 +49,6 @@ public class HouseScreen implements Screen {
 
     @Override
     public void dispose() {
-        //Limpiamos cuando se salga de la pantalla
         screen.dispose();
     }
-
-
 }

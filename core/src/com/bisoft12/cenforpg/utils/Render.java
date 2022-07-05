@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Render {
 
-    public static SpriteBatch batch;
+    public static SpriteBatch Batch;
 
 
     public static void clearScreen() {

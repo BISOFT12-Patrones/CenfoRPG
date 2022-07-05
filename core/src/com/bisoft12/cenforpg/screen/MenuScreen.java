@@ -109,7 +109,7 @@ public class MenuScreen implements Screen {
     private void executeAction() {
         switch (this.actual) {
             case 0:
-                Resources.MAIN.setScreen(new HouseScreen());
+                Resources.MAIN.setScreen(new TownScreen());
                 this.dispose();
                 break;
             case 1:
