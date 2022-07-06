@@ -47,14 +47,14 @@ public class MenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Render.batch.begin();
+        Render._Batch.begin();
         this.back.draw();
         this.gameName.draw();
         for (Text mTemp : this.options) {
             mTemp.draw();
         }
      /*   this.info.draw();*/
-        Render.batch.end();
+        Render._Batch.end();
      /*   updateInfo();*/
      /*   //Estos bordes nos sirven para la parte de box collider
         this._Border.begin(ShapeRenderer.ShapeType.Line);
@@ -109,7 +109,7 @@ public class MenuScreen implements Screen {
     private void executeAction() {
         switch (this.actual) {
             case 0:
-                Resources.MAIN.setScreen(new HouseScreen());
+                Resources.MAIN.setScreen(new TownScreen());
                 this.dispose();
                 break;
             case 1:

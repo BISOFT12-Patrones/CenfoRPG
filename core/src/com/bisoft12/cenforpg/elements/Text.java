@@ -140,7 +140,7 @@ public class Text {
 
     //Funciones Publicas
     public void draw() {
-        this.font.draw(Render.batch, this.getText(), this.getX(), this.getY());
+        this.font.draw(Render._Batch, this.getText(), this.getX(), this.getY());
     }
 
     public void centerTextScreen() {

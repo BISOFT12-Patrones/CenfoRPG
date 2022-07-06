@@ -6,15 +6,15 @@ import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 
-public class HouseScreen implements Screen {
+public class MerchantScreen  implements Screen {
     //Para el jugador
     private Render render;
     private Inputs input;
     private Pantalla screen;
 
-    public HouseScreen() {
+    public MerchantScreen() {
         input = new Inputs();
-        screen = new Pantalla("maps/map/city.tmx");
+        screen = new Pantalla("maps/map/merchant.tmx");
     }
 
     @Override
@@ -54,6 +54,5 @@ public class HouseScreen implements Screen {
         //Limpiamos cuando se salga de la pantalla
         screen.dispose();
     }
-
 
 }
