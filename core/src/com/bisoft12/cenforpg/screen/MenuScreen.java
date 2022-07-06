@@ -47,14 +47,14 @@ public class MenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Render._Batch.begin();
+        Render.Batch.begin();
         this.back.draw();
         this.gameName.draw();
         for (Text mTemp : this.options) {
             mTemp.draw();
         }
      /*   this.info.draw();*/
-        Render._Batch.end();
+        Render.Batch.end();
      /*   updateInfo();*/
      /*   //Estos bordes nos sirven para la parte de box collider
         this._Border.begin(ShapeRenderer.ShapeType.Line);

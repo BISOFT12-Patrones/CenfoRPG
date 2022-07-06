@@ -51,10 +51,10 @@ public class LoreScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Render._Batch.begin();
+        Render.Batch.begin();
         this.background.draw();
         this.text.draw();
-        Render._Batch.end();
+        Render.Batch.end();
         loadMenuScreen();
         nextText();
 

@@ -33,9 +33,9 @@ public class LoadScreen implements Screen {
     public void render(float delta) { // cuando necesitamos que se muestre la pantalla con el
         // render aca es cuando se hacen todas las funcionalidades que necesitamos
         Render.clearScreen();
-        Render._Batch.begin();
+        Render.Batch.begin();
         this.companyLogo.draw();
-        Render._Batch.end();
+        Render.Batch.end();
         if (this.loaded) {
             if (!this.pause) {
                 try {
