@@ -1,6 +1,7 @@
 package com.bisoft12.cenforpg;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.bisoft12.cenforpg.screen.CastleScreen;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.HouseScreen;
 import com.bisoft12.cenforpg.screen.MerchantScreen;
@@ -12,6 +13,6 @@ public class StartGame extends Game {
 	public void create() {
 		Render._Batch = new SpriteBatch();
 		//Resources.MAIN.setScreen(new CityScreen());
-		Resources.MAIN.setScreen(new MerchantScreen());
+		Resources.MAIN.setScreen(new CastleScreen());
 	}
 }//End of class
