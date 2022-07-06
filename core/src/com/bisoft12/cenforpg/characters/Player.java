@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.bisoft12.cenforpg.io.Inputs;
 
 public class Player extends Sprite {
@@ -41,6 +42,9 @@ public class Player extends Sprite {
 
     public Player(String pSourceTexture, int pX, int pY) {
         createCharacter(pSourceTexture, this.ALTO_DEF, this.ANCHO_DEF, pX, pY);
+    }
+
+    public Player(World world) {
     }
 
     //GetSet
