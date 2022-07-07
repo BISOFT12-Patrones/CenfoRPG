@@ -80,7 +80,7 @@ public class Images {
 
     //Public Functions
     public void draw() {
-        this.getSprite().draw(Render.Batch);
+        this.getSprite().draw(Render._Batch);
     }
 
     public void dispose() {
