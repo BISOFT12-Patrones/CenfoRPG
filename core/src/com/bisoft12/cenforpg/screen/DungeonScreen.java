@@ -24,7 +24,7 @@ public class DungeonScreen implements Screen {
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {2, 3};
         screen.Box2DMaplayers(layers);
-        player = new Player(this.screen.getWorld());
+        /*player = new Player(this.screen.getWorld());*/
     }
 
     @Override
@@ -39,9 +39,9 @@ public class DungeonScreen implements Screen {
         screen.update(delta);
 
         this.screen.getWorld().step(1 / 60f, 6, 2);
-        handleInput();
-        screen.getCAMERA().position.x = player.b2Body.getPosition().x;
-        screen.getCAMERA().position.x = player.b2Body.getPosition().y;
+       /* handleInput();*/
+      /*  screen.getCAMERA().position.x = player.b2Body.getPosition().x;
+        screen.getCAMERA().position.x = player.b2Body.getPosition().y;*/
     }
 
     @Override
@@ -69,7 +69,7 @@ public class DungeonScreen implements Screen {
         screen.dispose();
     }
 
-    private void handleInput() {
+   /* private void handleInput() {
         if (input.isUp()) {
             player.setPosX(player.getPosY() + 4);
         }
@@ -85,5 +85,5 @@ public class DungeonScreen implements Screen {
             player.setPosX(player.getPosX() - 4);
         }
         player.positionUpdate();
-    }
+    }*/
 }
