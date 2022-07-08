@@ -8,6 +8,7 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
+import com.bisoft12.cenforpg.utils.Resources;
 
 public class DungeonScreen implements Screen {
 
@@ -20,11 +21,12 @@ public class DungeonScreen implements Screen {
         input = new Inputs();
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
 
-
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {2, 3};
         screen.Box2DMaplayers(layers);
-        player = new Player(this.screen.getWorld());
+
+        player = new Player("characters/mainCharacters/Arquero/Arquero_Frente1.png", 244, 242, this.screen.getWorld());
+
     }
 
     @Override
@@ -38,10 +40,15 @@ public class DungeonScreen implements Screen {
 
         screen.update(delta);
 
-        this.screen.getWorld().step(1 / 60f, 6, 2);
-        handleInput();
-        screen.getCAMERA().position.x = player.b2Body.getPosition().x;
-        screen.getCAMERA().position.x = player.b2Body.getPosition().y;
+        player.update();
+        render.Batch.begin();
+        render.Batch.draw(player.getTexture(), player.getX(), player.getY(), 45, 40);
+
+        render.Batch.end();
+
+        inputHandler();
+        screen.getCAMERA().position.x = player.getX() + (Resources.WIDTH / 2) / 2;
+        screen.getCAMERA().position.y = player.getY() + (Resources.HEIGHT / 2) / 2;
     }
 
     @Override
@@ -69,21 +76,19 @@ public class DungeonScreen implements Screen {
         screen.dispose();
     }
 
-    private void handleInput() {
-        if (input.isUp()) {
-            player.setPosX(player.getPosY() + 4);
-        }
+    private void inputHandler() {
         if (input.isDown()) {
-            player.setPosX(player.getPosY() - 4);
+            player.move("down");
         }
-
-        if (input.isRight()) {
-            player.setPosX(player.getPosX() + 4);
-        }
-
         if (input.isLeft()) {
-            player.setPosX(player.getPosX() - 4);
+            player.move("left");
         }
-        player.positionUpdate();
+        if (input.isRight()) {
+            player.move("right");
+        }
+        if (input.isUp()) {
+            player.move("up");
+        }
+        //System.out.println(player.getX() +","+player.getY());
     }
 }

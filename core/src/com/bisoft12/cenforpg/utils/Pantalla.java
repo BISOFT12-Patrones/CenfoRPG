@@ -38,13 +38,13 @@ public class Pantalla {
     public Pantalla(String pMap) {
 
         this.CAMERA = new OrthographicCamera();
-        this.GAMEVIEW = new StretchViewport(Resources.WIDTH , Resources.HEIGHT , this.CAMERA);
+        this.GAMEVIEW = new StretchViewport(Resources.WIDTH, Resources.HEIGHT, this.CAMERA);
 
         SCALE = Gdx.graphics.getWidth() / 800f;
 
         this.MAPLOADER = new TmxMapLoader();
         this.MAP = MAPLOADER.load(pMap);
-        this.RENDERER = new OrthogonalTiledMapRenderer(this.MAP, SCALE);
+        this.RENDERER = new OrthogonalTiledMapRenderer(this.MAP, SCALE );
 
         sizeMap();
     }
@@ -59,13 +59,14 @@ public class Pantalla {
     public Pantalla(String pMap, int pX, int pY) {
 
         this.CAMERA = new OrthographicCamera();
-        this.GAMEVIEW = new StretchViewport(Resources.WIDTH , Resources.HEIGHT , this.CAMERA);
+        this.GAMEVIEW = new StretchViewport(Resources.WIDTH, Resources.HEIGHT, this.CAMERA);
 
         this.MAPLOADER = new TmxMapLoader();
         this.MAP = MAPLOADER.load(pMap);
         this.RENDERER = new OrthogonalTiledMapRenderer(this.MAP);
 
         this.CAMERA.position.set(pX, pY, 0);
+
 
     }
 
