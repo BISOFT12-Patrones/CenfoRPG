@@ -1,4 +1,5 @@
 package com.bisoft12.cenforpg.screen;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.bisoft12.cenforpg.io.Inputs;
@@ -22,14 +23,17 @@ public class CityScreen implements Screen {
     public void show() {
         Gdx.input.setInputProcessor(this.input);
     }
+
     @Override
     public void render(float delta) {
         render.clearScreen();
         screen.update(delta);
     }
+
     @Override
     public void resize(int width, int height) {
-        screen.resize(width, height);    }
+        screen.resize(width, height);
+    }
 
     @Override
     public void pause() {

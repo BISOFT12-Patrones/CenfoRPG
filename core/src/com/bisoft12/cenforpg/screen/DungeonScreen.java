@@ -26,7 +26,6 @@ public class DungeonScreen implements Screen {
         screen.Box2DMaplayers(layers);
 
         player = new Player("characters/mainCharacters/Arquero/Arquero_Frente1.png", 244, 242, this.screen.getWorld());
-
     }
 
     @Override
@@ -40,15 +39,16 @@ public class DungeonScreen implements Screen {
 
         screen.update(delta);
 
-        player.update();
-        render.Batch.begin();
+
+
+     /*  render.Batch.begin();
         render.Batch.draw(player.getTexture(), player.getX(), player.getY(), 45, 40);
 
-        render.Batch.end();
+        render.Batch.end();*/
 
         inputHandler();
-        screen.getCAMERA().position.x = player.getX() + (Resources.WIDTH / 2) / 2;
-        screen.getCAMERA().position.y = player.getY() + (Resources.HEIGHT / 2) / 2;
+        screen.getCAMERA().position.x = player.getX();
+        screen.getCAMERA().position.y = player.getY();
     }
 
     @Override
@@ -77,18 +77,23 @@ public class DungeonScreen implements Screen {
     }
 
     private void inputHandler() {
-        if (input.isDown()) {
-            player.move("down");
+        if (input.isUp() || input.isDown() || input.isRight() || input.isLeft()) {
+            if (input.isDown()) {
+                player.move("down");
+            }
+            if (input.isLeft()) {
+                player.move("left");
+            }
+            if (input.isRight()) {
+                player.move("right");
+            }
+            if (input.isUp()) {
+                player.move("up");
+            }
+        } else {
+            player.move("none");
         }
-        if (input.isLeft()) {
-            player.move("left");
-        }
-        if (input.isRight()) {
-            player.move("right");
-        }
-        if (input.isUp()) {
-            player.move("up");
-        }
+
         //System.out.println(player.getX() +","+player.getY());
     }
 }

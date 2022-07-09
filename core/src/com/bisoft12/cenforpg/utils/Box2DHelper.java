@@ -25,14 +25,14 @@ public class Box2DHelper {
         return B2DR;
     }
 
-    public Box2DHelper() {
-        WORLD = new World(new Vector2(0, 0), true); //Vector 2 es para la gravedad dentro de los juegos de plataforma, en nuestro caso es 0,0 ya que sino se cae el personaje
+
+    public Box2DHelper(World pWorld) {
+        WORLD = pWorld;
         B2DR = new Box2DDebugRenderer();
 
         BDEF = new BodyDef();
         SHAPE = new PolygonShape();
         FDEF = new FixtureDef();
-
 
     }
 
@@ -43,12 +43,13 @@ public class Box2DHelper {
             BDEF.type = BodyDef.BodyType.StaticBody;
             BDEF.position.set((rect.getX() + rect.getWidth() / 2), (rect.getY() + rect.getHeight() / 2));
 
-            BODY = WORLD.createBody(BDEF);
-
             SHAPE.setAsBox((rect.getWidth() / 2), (rect.getHeight() / 2));
 
             FDEF.shape = SHAPE;
+
+            BODY = WORLD.createBody(BDEF);
             BODY.createFixture(FDEF);
+
         }
     }
 
