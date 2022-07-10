@@ -11,8 +11,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.bisoft12.cenforpg.io.Inputs;
 
+import javax.swing.*;
+
 public class Player extends Sprite {
 
+    public JLayeredPane b2Body;
     //para e movemiento del jugador
     private Vector2 velocity = new Vector2();
     private float speed = 4;
@@ -137,9 +140,7 @@ public class Player extends Sprite {
 
     @Override
     public void draw(Batch batch) {
-
         update(Gdx.graphics.getDeltaTime());
-
         super.draw(batch);
     }
 

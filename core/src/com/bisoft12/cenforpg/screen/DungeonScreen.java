@@ -1,6 +1,4 @@
 package com.bisoft12.cenforpg.screen;
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
@@ -35,9 +33,7 @@ public class DungeonScreen implements Screen {
     @Override
     public void render(float delta) {
         render.clearScreen();
-
         screen.update(delta);
-
         this.screen.getWorld().step(1 / 60f, 6, 2);
         handleInput();
         screen.getCAMERA().position.x = player.b2Body.getPosition().x;
@@ -51,9 +47,7 @@ public class DungeonScreen implements Screen {
 
     @Override
     public void pause() {
-
     }
-
     @Override
     public void resume() {
 
@@ -61,9 +55,7 @@ public class DungeonScreen implements Screen {
 
     @Override
     public void hide() {
-
     }
-
     @Override
     public void dispose() {
         screen.dispose();
