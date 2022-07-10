@@ -29,7 +29,7 @@ public class TownScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        this.screen.resize(Resources.WIDTH, Resources.HEIGHT);
+        screen.resize(width, height);
     }
 
     @Override

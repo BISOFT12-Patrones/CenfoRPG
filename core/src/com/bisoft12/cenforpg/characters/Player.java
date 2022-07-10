@@ -8,14 +8,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 import com.bisoft12.cenforpg.io.Inputs;
-
-import javax.swing.*;
 
 public class Player extends Sprite {
 
-    public JLayeredPane b2Body;
     //para e movemiento del jugador
     private Vector2 velocity = new Vector2();
     private float speed = 4;
@@ -45,9 +41,6 @@ public class Player extends Sprite {
 
     public Player(String pSourceTexture, int pX, int pY) {
         createCharacter(pSourceTexture, this.ALTO_DEF, this.ANCHO_DEF, pX, pY);
-    }
-
-    public Player(World world) {
     }
 
     //GetSet
@@ -140,7 +133,9 @@ public class Player extends Sprite {
 
     @Override
     public void draw(Batch batch) {
+
         update(Gdx.graphics.getDeltaTime());
+
         super.draw(batch);
     }
 
