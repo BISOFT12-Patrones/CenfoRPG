@@ -15,9 +15,15 @@ public class Resources {
 
     //Images
     public static final String CHARACTER_PATH = "characters/";
-    public static final String MENU_BACKGROUND = "background/background1.png";
+
+    public static final String COMPANY_LOGO = "Images/reboot.png";
+
+    public static final String MENU_BACKGROUND = "background/castillo.jpg";
+
+    public static final String LORE_BACKGROUND = "background/lore.jpeg";
 
     //Fonts
-    public static final String MENU_FONT = "font/Huston.otf";
+
+    public static final String MENU_FONT = "fonts/gameria.ttf";
 
 }

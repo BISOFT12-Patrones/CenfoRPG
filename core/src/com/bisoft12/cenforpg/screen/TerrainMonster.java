@@ -23,7 +23,7 @@ public class TerrainMonster implements Screen {
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {1,2,3};
         screen.Box2DMaplayers(layers);
-        player = new Player(this.screen.getWorld());
+      /*  player = new Player(this.screen.getWorld());*/
     }
 
     @Override
