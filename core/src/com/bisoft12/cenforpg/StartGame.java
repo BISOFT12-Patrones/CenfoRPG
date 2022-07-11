@@ -11,8 +11,11 @@ import com.bisoft12.cenforpg.utils.Resources;
 public class StartGame extends Game {
  	@Override
 	public void create() {
-		Render._Batch = new SpriteBatch();
+		Render.Batch = new SpriteBatch();
 		//Resources.MAIN.setScreen(new CityScreen());
 		Resources.MAIN.setScreen(new CastleScreen());
+		//PRUEBA PANTALLAS
+
+
 	}
 }//End of class
