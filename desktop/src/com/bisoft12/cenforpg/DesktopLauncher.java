@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Orden Del Tiempo");
-		//config.setResizable(false);
+		config.setResizable(false);
 		config.setWindowedMode(Resources.WIDTH, Resources.HEIGHT); //para la resolucion de la pantalla
 		config.setWindowIcon(Files.FileType.Internal,"icons/icon_game.png");
 		new Lwjgl3Application(Resources.MAIN, config);
