@@ -18,7 +18,7 @@ public class HouseScreen implements Screen {
     public HouseScreen() {
         input = new Inputs();
         screen = new Pantalla("maps/map/house.tmx");
-        player = new Player("characters/mainCharacters/Arquero/Arquero_Frente1.png", 388, 235, screen.getWorld());
+       // player = new Player("characters/mainCharacters/Arquero/Arquero_Frente1.png");
     }
 
     @Override
@@ -32,10 +32,10 @@ public class HouseScreen implements Screen {
         render.clearScreen();
 
         screen.update(delta);
-        screen.getWorld().step(1/60f,6,2);
-        render.Batch.begin();
-        render.Batch.draw(player.getTexture(), player.getX(), player.getY(), 50,45);
-        render.Batch.end();
+
+       /* render.Batch.begin();
+        render.Batch.draw(player.getTexture(), 388, 235, 50,45);
+        render.Batch.end();*/
 
         inputHandler();
     }

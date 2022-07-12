@@ -1,0 +1,26 @@
+
+playerAssets.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ArqueroSprites
+  rotate: false
+  xy: 1, 69
+  size: 384, 32
+  orig: 384, 32
+  offset: 0, 0
+  index: -1
+CaballeroSprites
+  rotate: false
+  xy: 1, 35
+  size: 384, 32
+  orig: 384, 32
+  offset: 0, 0
+  index: -1
+MagoSprites
+  rotate: false
+  xy: 1, 1
+  size: 384, 32
+  orig: 384, 32
+  offset: 0, 0
+  index: -1

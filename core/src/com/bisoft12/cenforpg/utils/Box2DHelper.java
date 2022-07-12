@@ -17,6 +17,7 @@ public class Box2DHelper {
     private FixtureDef FDEF;
     private Body BODY;
 
+
     public World getWORLD() {
         return WORLD;
     }

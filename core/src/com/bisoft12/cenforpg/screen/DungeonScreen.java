@@ -3,6 +3,7 @@ package com.bisoft12.cenforpg.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
@@ -16,6 +17,8 @@ public class DungeonScreen implements Screen {
     private Inputs input;
     private Render render;
     private Player player;
+    //Para cargar las texturas del jugador movible
+    private TextureAtlas atlas;
 
     public DungeonScreen() {
         input = new Inputs();
@@ -24,8 +27,8 @@ public class DungeonScreen implements Screen {
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {2, 3};
         screen.Box2DMaplayers(layers);
-
-        player = new Player("characters/mainCharacters/Arquero/Arquero_Frente1.png", 244, 242, this.screen.getWorld());
+        atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
+        player = new Player(atlas, 244, 242, this.screen.getWorld());
     }
 
     @Override
@@ -38,13 +41,14 @@ public class DungeonScreen implements Screen {
         render.clearScreen();
 
         screen.update(delta);
+        player.update(delta);
 
+        //Carga imagen de muñeco
 
-
-     /*  render.Batch.begin();
-        render.Batch.draw(player.getTexture(), player.getX(), player.getY(), 45, 40);
-
-        render.Batch.end();*/
+        render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
+        render.Batch.begin();
+        player.draw(render.Batch);
+        render.Batch.end();
 
         inputHandler();
         screen.getCAMERA().position.x = player.getX();
