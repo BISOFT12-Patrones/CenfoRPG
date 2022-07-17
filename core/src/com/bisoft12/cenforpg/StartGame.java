@@ -9,8 +9,8 @@ public class StartGame extends Game {
  	@Override
 	public void create() {
 		Render.Batch = new SpriteBatch();
-		Resources.MAIN.setScreen(new CityScreen());
-		//Resources.MAIN.setScreen(new DungeonScreen());
+		//Resources.MAIN.setScreen(new CityScreen());
+		Resources.MAIN.setScreen(new DungeonScreen());
 		//Resources.MAIN.setScreen(new HouseScreen());
 		//Resources.MAIN.setScreen(new MerchantScreen());
 		//Resources.MAIN.setScreen(new TerrainMonster());
