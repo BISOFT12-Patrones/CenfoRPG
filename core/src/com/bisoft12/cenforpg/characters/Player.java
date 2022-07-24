@@ -21,9 +21,8 @@ public class Player extends Sprite {
     private World world;
     private Body b2Body;
 
-    private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright}
+    private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright};
 
-    ;
     private State currentState;
     private State previousState;
 
@@ -37,18 +36,15 @@ public class Player extends Sprite {
     private float stateTimer;
 
 
-    private TextureRegion playerStandU;
-    private TextureRegion playerStandD;
-    private TextureRegion playerStandL;
-    private TextureRegion playerStandR;
     private TextureRegion playerStand;
 
     public Player(TextureAtlas pAtlas, float pX, float pY, World pWorld) {
-        super(pAtlas.findRegion("ArqueroSprites"));
+        super(pAtlas.findRegion("CaballeroSprites"));
         this.X = pX;
         this.Y = pY;
         this.world = pWorld;
 
+        ///Incia Animacion personaje
         currentState = State.STANDINGdown;
         previousState = State.STANDINGdown;
         stateTimer = 0;
@@ -58,25 +54,25 @@ public class Player extends Sprite {
         //Para la animacion del personaje
         //Derecha
         for (int i = 3; i < 6; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 0, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
         }
         playerRunR = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
         //Abajo
         for (int i = 0; i < 3; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 0, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
         }
         playerRunD = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
         //Arriba
         for (int i = 6; i < 9; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 0, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
         }
         playerRunU = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
         //Izquierda
         for (int i = 9; i < 12; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 0, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
         }
         playerRunL = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
@@ -84,12 +80,9 @@ public class Player extends Sprite {
         //Fin de animacion
 
         definePlayer();
-        playerStandR = new TextureRegion(this.getTexture(), 96, 0, 32, 32);
-        playerStandL = new TextureRegion(this.getTexture(), 288, 0, 32, 32);
-        playerStandU = new TextureRegion(this.getTexture(), 192, 0, 32, 32);
-        playerStandD = new TextureRegion(this.getTexture(), 0, 0, 32, 32);
+
         setBounds(0, 0, 32, 32);
-        playerStand = playerStandD;
+        playerStand = new TextureRegion(this.getTexture(), 0, 35, 32, 32);;
         setRegion(playerStand); //Esto lo que hace es ya asociar al body
     }
 
@@ -180,12 +173,11 @@ public class Player extends Sprite {
                 region = playerRunR.getKeyFrame(stateTimer, true);
                 break;
             default:
-                region = getStandRegion();
-                break;
+                region = playerStand;
+            break;
         }
         stateTimer = currentState == previousState ? stateTimer + delta : 0;
         return region;
-
 
     }
 
@@ -200,15 +192,5 @@ public class Player extends Sprite {
             return State.STANDINGright;
     }
 
-    private TextureRegion getStandRegion() {
 
-        if (previousState.equals("RUNNINGup"))
-            return playerStandU;
-        else if (previousState.equals("RUNNINGdown"))
-            return playerStandD;
-        else if (previousState.equals("RUNNINGleft"))
-            return playerStandL;
-        else
-            return playerStandR;
-    }
 }

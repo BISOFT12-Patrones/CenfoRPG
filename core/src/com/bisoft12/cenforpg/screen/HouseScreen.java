@@ -2,6 +2,7 @@ package com.bisoft12.cenforpg.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
@@ -14,11 +15,15 @@ public class HouseScreen implements Screen {
     private Inputs input;
     private Pantalla screen;
     private Player player;
+    //Para cargar las texturas del jugador movible
+    private TextureAtlas atlas;
 
     public HouseScreen() {
         input = new Inputs();
         screen = new Pantalla("maps/map/house.tmx");
-       // player = new Player("characters/mainCharacters/Arquero/Arquero_Frente1.png");
+
+        atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
+        player = new Player(atlas, 284, 146, this.screen.getWorld());
     }
 
     @Override
@@ -32,10 +37,14 @@ public class HouseScreen implements Screen {
         render.clearScreen();
 
         screen.update(delta);
+        player.update(delta);
 
-       /* render.Batch.begin();
-        render.Batch.draw(player.getTexture(), 388, 235, 50,45);
-        render.Batch.end();*/
+        //Carga imagen de muñeco
+
+        render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
+        render.Batch.begin();
+        player.draw(render.Batch);
+        render.Batch.end();
 
         inputHandler();
     }
@@ -66,20 +75,26 @@ public class HouseScreen implements Screen {
     }
 
 
-    private void inputHandler(){
-        if (input.isDown()){
-            player.move("down");
-        }
-        if (input.isLeft()){
-            player.move("left");
-        }
-        if (input.isRight()){
-            player.move("right");
-        }
-        if (input.isUp()){
-            player.move("up");
-        }
-       // System.out.println(player.getX() +","+player.getY());
+    private void inputHandler() {
+        //En este mapa no hace falta el movimiento del jugador
+       /* if (input.isUp() || input.isDown() || input.isRight() || input.isLeft()) {
+            if (input.isDown()) {
+                player.move("down");
+            }
+            if (input.isLeft()) {
+                player.move("left");
+            }
+            if (input.isRight()) {
+                player.move("right");
+            }
+            if (input.isUp()) {
+                player.move("up");
+            }
+        } else {
+            player.move("none");
+        }*/
+
+       //System.out.println(player.getX() +","+player.getY());
     }
 
 }

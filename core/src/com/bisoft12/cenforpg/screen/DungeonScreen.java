@@ -49,7 +49,7 @@ public class DungeonScreen implements Screen {
         render.Batch.begin();
         player.draw(render.Batch);
         render.Batch.end();
-
+        //---------------
         inputHandler();
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
