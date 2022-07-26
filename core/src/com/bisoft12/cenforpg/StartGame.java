@@ -11,5 +11,11 @@ public class StartGame extends Game {
 		Render.Batch = new SpriteBatch();
 		//Resources.MAIN.setScreen(new CityScreen());
 		Resources.MAIN.setScreen(new HouseScreen());
+
 	}
+
+
+
+
+
 }//End of class
