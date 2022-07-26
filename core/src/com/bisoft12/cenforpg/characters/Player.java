@@ -151,7 +151,7 @@ public class Player extends Sprite {
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
 
-        b2Body.createFixture(fdef);
+        b2Body.createFixture(fdef).setUserData("player");
         shape.dispose();
 
     }
