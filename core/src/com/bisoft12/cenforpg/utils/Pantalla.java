@@ -105,12 +105,12 @@ public class Pantalla {
         // movementCamera();
 
         world.step(pDelta, 8, 6);
+
         this.CAMERA.update();
         this.RENDERER.setView(CAMERA);
         this.RENDERER.render();
 
         this.renderBox2dHelper.render(world, CAMERA.combined);
-
        renderBox2D();
 
     }
