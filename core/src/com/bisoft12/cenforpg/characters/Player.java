@@ -23,7 +23,6 @@ public class Player extends Sprite {
 
     private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright};
 
-
     private State currentState;
     private State previousState;
 
@@ -41,7 +40,6 @@ public class Player extends Sprite {
 
     public Player(TextureAtlas pAtlas, float pX, float pY, World pWorld) {
         super(pAtlas.findRegion("CaballeroSprites"));
-
         this.X = pX;
         this.Y = pY;
         this.world = pWorld;
@@ -153,7 +151,7 @@ public class Player extends Sprite {
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
 
-        b2Body.createFixture(fdef);
+        b2Body.createFixture(fdef).setUserData("player");
         shape.dispose();
 
     }

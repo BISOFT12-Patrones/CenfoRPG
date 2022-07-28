@@ -9,6 +9,7 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
+import com.bisoft12.cenforpg.utils.Resources;
 
 public class DungeonScreen implements Screen {
 
@@ -23,14 +24,11 @@ public class DungeonScreen implements Screen {
         input = new Inputs();
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
 
-
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {2, 3};
         screen.Box2DMaplayers(layers);
-
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
         player = new Player(atlas, 244, 242, this.screen.getWorld());
-
     }
 
     @Override
@@ -55,7 +53,6 @@ public class DungeonScreen implements Screen {
         //inputHandler();
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
-
     }
 
     @Override
@@ -83,21 +80,24 @@ public class DungeonScreen implements Screen {
         screen.dispose();
     }
 
-   /* private void handleInput() {
-        if (input.isUp()) {
-            player.setPosX(player.getPosY() + 4);
-        }
-        if (input.isDown()) {
-            player.setPosX(player.getPosY() - 4);
+    private void inputHandler() {
+        if (input.isUp() || input.isDown() || input.isRight() || input.isLeft()) {
+            if (input.isDown()) {
+                player.move("down");
+            }
+            if (input.isLeft()) {
+                player.move("left");
+            }
+            if (input.isRight()) {
+                player.move("right");
+            }
+            if (input.isUp()) {
+                player.move("up");
+            }
+        } else {
+            player.move("none");
         }
 
-        if (input.isRight()) {
-            player.setPosX(player.getPosX() + 4);
-        }
-
-        if (input.isLeft()) {
-            player.setPosX(player.getPosX() - 4);
-        }
-        player.positionUpdate();
-    }*/
+        //System.out.println(player.getX() +","+player.getY());
+    }
 }
