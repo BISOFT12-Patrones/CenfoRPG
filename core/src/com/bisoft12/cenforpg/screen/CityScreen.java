@@ -114,16 +114,22 @@ public class CityScreen implements Screen {
     }
 
     public void newScreen(int id) {
-        if (id == 1) {
-            Resources.MAIN.setScreen(new HouseScreen());
-            this.dispose();
-        } else if (id == 2) {
-            Resources.MAIN.setScreen(new MerchantScreen());
-            this.dispose();
-        } else if (id == 3) {
-            Resources.MAIN.setScreen(new TerrainMonster());
-            this.dispose();
+        try{
+            if (id == 1) {
+                this.dispose();
+                Resources.MAIN.setScreen(new HouseScreen());
+
+            } else if (id == 2) {
+                this.dispose();
+                Resources.MAIN.setScreen(new MerchantScreen());
+            } else if (id == 3) {
+                this.dispose();
+                Resources.MAIN.setScreen(new TerrainMonster());
+            }
+        }catch (Exception e){
+            throw e;
         }
+
     }
 
 }//End of class

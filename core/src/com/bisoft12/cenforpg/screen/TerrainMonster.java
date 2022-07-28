@@ -101,7 +101,7 @@ public class TerrainMonster implements Screen {
             player.move("none");
         }
 
-        System.out.println(player.getX() +","+player.getY());
+       // System.out.println(player.getX() +","+player.getY());
     }
 
 }
