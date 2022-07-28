@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+import jdk.internal.loader.Resource;
 
 
 public class Text {
@@ -75,7 +76,7 @@ public class Text {
         return font;
     }
 
-    private GlyphLayout getGlayout() {
+    public GlyphLayout getGlayout() {
         return glayout;
     }
 
@@ -93,6 +94,10 @@ public class Text {
 
     public float getWidth() {
         return this.getGlayout().width;
+    }
+
+    public void setWidth(float pWidth) {
+        this.glayout.width = pWidth;
     }
 
     public float getHeight() {
@@ -143,11 +148,16 @@ public class Text {
         this.font.draw(Render.Batch, this.getText(), this.getX(), this.getY());
     }
 
+    public void drawWrapped() {
+        this.font.draw(Render.Batch, this.getText(), this.getX(), this.getY(), Resources.WIDTH-50, 60, true);
+    }
+
     public void centerTextScreen() {
         float w = (Resources.HEIGHT / 2) - (this.getHeight() / 2);
         float h = (Resources.WIDTH / 2) - (this.getWidth() / 2);
         this.setCoordinates(w, h);
     }
+
 
     private void generateText(String pFontPath, int pFontSize, Color pColor, boolean pShadow) {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(pFontPath));
