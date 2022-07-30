@@ -13,9 +13,10 @@ public class Dialogs {
     private Text text;
 
 
+
     public Dialogs() {
         this.image = new Images(Resources.DIALOGS_BACKGROUND);
-        this.text = new Text(Resources.DIALOGS_FONT,15);
+        this.text = new Text();
     }
 
     public Images getImage() {
@@ -49,4 +50,8 @@ public class Dialogs {
         return this.image.getX() + "\n" + this.image.getY();
     }
 
+    public void dispose() {
+        this.text.setText("");
+        this.image.dispose();
+    }
 }

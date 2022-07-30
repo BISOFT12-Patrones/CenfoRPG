@@ -28,6 +28,7 @@ public class Text {
         this.setText(pText);
     }
 
+
     public Text(String pText, int pFontSize, String pFontSource) {
         initLayout();
         generateText(pFontSource, pFontSize, this.FONT_COLOR, false);
@@ -149,7 +150,7 @@ public class Text {
     }
 
     public void drawWrapped() {
-        this.font.draw(Render.Batch, this.getText(), this.getX(), this.getY(), Resources.WIDTH-50, 60, true);
+        this.font.draw(Render.Batch, this.getText(), this.getX(), this.getY(), Resources.WIDTH - 50, 60, true);
     }
 
     public void centerTextScreen() {
@@ -178,5 +179,6 @@ public class Text {
     private void initLayout() {
         this.setGlayout(new GlyphLayout());
     }
+
 
 }
