@@ -1,4 +1,4 @@
-package com.bisoft12.cenforpg.patterns.Creational.Prototipo.ComplementoArma;
+package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
 public abstract class TipoArma {
     private String nombre;
