@@ -89,7 +89,9 @@ public class CityScreen implements Screen {
     @Override
     public void dispose() {
         //Limpiamos cuando se salga de la pantalla
-        screen.dispose();
+        screen.isDispose(true);
+
+        atlas.dispose();
     }
 
     private void inputHandler() {
@@ -113,23 +115,5 @@ public class CityScreen implements Screen {
         //System.out.println(player.getX() +","+player.getY());
     }
 
-    public void newScreen(int id) {
-        try{
-            if (id == 1) {
-                this.dispose();
-                Resources.MAIN.setScreen(new HouseScreen());
-
-            } else if (id == 2) {
-                this.dispose();
-                Resources.MAIN.setScreen(new MerchantScreen());
-            } else if (id == 3) {
-                this.dispose();
-                Resources.MAIN.setScreen(new TerrainMonster());
-            }
-        }catch (Exception e){
-            throw e;
-        }
-
-    }
 
 }//End of class

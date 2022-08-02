@@ -11,19 +11,18 @@ import com.bisoft12.cenforpg.utils.Resources;
 
 public class House extends InteractiveTileObject {
 
-
-
     public House(World pWorld, TiledMap pMap, Rectangle pBounds ){
         super(pWorld,pMap, pBounds);
 
         FIXTURE.setUserData(this);
     }
 
+
     @Override
     public void onHit() {
-        CityScreen city = new CityScreen();
         Gdx.app.log("Casa", "Collision");
-        city.newScreen(1);
+        Resources.MAIN.setScreen(new HouseScreen());
+
 
     }
 }
