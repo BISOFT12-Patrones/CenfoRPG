@@ -7,9 +7,7 @@ import com.bisoft12.cenforpg.utils.Resources;
 
 
 public class Dialogs {
-
     private Images image;
-
     private Text text;
 
 
