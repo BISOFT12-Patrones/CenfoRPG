@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.*;
+import com.bisoft12.cenforpg.utils.InteractiveObjects.House;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,28 @@ public class Pantalla {
     private Box2DHelper box2Helper;
     private World world;
     private Box2DDebugRenderer renderBox2dHelper;
+
+    //Para los objetos interactivos
+    //Entrar Casa
+    boolean house;
+    int houseLayer;
+    //Entrar Mercader
+    boolean merchant;
+    int merchantLayer;
+    //Para entrar a la ciudad
+    boolean city;
+    int cityLayer;
+    //Para entrar a la dungeon
+    boolean dungeon;
+    int dungeonLayer;
+    //Para entrar a la terrainMonster
+    boolean terrain;
+    int terrainLayer;
+    //Para detectar mosntruos
+    boolean monster;
+    int monsterLayer;
+
+    boolean dispose = false;
 
     /************************************CONSTRUCTORES**********************************************************************************************/
     /*
@@ -77,9 +100,11 @@ public class Pantalla {
 
         this.world = new World(new Vector2(0, 0), true); //Vector 2 es para la gravedad dentro de los juegos de plataforma, en nuestro caso es 0,0 ya que sino se cae el personaje
         this.box2Helper = new Box2DHelper(world);
+
         this.renderBox2dHelper = box2Helper.getB2DR();
 
         this.CAMERA.position.set(pX, pY, 0);
+
 
     }
 
@@ -95,6 +120,58 @@ public class Pantalla {
         return renderBox2dHelper;
     }
 
+    public void setHouse(boolean pHouse) {
+        this.house = pHouse;
+    }
+
+    public void setHouseLayer(int pHouseLayer) {
+        this.houseLayer = pHouseLayer;
+    }
+
+    public void setMerchant(boolean pMerchant) {
+        this.merchant = pMerchant;
+    }
+
+    public void setMerchantLayer(int pMerchantLayer) {
+        this.merchantLayer = pMerchantLayer;
+    }
+
+    public void setCity(boolean city) {
+        this.city = city;
+    }
+
+    public void setCityLayer(int cityLayer) {
+        this.cityLayer = cityLayer;
+    }
+
+    public void setDungeon(boolean dungeon) {
+        this.dungeon = dungeon;
+    }
+
+    public void setDungeonLayer(int dungeonLayer) {
+        this.dungeonLayer = dungeonLayer;
+    }
+
+    public void setTerrain(boolean terrain) {
+        this.terrain = terrain;
+    }
+
+    public void setTerrainLayer(int terrainLayer) {
+        this.terrainLayer = terrainLayer;
+    }
+
+    public void setMonster(boolean monster) {
+        this.monster = monster;
+    }
+
+    public void setMonsterLayer(int monsterLayer) {
+        this.monsterLayer = monsterLayer;
+    }
+
+    public void isDispose(boolean valor) {
+        this.dispose = valor;
+    }
+
     /********************************Metodos publicos*************************************************************/
     /*
      * Metodo update, este se encarga del update del mapa.
@@ -105,13 +182,18 @@ public class Pantalla {
         // movementCamera();
 
         world.step(pDelta, 8, 6);
+        if (dispose) {
+            this.box2Helper.dispose();
+            dispose();
+        }else{
+            this.CAMERA.update();
+            this.RENDERER.setView(CAMERA);
+            this.RENDERER.render();
 
-        this.CAMERA.update();
-        this.RENDERER.setView(CAMERA);
-        this.RENDERER.render();
+            this.renderBox2dHelper.render(world, CAMERA.combined);
+            renderBox2D();
+        }
 
-        this.renderBox2dHelper.render(world, CAMERA.combined);
-       renderBox2D();
 
     }
 
@@ -135,11 +217,45 @@ public class Pantalla {
 
     public void Box2DMaplayers(int[] pLayers) {
         try {
+
             for (int layer : pLayers) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.create2DBoxes(this.MAP, layer);
+
                 BH.add(box);
             }
+
+            if (house) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.houseObject(this.MAP, houseLayer);
+                BH.add(box);
+            }
+            if (merchant) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.merchantObject(this.MAP, merchantLayer);
+                BH.add(box);
+            }
+            if (city) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.cityObject(this.MAP, cityLayer);
+                BH.add(box);
+            }
+            if (dungeon) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.dungeonObject(this.MAP, dungeonLayer);
+                BH.add(box);
+            }
+            if (terrain) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.terrainObject(this.MAP, terrainLayer);
+                BH.add(box);
+            }
+            if (monster) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.monsterObject(this.MAP, monsterLayer);
+                BH.add(box);
+            }
+
         } catch (Exception e) {
             throw e;
         }
