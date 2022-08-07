@@ -6,6 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
+import com.bisoft12.cenforpg.utils.InteractiveObjects.*;
 
 public class Box2DHelper {
 
@@ -16,6 +18,7 @@ public class Box2DHelper {
     private PolygonShape SHAPE;
     private FixtureDef FDEF;
     private Body BODY;
+
 
     public World getWORLD() {
         return WORLD;
@@ -29,7 +32,7 @@ public class Box2DHelper {
     public Box2DHelper(World pWorld) {
         WORLD = pWorld;
         B2DR = new Box2DDebugRenderer();
-
+        B2DR.setDrawBodies(false);
         BDEF = new BodyDef();
         SHAPE = new PolygonShape();
         FDEF = new FixtureDef();
@@ -47,12 +50,77 @@ public class Box2DHelper {
 
             FDEF.shape = SHAPE;
 
+
             BODY = WORLD.createBody(BDEF);
             BODY.createFixture(FDEF);
 
         }
     }
 
+    public void houseObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
+            new House(WORLD, pMap, rect);
 
+        }
+
+    }
+
+    public void merchantObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new Merchant(WORLD, pMap, rect);
+
+        }
+
+    }
+
+    public void cityObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new City(WORLD, pMap, rect);
+
+        }
+
+    }
+
+    public void dungeonObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new Dungeon(WORLD, pMap, rect);
+
+        }
+
+    }
+
+    public void terrainObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new Terrain(WORLD, pMap, rect);
+
+        }
+
+    }
+    public void monsterObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new MonsterZones(WORLD, pMap, rect);
+
+        }
+
+    }
+    public void dispose() {
+        System.out.println(WORLD.getBodyCount());
+        Array<Body> bodies = new Array<Body>(WORLD.getBodyCount());
+        WORLD.getBodies(bodies);
+        for (Body body : bodies) {
+            WORLD.destroyBody(body);
+        }
+    }
 }

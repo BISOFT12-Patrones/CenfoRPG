@@ -22,8 +22,11 @@ public class Resources {
 
     public static final String LORE_BACKGROUND = "background/lore.jpeg";
 
+    public static final String DIALOGS_BACKGROUND = "background/dialog.png";
+
     //Fonts
 
     public static final String MENU_FONT = "fonts/gameria.ttf";
+    public static final String DIALOGS_FONT = "fonts/pokemon.ttf";
 
 }
