@@ -3,6 +3,11 @@ package com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma.*;
 
 public class Helper {
+
+    static int randomizer() {
+        return (int) (Math.random() * 12.0) + 1;
+    }
+
     public static TipoArma definirArma(int pNum) {
         TipoArma tipoArma = null;
         switch (pNum) {

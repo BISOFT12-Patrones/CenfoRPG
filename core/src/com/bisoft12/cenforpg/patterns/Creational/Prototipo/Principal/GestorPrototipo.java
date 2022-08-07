@@ -33,37 +33,42 @@ public class GestorPrototipo {
 
     public void nuevaArma(int pNum) {
         int mid = 0;
-        if (pNum == 1) {
+        if (pNum == 0) {
             arrArmas.add(this.prototipoEspada.clone());
             ++this.idEspada;
             mid = this.idEspada;
         }
 
-        if (pNum == 2) {
+        if (pNum == 1) {
             arrArmas.add(this.prototipoFlecha.clone());
             ++this.idFlecha;
             mid = this.idFlecha;
         }
 
-        if (pNum == 3) {
+        if (pNum == 2) {
             arrArmas.add(this.prototipoHacha.clone());
             ++this.idHacha;
             mid = this.idHacha;
         }
 
-        if (pNum == 4) {
+        if (pNum == 3) {
             arrArmas.add(this.prototipoVarita.clone());
             ++this.idVarita;
             mid = this.idVarita;
         }
-
+        updateCloneArma(pNum, mid);
     }
 
+    private static void updateCloneArma(int pId, int pMid) {
+        Arma aa = arrArmas.get(pId);
+        aa.setTipo(Helper.definirArma(Helper.randomizer()));
+
+    }
 
     public String obtenerDatos() {
         String datos = "";
         for (Arma a : arrArmas) {
-            datos = datos + a.getNombre();
+            datos = datos + a.getNombre() + " " + a.getTipo().getNombre() + "\n";
         }
         return datos;
     }

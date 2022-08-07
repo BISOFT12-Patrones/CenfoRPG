@@ -23,7 +23,6 @@ public class Player extends Sprite {
 
     private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright};
 
-
     private State currentState;
     private State previousState;
 
@@ -33,20 +32,16 @@ public class Player extends Sprite {
     private com.badlogic.gdx.graphics.g2d.Animation<TextureRegion> playerRunU; // Up
     private com.badlogic.gdx.graphics.g2d.Animation<TextureRegion> playerRunD; // Down
 
-
     private float stateTimer;
-
-
     private TextureRegion playerStand;
 
     public Player(TextureAtlas pAtlas, float pX, float pY, World pWorld) {
         super(pAtlas.findRegion("CaballeroSprites"));
-
         this.X = pX;
         this.Y = pY;
         this.world = pWorld;
 
-        ///Incia Animacion personaje
+        ///Inicia Animacion personaje
         currentState = State.STANDINGdown;
         previousState = State.STANDINGdown;
         stateTimer = 0;
@@ -153,7 +148,7 @@ public class Player extends Sprite {
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
 
-        b2Body.createFixture(fdef);
+        b2Body.createFixture(fdef).setUserData("player");
         shape.dispose();
 
     }
