@@ -1,4 +1,5 @@
 package com.bisoft12.cenforpg;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.bisoft12.cenforpg.screen.*;
@@ -6,6 +7,7 @@ import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
 public class StartGame extends Game {
+
  	@Override
 	public void create() {
 		Render.Batch = new SpriteBatch();
@@ -13,4 +15,5 @@ public class StartGame extends Game {
 		//Resources.MAIN.setScreen(new MerchantScreen());
 		Resources.MAIN.setScreen(new FightScreen());
 	}
+
 }//End of class
