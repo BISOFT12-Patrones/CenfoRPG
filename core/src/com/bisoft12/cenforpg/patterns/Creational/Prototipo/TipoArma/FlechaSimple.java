@@ -1,10 +1,10 @@
 package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
-public class DobleMano extends TipoArma {
+public class FlechaSimple extends TipoArma {
     private int id;
 
-    public DobleMano() {
-        this.setNombre("Doble Mano");
+    public FlechaSimple() {
+        this.setNombre("Flecha Simple");
         this.setPrecio(0);
         this.setAtaque(0);
         this.setMagia(0);
