@@ -48,6 +48,12 @@ public class Pantalla {
     //Para entrar a la terrainMonster
     boolean terrain;
     int terrainLayer;
+    //Para detectar mosntruos
+    boolean monster;
+    int monsterLayer;
+
+    boolean dispose = false;
+
     /************************************CONSTRUCTORES**********************************************************************************************/
     /*
      * Constructor para los mapas que sean mas pequenos de 800x600 y se quiere se queden en el centro de la pantalla
@@ -94,9 +100,11 @@ public class Pantalla {
 
         this.world = new World(new Vector2(0, 0), true); //Vector 2 es para la gravedad dentro de los juegos de plataforma, en nuestro caso es 0,0 ya que sino se cae el personaje
         this.box2Helper = new Box2DHelper(world);
+
         this.renderBox2dHelper = box2Helper.getB2DR();
 
         this.CAMERA.position.set(pX, pY, 0);
+
 
     }
 
@@ -152,6 +160,18 @@ public class Pantalla {
         this.terrainLayer = terrainLayer;
     }
 
+    public void setMonster(boolean monster) {
+        this.monster = monster;
+    }
+
+    public void setMonsterLayer(int monsterLayer) {
+        this.monsterLayer = monsterLayer;
+    }
+
+    public void isDispose(boolean valor) {
+        this.dispose = valor;
+    }
+
     /********************************Metodos publicos*************************************************************/
     /*
      * Metodo update, este se encarga del update del mapa.
@@ -162,13 +182,18 @@ public class Pantalla {
         // movementCamera();
 
         world.step(pDelta, 8, 6);
+        if (dispose) {
+            this.box2Helper.dispose();
+            dispose();
+        }else{
+            this.CAMERA.update();
+            this.RENDERER.setView(CAMERA);
+            this.RENDERER.render();
 
-        this.CAMERA.update();
-        this.RENDERER.setView(CAMERA);
-        this.RENDERER.render();
+            this.renderBox2dHelper.render(world, CAMERA.combined);
+            renderBox2D();
+        }
 
-        this.renderBox2dHelper.render(world, CAMERA.combined);
-        renderBox2D();
 
     }
 
@@ -223,6 +248,11 @@ public class Pantalla {
             if (terrain) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.terrainObject(this.MAP, terrainLayer);
+                BH.add(box);
+            }
+            if (monster) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.monsterObject(this.MAP, monsterLayer);
                 BH.add(box);
             }
 

@@ -32,10 +32,7 @@ public class Player extends Sprite {
     private com.badlogic.gdx.graphics.g2d.Animation<TextureRegion> playerRunU; // Up
     private com.badlogic.gdx.graphics.g2d.Animation<TextureRegion> playerRunD; // Down
 
-
     private float stateTimer;
-
-
     private TextureRegion playerStand;
 
     public Player(TextureAtlas pAtlas, float pX, float pY, World pWorld) {
@@ -44,7 +41,7 @@ public class Player extends Sprite {
         this.Y = pY;
         this.world = pWorld;
 
-        ///Incia Animacion personaje
+        ///Inicia Animacion personaje
         currentState = State.STANDINGdown;
         previousState = State.STANDINGdown;
         stateTimer = 0;

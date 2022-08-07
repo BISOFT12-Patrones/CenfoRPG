@@ -30,7 +30,7 @@ public abstract class InteractiveTileObject{
         shape.setAsBox((pBounds.getWidth() / 2), (pBounds.getHeight() / 2));
 
         fdef.shape = shape;
-
+        fdef.isSensor= true;//Para que no colisione con el personaje, solo detecte
         BODY = pWorld.createBody(bdef);
         BODY.createFixture(fdef);
 
