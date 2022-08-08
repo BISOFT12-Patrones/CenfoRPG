@@ -2,6 +2,7 @@ package com.bisoft12.cenforpg.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -16,6 +17,7 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
@@ -31,6 +33,7 @@ public class MerchantScreen implements Screen {
     private float alpha, sum;
     private int actual = 0;
     ShapeRenderer border;
+    Sound sound;
 
     public MerchantScreen() {
         this.sum = 0.0008F;
@@ -39,13 +42,15 @@ public class MerchantScreen implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 80, 354, 50, "Comprar:");
+        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
     }
 
     @Override
     public void show() {
         generateMenu();
         Gdx.input.setInputProcessor(this.input);
+        sound = Gdx.audio.newSound(Gdx.files.internal("music/MerchantMusic.mp3"));
+        sound.play();
     }
 
     @Override
@@ -59,7 +64,6 @@ public class MerchantScreen implements Screen {
         Render.Batch.end();
         validateMouse();
         validateKeys();
-        showLoreScreen();
     }
     private void validateKeys() {
         try {
@@ -100,12 +104,26 @@ public class MerchantScreen implements Screen {
 
     private void executeAction() {
         switch (this.actual) {
-            case 0:
+            case 0: //Armas
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());//
+                this.dispose();
+                sound.stop();
+                break;
+            case 1: //Armaduras
+                //Enviar al Patron Prototipo el ID
+                Resources.MAIN.setScreen(new TerrainMonster());
+                this.dispose();
+                sound.stop();
+                break;
+            case 2: //Pociones
                 Resources.MAIN.setScreen(new TownScreen());//
                 this.dispose();
+                sound.stop();
                 break;
-            case 1:
-                Render.close();
+            case 3: //Salir
+                Resources.MAIN.setScreen(new CityScreen());
+                this.dispose();
+                sound.stop();
                 break;
         }
     }
@@ -157,16 +175,6 @@ public class MerchantScreen implements Screen {
             }
         }
     }
-    private void showLoreScreen() {
-        if (!this.input.isEnter() && !this.input.isUp() && !this.input.isDown() && this.alpha >= 1) {
-            Resources.MAIN.setScreen(new LoreScreen());
-        } else {
-            if (this.input.isEnter() || this.input.isUp() || this.input.isDown()) {
-                this.alpha = 0f;
-            } else {
-                this.alpha += this.sum;
-            }
-        }
-    }
+
 }//End of class
 
