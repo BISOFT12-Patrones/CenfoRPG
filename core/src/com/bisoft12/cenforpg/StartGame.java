@@ -11,6 +11,7 @@ public class StartGame extends Game {
 		Render.Batch = new SpriteBatch();
 		//Resources.MAIN.setScreen(new CityScreen());
 		//Resources.MAIN.setScreen(new MerchantScreen());
-		Resources.MAIN.setScreen(new FightScreen());
+		//Resources.MAIN.setScreen(new FightScreen());
+		Resources.MAIN.setScreen(new LoreScreen());
 	}
 }//End of class
