@@ -33,7 +33,38 @@ public class Player extends Sprite {
     private com.badlogic.gdx.graphics.g2d.Animation<TextureRegion> playerRunD; // Down
 
     private float stateTimer;
+
     private TextureRegion playerStand;
+
+    //Player stats
+    private static int HP = 100;
+    private static int EXP = 100;
+    private static int LEVEL = EXP/100;
+
+    public static int getHP() {
+        return HP;
+    }
+
+    public static void setHP(int HP) {
+        Player.HP = HP;
+    }
+
+    public static int getEXP() {
+        return EXP;
+    }
+
+    public static void setEXP(int EXP) {
+        Player.EXP = EXP;
+        LEVEL = Player.EXP/100;
+    }
+
+    public static int getLEVEL() {
+        return LEVEL;
+    }
+
+    public static void setLEVEL(int LEVEL) {
+        Player.LEVEL = LEVEL;
+    }
 
     public Player(TextureAtlas pAtlas, float pX, float pY, World pWorld) {
         super(pAtlas.findRegion("CaballeroSprites"));
