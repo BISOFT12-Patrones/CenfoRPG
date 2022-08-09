@@ -72,7 +72,7 @@ public class Player extends Sprite {
         this.Y = pY;
         this.world = pWorld;
 
-        ///Incia Animacion personaje
+        ///Inicia Animacion personaje
         currentState = State.STANDINGdown;
         previousState = State.STANDINGdown;
         stateTimer = 0;

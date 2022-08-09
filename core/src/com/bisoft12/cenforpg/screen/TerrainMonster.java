@@ -7,6 +7,7 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
+import com.bisoft12.cenforpg.utils.WorldContactListener;
 
 public class TerrainMonster implements Screen {
 
@@ -24,10 +25,16 @@ public class TerrainMonster implements Screen {
         screen = new Pantalla("maps/map/terrainMonster.tmx", 561, 950);
 
         //Para la creacion de box2D en los objetos del mapa
-        int[] layers = {1, 2, 3};
+        int[] layers = {1, 2, 4};
+
+        screen.setMonster(true);
+        screen.setMonsterLayer(3);
         screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
         player = new Player(atlas, 566.9954f, 1095.9785f, this.screen.getWorld());
+
+        screen.getWorld().setContactListener(new WorldContactListener());
+
     }
 
     @Override
@@ -81,6 +88,7 @@ public class TerrainMonster implements Screen {
     public void dispose() {
         //Limpiamos cuando se salga de la pantalla
         screen.dispose();
+        atlas.dispose();
     }
 
     private void inputHandler() {
