@@ -27,7 +27,7 @@ public class Gestor_Pocion {
     public static int randomCuracion() {
         int pick = 0;
         Random rand = new Random();
-        pick = rand.nextInt((4 - 3) + 3) + 3;
+        pick = rand.nextInt(3)+1;
         return pick;
     }
 
