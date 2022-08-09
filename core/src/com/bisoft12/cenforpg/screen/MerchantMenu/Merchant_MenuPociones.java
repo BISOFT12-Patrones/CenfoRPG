@@ -1,61 +1,49 @@
-package com.bisoft12.cenforpg.screen;
+package com.bisoft12.cenforpg.screen.MerchantMenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
-import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
-import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuPociones;
-import com.bisoft12.cenforpg.utils.Pantalla;
+import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.Fab_Pociones;
+import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.Gestor_Pocion;
+import com.bisoft12.cenforpg.screen.CityScreen;
+import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
-import java.awt.*;
 import java.util.ArrayList;
 
-public class MerchantScreen implements Screen {
+public class Merchant_MenuPociones implements Screen {
     private Images back;
     private Inputs input;
-    private com.bisoft12.cenforpg.elements.Text gameName;
+    private Text gameName;
     private ArrayList<Text> options;
     private float alpha, sum;
     private int actual = 0;
-    ShapeRenderer border;
-    Sound sound;
+    private static Gestor_Pocion gPocion;
 
-    public MerchantScreen() {
+    ShapeRenderer border;
+     public Merchant_MenuPociones() {
         this.sum = 0.0008F;
         this.alpha = 0;
         this.back = new Images(Resources.MENU_Merchant);
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
+        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el tipo de Pocion");
     }
 
     @Override
     public void show() {
         generateMenu();
         Gdx.input.setInputProcessor(this.input);
-        sound = Gdx.audio.newSound(Gdx.files.internal("music/MerchantMusic.mp3"));
-        sound.play();
     }
 
     @Override
-    public void render(float delta) {
+    public void render(float v) {
         Render.Batch.begin();
         this.back.draw();
         this.gameName.draw();
@@ -66,6 +54,7 @@ public class MerchantScreen implements Screen {
         validateMouse();
         validateKeys();
     }
+
     private void validateKeys() {
         try {
             int mTime = 200;
@@ -90,7 +79,6 @@ public class MerchantScreen implements Screen {
             Render.print(e.toString());
         }
     }
-
     private void validateMouse() {
         for (int i = 0; i < this.options.size(); i++) {
             float mX = this.input.getMouseX(), mY = this.input.getMouseY();
@@ -105,57 +93,30 @@ public class MerchantScreen implements Screen {
 
     private void executeAction() {
         switch (this.actual) {
-            case 0: //Armas
-                Resources.MAIN.setScreen(new Merchant_MenuArmas());
-                this.dispose();
-                sound.stop();
-                break;
-            case 1: //Armaduras
-                //Enviar al Patron Prototipo el ID
+            case 0:
+                gPocion.escogerPocion(0);
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
-                sound.stop();
                 break;
-            case 2: //Pociones
-                Resources.MAIN.setScreen(new Merchant_MenuPociones());
+            case 1:
+                gPocion.escogerPocion(1);
+                Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
-                sound.stop();
                 break;
-            case 3: //Salir
+            case 2: //Salir
                 Resources.MAIN.setScreen(new CityScreen());
                 this.dispose();
-                sound.stop();
                 break;
         }
-    }
-    @Override
-    public void resize(int width, int height) {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-    @Override
-    public void hide() {
-    }
-
-    @Override
-    public void dispose() {
     }
 
     private void generateMenu() {
         int mFontSize = 35;
         float mNextY = 0;
         int mRest = 50;
-        this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Armas", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Armaduras", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Pociones", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.gameName.setColor(Color.WHITE);
+        this.options.add(new Text("Curativa", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Pelea", mFontSize, Resources.MENU_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
@@ -166,10 +127,9 @@ public class MerchantScreen implements Screen {
         }
         changeOptionColor(0);
     }
-
     private void changeOptionColor(int pId) {
         for (Text mTemp : this.options) {
-            mTemp.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+            mTemp.setColor(Color.WHITE);
             if (pId >= 0) {
                 this.options.get(pId).setColor(Color.CHARTREUSE);
                 this.actual = pId;
@@ -177,5 +137,24 @@ public class MerchantScreen implements Screen {
         }
     }
 
-}//End of class
+    @Override
+    public void resize(int i, int i1) {
+    }
 
+    @Override
+    public void pause() {
+    }
+
+    @Override
+    public void resume() {
+    }
+
+    @Override
+    public void hide() {
+    }
+
+    @Override
+    public void dispose() {
+    }
+
+}//
