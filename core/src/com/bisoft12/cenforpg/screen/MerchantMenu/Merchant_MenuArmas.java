@@ -101,7 +101,7 @@ public class Merchant_MenuArmas implements Screen {
                 break;
             case 2:
                 //Enviar al Patron Prototipo el id
-                Resources.MAIN.setScreen(new TerrainMonster());
+                Resources.MAIN.setScreen(new Merchant_MenuHacha());
                 this.dispose();
                 break;
             case 3: //Salir
