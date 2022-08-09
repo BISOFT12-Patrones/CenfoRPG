@@ -17,14 +17,10 @@ public class Gestor_Pocion {
     private static MetodoFab_Pocion gFabrica;
     public Gestor_Pocion() {  gFabrica = new Fab_Pociones(); }
 
-    static int ramdomize() {
-        return (int) (Math.random() * 4) + 1;
-    }
-
-    public static int randomPelea() {
+     public static int randomPelea() {
         int pick = 0;
         Random rand = new Random();
-        pick = rand.nextInt((2 - 1) + 1) + 1;
+        pick = rand.nextInt((2 - 1) + 2) + 2;
         return pick;
     }
 

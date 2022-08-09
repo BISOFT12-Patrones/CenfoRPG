@@ -27,6 +27,7 @@ public class Merchant_MenuPociones implements Screen {
 
     ShapeRenderer border;
      public Merchant_MenuPociones() {
+        this.gPocion = new Gestor_Pocion();
         this.sum = 0.0008F;
         this.alpha = 0;
         this.back = new Images(Resources.MENU_Merchant);
