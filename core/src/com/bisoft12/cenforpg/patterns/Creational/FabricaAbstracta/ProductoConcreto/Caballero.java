@@ -1,6 +1,9 @@
 package com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto;
 
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
+
+import java.util.ArrayList;
 
 public class Caballero implements Character {
 
@@ -11,6 +14,7 @@ public class Caballero implements Character {
     private boolean key;
     private int coin;
     private static final String tipeCharacter = "Caballero";
+    public ArrayList<Arma> armas = new ArrayList<Arma>();
 
     public Caballero() {
     }
@@ -69,6 +73,13 @@ public class Caballero implements Character {
         return "Caballero";
     }
 
+    public ArrayList<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArma(Arma pArma) {
+        armas.add(pArma);
+    }
 
     public String info_Character() {
         return "Tipe of Character is: " + this.getTipeCharacter() + ", This Level is : " + this.getLevel() + ", This experience is : " + this.getExperience()

@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class GestorObservador {
 
-    private HashMap<String, BatallaC> listaBatalla;
+    private static HashMap<String, BatallaC> listaBatalla;
 
     public GestorObservador() {
         listaBatalla = new HashMap <String, BatallaC>();
@@ -21,4 +21,7 @@ public class GestorObservador {
         listaBatalla.get(pProducto).addObserver(new ObservadorC(pObservador));
     }
 
+    public void limpiaBatallas(){
+        listaBatalla.clear();
+    }
 }

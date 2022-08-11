@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
@@ -20,6 +21,8 @@ public class CityScreen implements Screen {
     private Player player;
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
+
+
 
     public CityScreen() {
         input = new Inputs();
@@ -39,7 +42,10 @@ public class CityScreen implements Screen {
         screen.Box2DMaplayers(layers);
 
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
+
+
         player = new Player(atlas, 417, 285, this.screen.getWorld());
+
 
         screen.getWorld().setContactListener(new WorldContactListener());
     }

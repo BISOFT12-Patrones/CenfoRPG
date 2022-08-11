@@ -24,7 +24,8 @@ public class MonsterZones extends InteractiveTileObject {
         GestorObservador gestor = new GestorObservador();
         gestor.nuevaBatalla("Batalla");
         gestor.NuevoObservador("Battle", "Batalla");
-
-
+        int numero = (int)(Math.random()*10+1);
+        if (numero <= 3)
+        Resources.MAIN.setScreen(new FightScreen());
     }
 }

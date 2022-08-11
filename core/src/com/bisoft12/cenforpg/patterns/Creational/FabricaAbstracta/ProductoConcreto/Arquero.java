@@ -18,6 +18,8 @@ public class Arquero implements Character {
 
     private static final String tipeCharacter = "Arquero";
 
+    private ArrayList<Arma> armas = new ArrayList<Arma>();
+
     public Arquero() {
     }
 
@@ -59,6 +61,14 @@ public class Arquero implements Character {
 
     public int getCoin() {
         return coin;
+    }
+
+    public ArrayList<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArma(Arma pArma) {
+        armas.add(pArma);
     }
 
     public boolean isKey() {

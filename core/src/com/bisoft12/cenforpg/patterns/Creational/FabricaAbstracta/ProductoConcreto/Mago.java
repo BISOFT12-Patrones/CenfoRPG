@@ -16,7 +16,7 @@ public class Mago implements Character {
     private boolean key;
     private int coin;
     private static final String tipeCharacter = "Mago";
-
+    public ArrayList<Arma> armas = new ArrayList<Arma>();
     public Mago() {
     }
 
@@ -68,13 +68,20 @@ public class Mago implements Character {
         this.key = key;
     }
 
-    public ArrayList<Arma> armas = new ArrayList<Arma>();
+
 
 
     public String getTipeCharacter() {
         return "Mago";
     }
 
+    public ArrayList<Arma> getArmas() {
+        return armas;
+    }
+
+    public void setArma(Arma pArma) {
+        armas.add(pArma);
+    }
 
     public String info_Character() {
         return "Tipe of Character is: " + this.getTipeCharacter() + ", This Level is : " + this.getLevel() + ", This experience is : " + this.getExperience()

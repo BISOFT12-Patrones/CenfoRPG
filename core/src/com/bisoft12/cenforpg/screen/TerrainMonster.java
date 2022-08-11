@@ -36,6 +36,7 @@ public class TerrainMonster implements Screen {
 
         screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
+
         player = new Player(atlas, 566.9954f, 1095.9785f, this.screen.getWorld());
 
         screen.getWorld().setContactListener(new WorldContactListener());
@@ -92,7 +93,7 @@ public class TerrainMonster implements Screen {
     @Override
     public void dispose() {
         //Limpiamos cuando se salga de la pantalla
-        screen.dispose();
+        screen.isDispose(true);
         atlas.dispose();
     }
 
@@ -114,7 +115,7 @@ public class TerrainMonster implements Screen {
             player.move("none");
         }
 
-       // System.out.println(player.getX() +","+player.getY());
+        // System.out.println(player.getX() +","+player.getY());
     }
 
 }

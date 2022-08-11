@@ -13,7 +13,7 @@ public class FabricaCharacter {
     private static Character arCharacter;
 
     public FabricaCharacter() {
-
+        processFuntion(2);
     }
 
     public static String CreateFabricaCharacter(GameCharacter pFabrica) {

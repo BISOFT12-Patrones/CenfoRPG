@@ -1,5 +1,9 @@
 package com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto;
 
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
+
+import java.util.ArrayList;
+
 public interface Character {
 
 
@@ -31,5 +35,8 @@ public interface Character {
 
     int getCoin();
 
+    ArrayList<Arma> getArmas();
+
+    void setArma(Arma pArma);
 
 }

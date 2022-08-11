@@ -1,8 +1,11 @@
 package com.bisoft12.cenforpg.screen;
+
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Fight.FightClass;
+import com.bisoft12.cenforpg.screen.BattleOptions.OptionsBattle;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 
@@ -15,12 +18,20 @@ public class FightScreen implements Screen {
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
 
+    private FightClass fightClass = new FightClass();
+
+    private OptionsBattle optionsBattle;
+
     public FightScreen() {
         input = new Inputs();
         screen = new Pantalla("maps/map/FigthScreen_map.tmx");
 
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
         player = new Player(atlas, 284, 146, this.screen.getWorld());
+        fightClass.datosPlayer();
+
+        optionsBattle = new OptionsBattle(render.Batch);
+
     }
 
     @Override
@@ -34,13 +45,17 @@ public class FightScreen implements Screen {
         screen.update(delta);
         player.update(delta);
 
+        render.Batch.setProjectionMatrix(optionsBattle.stage.getCamera().combined);
+        optionsBattle.stage.draw();
+        optionsBattle.update(delta);
+
         //Carga imagen de muñeco
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
         player.draw(render.Batch);
-        render.Batch.end();
 
+        render.Batch.end();
     }
 
     @Override
@@ -63,7 +78,8 @@ public class FightScreen implements Screen {
 
     @Override
     public void dispose() {
-        screen.dispose();
+        //Limpiamos cuando se salga de la pantalla
+        screen.isDispose(true);
         atlas.dispose();
     }
 }
