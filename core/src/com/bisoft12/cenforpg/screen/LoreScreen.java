@@ -11,15 +11,10 @@ import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
 public class LoreScreen implements Screen {
-
     private Text text;
-
     private ShapeRenderer border;
-
     private float alpha;
-
     private float sum;
-
     private int contadorPalabras;
     private Inputs input;
     private Images background;
@@ -38,9 +33,7 @@ public class LoreScreen implements Screen {
         this.input = new Inputs();
         this.sum = 0.0008F;
         this.alpha = 0;
-
     }
-
     @Override
     public void show() {
         this.background.setsize(800, 800);
@@ -59,7 +52,6 @@ public class LoreScreen implements Screen {
         nextText();
 
     }
-
     @Override
     public void resize(int width, int height) {
 
