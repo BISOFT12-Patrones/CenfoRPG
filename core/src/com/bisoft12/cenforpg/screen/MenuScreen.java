@@ -1,6 +1,4 @@
 package com.bisoft12.cenforpg.screen;
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -10,7 +8,6 @@ import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
-
 import java.util.ArrayList;
 
 public class MenuScreen implements Screen {
@@ -22,7 +19,6 @@ public class MenuScreen implements Screen {
     private ArrayList<Text> options;
 
     private float alpha, sum;
-
 
     private int actual = 0;
 
