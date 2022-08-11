@@ -18,6 +18,11 @@ public class HouseScreen implements Screen {
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
 
+    ////////
+    private float timeSeconds = 0f;
+    private float period = 1f;
+    ////////
+
     public HouseScreen() {
         input = new Inputs();
         screen = new Pantalla("maps/map/house.tmx");
