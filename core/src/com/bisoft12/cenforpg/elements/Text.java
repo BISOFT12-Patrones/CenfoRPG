@@ -42,6 +42,12 @@ public class Text {
         this.setCoordinates(100, 100f);
         this.setText("");
     }
+    public Text(String pFont) {
+        initLayout();
+        generateText(pFont, 20, FONT_COLOR, true);
+        this.setCoordinates(100, 100f);
+        this.setText("");
+    }
 
     public Text(String pFontPath, float pX, float pY, int pFontSize, String pText) {
         initLayout();
@@ -172,8 +178,6 @@ public class Text {
         }
         this.setFontSize(pFontSize);
         this.font = generator.generateFont(parameter);
-
-
     }
 
     private void initLayout() {
