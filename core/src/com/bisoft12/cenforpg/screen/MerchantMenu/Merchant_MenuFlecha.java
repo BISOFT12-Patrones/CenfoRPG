@@ -144,7 +144,7 @@ public class Merchant_MenuFlecha implements Screen {
     private void generateMenu() {
         int mFontSize = 35;
         float mNextY = 0;
-        int mRest = 50;
+        int mRest = 39;
         this.gameName.setColor(Color.WHITE);
         this.options.add(new Text("Doble Flecha", mFontSize, Resources.MENU_FONT));
         this.options.add(new Text("Flecha Bomba", mFontSize, Resources.MENU_FONT));

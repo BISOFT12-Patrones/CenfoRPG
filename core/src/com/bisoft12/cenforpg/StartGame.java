@@ -15,6 +15,7 @@ public class StartGame extends Game {
 	   // Resources.MAIN.setScreen(new HouseScreen()); VALIDAR FUNCION
 		Resources.MAIN.setScreen(new MerchantScreen());
 		//Resources.MAIN.setScreen(new TerrainMonster());
+		//Resources.MAIN.setScreen(new FightScreen());
 		//Resources.MAIN.setScreen(new MenuScreen());
 	}
 

@@ -17,6 +17,8 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.Gestor_Pocion;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuPociones;
 import com.bisoft12.cenforpg.utils.Pantalla;
@@ -35,7 +37,7 @@ public class MerchantScreen implements Screen {
     private int actual = 0;
     ShapeRenderer border;
     Sound sound;
-
+    private static FabricaCharacter gCharacter;
     public MerchantScreen() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -117,6 +119,8 @@ public class MerchantScreen implements Screen {
                 sound.stop();
                 break;
             case 2: //Pociones
+                //gCharacter.get
+
                 Resources.MAIN.setScreen(new Merchant_MenuPociones());
                 this.dispose();
                 sound.stop();

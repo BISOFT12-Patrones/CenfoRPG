@@ -17,7 +17,7 @@ public class Gestor_Pocion {
     private static MetodoFab_Pocion gFabrica;
     public Gestor_Pocion() {  gFabrica = new Fab_Pociones(); }
 
-     public static int randomPelea() {
+    public static int randomPelea() {
         int pick = 0;
         Random rand = new Random();
         pick = rand.nextInt((2 - 1) + 2) + 2;
@@ -25,9 +25,11 @@ public class Gestor_Pocion {
     }
 
     public static int randomCuracion() {
+        int min = 3;
+        int max = 4;
         int pick = 0;
         Random rand = new Random();
-        pick = rand.nextInt(3)+1;
+        pick = rand.nextInt(max-min) + min;
         return pick;
     }
 
@@ -46,5 +48,7 @@ public class Gestor_Pocion {
     public void nuevaPocion (int pTipo) {
     gFabrica.crearPocion(pTipo);
     }
+
+
 
 }//

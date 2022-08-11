@@ -13,8 +13,8 @@ public class FabricaCharacter {
     private static ArrayList<Character> arCharacter = new ArrayList();
 
     public FabricaCharacter(){
-
     }
+
 
     public static String CreateFabricaCharacter(GameCharacter pFabrica) {
         Character objCharacter = pFabrica.createCharacter();

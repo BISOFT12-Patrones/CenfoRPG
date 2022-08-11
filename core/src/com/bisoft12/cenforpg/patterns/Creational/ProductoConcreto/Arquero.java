@@ -1,12 +1,7 @@
 package com.bisoft12.cenforpg.patterns.Creational.ProductoConcreto;
-
 import com.bisoft12.cenforpg.patterns.Creational.ProductoAbstracto.Character;
 
-
-
 public class Arquero implements Character {
-
-
     private int level;//experiencia /100
     private int experience;
     private int defense;
