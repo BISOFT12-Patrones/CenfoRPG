@@ -14,7 +14,7 @@ import com.bisoft12.cenforpg.utils.WorldContactListener;
 public class CityScreen implements Screen {
 
     //Para el jugador
-    private Render render;
+    private Render render = new Render();
     private Inputs input;
     private Pantalla screen;
     private Player player;

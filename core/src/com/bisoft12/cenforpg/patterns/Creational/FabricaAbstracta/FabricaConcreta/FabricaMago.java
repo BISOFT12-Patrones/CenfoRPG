@@ -1,9 +1,8 @@
-package com.bisoft12.cenforpg.patterns.Creational.FabricaConcreta;
+package com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcreta;
 
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Mago;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaAbstractaCharacter.GameCharacter;
-import com.bisoft12.cenforpg.patterns.Creational.ProductoAbstracto.Character;
-import com.bisoft12.cenforpg.patterns.Creational.ProductoConcreto.Arquero;
-import com.bisoft12.cenforpg.patterns.Creational.ProductoConcreto.Mago;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 
 public class FabricaMago implements GameCharacter {
 

@@ -8,15 +8,9 @@ import com.bisoft12.cenforpg.utils.Resources;
 public class StartGame extends Game {
  	@Override
 	public void create() {
-		//Render.Batch = new SpriteBatch();
-		//Resources.MAIN.setScreen(new LoadScreen());
-		//Resources.MAIN.setScreen(new CastleScreen());
-		//Resources.MAIN.setScreen(new CityScreen());
-		//Resources.MAIN.setScreen(new DungeonScreen());
-	   // Resources.MAIN.setScreen(new HouseScreen()); VALIDAR FUNCION
-		//Resources.MAIN.setScreen(new MerchantScreen());
-		//Resources.MAIN.setScreen(new TerrainMonster());
-		//Resources.MAIN.setScreen(new CastleScreen());
+		Render.Batch = new SpriteBatch();
+		Resources.MAIN.setScreen(new CityScreen());
+
 	}
 
 

@@ -25,5 +25,6 @@ public class MonsterZones extends InteractiveTileObject {
         gestor.nuevaBatalla("Batalla");
         gestor.NuevoObservador("Battle", "Batalla");
 
+
     }
 }

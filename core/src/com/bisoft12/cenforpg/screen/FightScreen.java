@@ -40,6 +40,7 @@ public class FightScreen implements Screen {
         render.Batch.begin();
         player.draw(render.Batch);
         render.Batch.end();
+
     }
 
     @Override
@@ -63,5 +64,6 @@ public class FightScreen implements Screen {
     @Override
     public void dispose() {
         screen.dispose();
+        atlas.dispose();
     }
-}//
+}
