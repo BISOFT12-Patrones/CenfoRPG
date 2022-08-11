@@ -2,11 +2,11 @@ package com.bisoft12.cenforpg.patterns.Creational.Prototipo.Prototipo;
 
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
 
-public class Flecha extends Arma {
+public class Varita extends Arma {
 
-    public Flecha(int pId, String pInformacion, int pAtaque, int pDefensa, int pMagia) {
+    public Varita(int pId, String pInformacion, int pAtaque, int pDefensa, int pMagia) {
         this.setId(pId);
-        this.setNombre("Flecha");
+        this.setNombre("Varita");
         this.setInformacion(pInformacion);
         this.setAtaque(pAtaque);
         this.setDefensa(pDefensa);
@@ -15,6 +15,6 @@ public class Flecha extends Arma {
 
     @Override
     public Arma clone() {
-        return new Flecha(this.getId(), this.getInformacion(), this.getAtaque(), this.getDefensa(), this.getMagia());
+        return new Varita(this.getId(), this.getInformacion(), this.getAtaque(), this.getDefensa(), this.getMagia());
     }
 }

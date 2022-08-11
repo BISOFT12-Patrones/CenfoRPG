@@ -1,10 +1,14 @@
-package com.bisoft12.cenforpg.patterns.Creational.Prototipo.ComplementoArma;
+package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
 public class DobleFlecha extends TipoArma {
     private int id;
+
     public DobleFlecha() {
         this.setNombre("Doble Flecha");
-        this.setPrecio(200);
+        this.setPrecio(0);
+        this.setAtaque(0);
+        this.setMagia(0);
+        this.setDefensa(0);
     }
 
     public int getId() {
@@ -14,6 +18,4 @@ public class DobleFlecha extends TipoArma {
     public void setId(int id) {
         this.id = id;
     }
-
-
 }

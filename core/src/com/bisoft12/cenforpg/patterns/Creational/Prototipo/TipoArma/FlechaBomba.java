@@ -1,13 +1,15 @@
-package com.bisoft12.cenforpg.patterns.Creational.Prototipo.ComplementoArma;
+package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
 public class FlechaBomba extends TipoArma {
     private int id;
 
     public FlechaBomba() {
         this.setNombre("Flecha Bomba");
-        this.setPrecio(300);
+        this.setPrecio(0);
+        this.setAtaque(0);
+        this.setMagia(0);
+        this.setDefensa(0);
     }
-
     public int getId() {
         return id;
     }
@@ -16,4 +18,3 @@ public class FlechaBomba extends TipoArma {
         this.id = id;
     }
 }
-
