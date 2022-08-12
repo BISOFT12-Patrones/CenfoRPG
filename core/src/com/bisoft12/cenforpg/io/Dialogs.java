@@ -48,8 +48,4 @@ public class Dialogs {
         return this.image.getX() + "\n" + this.image.getY();
     }
 
-    public void dispose() {
-        this.text.setText("");
-        this.image.dispose();
-    }
 }

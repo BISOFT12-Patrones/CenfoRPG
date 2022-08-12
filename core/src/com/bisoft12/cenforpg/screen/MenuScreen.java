@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 import java.util.ArrayList;
@@ -107,6 +109,15 @@ public class MenuScreen implements Screen {
             case 0:
                 Resources.MAIN.setScreen(new TownScreen());
                 this.dispose();
+
+                //Tu gestor y objetos
+                //aqui
+                //Fin de tu gestor y objetos
+                FabricaCharacter gestorCharacter = new FabricaCharacter();
+                Character player = gestorCharacter.getCharacter();
+
+
+
                 break;
             case 1:
                 Render.close();

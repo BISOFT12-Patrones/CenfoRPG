@@ -1,5 +1,6 @@
 package com.bisoft12.cenforpg.patterns.Structural.Proxy.Implementacion;
 
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Structural.Proxy.Interface.ILLaveCalabozo;
 
 public class DocumentoProxyLlaveCalabozo implements ILLaveCalabozo {
@@ -7,12 +8,13 @@ public class DocumentoProxyLlaveCalabozo implements ILLaveCalabozo {
     private boolean apertura;
 
     @Override
-    public void acceder(boolean pLlave) {
-        if (pLlave) {
+    public boolean acceder(Character player) {
+        if (player.isKey()) {
             this.apertura = true;
-            this.doc.acceder(pLlave);
+            this.doc.acceder(player);
         } else {
             this.apertura = false;
         }
+        return apertura;
     }
 }
