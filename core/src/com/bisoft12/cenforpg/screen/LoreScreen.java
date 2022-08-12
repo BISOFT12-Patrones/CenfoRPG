@@ -20,7 +20,7 @@ public class LoreScreen implements Screen {
     private Images background;
 
     public LoreScreen() {
-        this.text = new Text(Resources.MENU_FONT, 50, 400, 22,
+        this.text = new Text(Resources.GAME_FONT, 50, 400, 22,
                 "¡Vamos despierta que vas a llegar tarde!" + "\n" +
                         "…." + "\n" +
                         "¡Qué bien, has despertado! Recuerda que hoy es el día " + "\n" +

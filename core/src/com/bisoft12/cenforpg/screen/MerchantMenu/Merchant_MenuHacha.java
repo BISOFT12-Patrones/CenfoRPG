@@ -30,7 +30,7 @@ public class Merchant_MenuHacha implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el Tipo de Hacha");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Hacha");
     }
 
     @Override
@@ -136,9 +136,9 @@ public class Merchant_MenuHacha implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
-        this.options.add(new Text("Hacha Hierro", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Hacha Plata", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Hacha Hierro", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Hacha Plata", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();

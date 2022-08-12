@@ -30,7 +30,7 @@ public class Merchant_MenuFlecha implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el Tipo de Flecha");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Flecha");
     }
 
     @Override
@@ -146,11 +146,11 @@ public class Merchant_MenuFlecha implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
-        this.options.add(new Text("Doble Flecha", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Flecha Bomba", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Flecha Simple", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Triple Flecha", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Doble Flecha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Flecha Bomba", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Flecha Simple", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Triple Flecha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();

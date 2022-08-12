@@ -28,7 +28,7 @@ public class Merchant_MenuEspada implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el Tipo de Espada");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Espada");
     }
 
     @Override
@@ -135,9 +135,9 @@ public class Merchant_MenuEspada implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Espada de Hierro", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Espada Plata", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Espada de Hierro", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Espada Plata", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();

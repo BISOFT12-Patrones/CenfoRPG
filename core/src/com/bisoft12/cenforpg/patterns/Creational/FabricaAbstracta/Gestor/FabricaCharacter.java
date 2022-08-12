@@ -5,15 +5,13 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcret
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcreta.FabricaArquero;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcreta.FabricaCaballero;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
-import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Arquero;
-import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Mago;
 
 public class FabricaCharacter {
 
     private static Character arCharacter;
 
     public FabricaCharacter() {
-        processFuntion(2);
+        processFunction(2);
     }
 
     public static String CreateFabricaCharacter(GameCharacter pFabrica) {
@@ -40,7 +38,7 @@ public class FabricaCharacter {
         return arCharacter;
     }
 
-    public static String processFuntion(int pOpc) {
+    public static String processFunction(int pOpc) {
         String sMessage = "";
         switch (pOpc) {
             case 1:

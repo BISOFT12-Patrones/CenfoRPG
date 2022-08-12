@@ -8,7 +8,7 @@ public class StatusText{
     private Text text;
 
     public StatusText() {
-        this.text = new Text(Resources.DIALOGS_FONT);
+        this.text = new Text(Resources.PLAYER_HEALTH_FONT);
         this.text.setCoordinates(600, 595);
     }
 
