@@ -84,23 +84,11 @@ public class MenuScreen implements Screen {
         }
     }
 
-   /* private void validateMouse() {
-        for (int i = 0; i < this.options.size(); i++) {
-            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
-            Text mTemp = this.options.get(i);
-            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
-                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
-                    changeOptionColor(i);
-            if (this.input.isClicked())
-                executeAction();
-        }
-
-    }*/
 
     private void executeAction() {
         switch (this.actual) {
             case 0:
-                Resources.MAIN.setScreen(new TownScreen());
+                Resources.MAIN.setScreen(new CreateCharacterScreen());
                 this.dispose();
 
                 //Tu gestor y objetos

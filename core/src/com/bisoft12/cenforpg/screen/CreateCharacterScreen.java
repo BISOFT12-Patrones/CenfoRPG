@@ -21,7 +21,7 @@ public class CreateCharacterScreen implements Screen {
 
     private Texture arquero, mago, caballero;
 
-    private Text titulo, txtarquero, txtmago, txtcaballero;
+    private Text titulo;
 
     private ArrayList<Text> options;
     private Images image;
@@ -37,7 +37,7 @@ public class CreateCharacterScreen implements Screen {
         caballero = new Texture("assets/characters/mainCharacters/Caballero/pickcaballero.png");
         mago = new Texture("assets/characters/mainCharacters/Mago/pickmago.png");
         image = new Images(Resources.CREATE_CHARACTER_BACKGROUND);
-        /*titulo = new Text(Resources.GAME_FONT, 160, 450, 40, "Seleccione su personaje");*/
+        titulo = new Text(Resources.GAME_FONT, 160, 450, 40, "Seleccione su personaje");
         options = new ArrayList<>();
         gestorCharacter = new FabricaCharacter();
     }
@@ -54,7 +54,7 @@ public class CreateCharacterScreen implements Screen {
         render.clearScreen();
         render.Batch.begin();
         image.draw();
-        /*titulo.draw();*/
+        titulo.draw();
         for (Text mText : this.options) {
             mText.draw();
         }
@@ -86,14 +86,13 @@ public class CreateCharacterScreen implements Screen {
 
     @Override
     public void dispose() {
-        render.Batch.dispose();
     }
 
     private void validateKeys() {
         try {
             if (this.input.isRight()) {
                 this.actual++;
-                if (this.actual > 3) {
+                if (this.actual > 2) {
                     this.actual = 0;
                 }
                 Thread.sleep(200);
@@ -102,7 +101,7 @@ public class CreateCharacterScreen implements Screen {
             if (this.input.isLeft()) {
                 this.actual--;
                 if (this.actual < 0) {
-                    this.actual = 3;
+                    this.actual = 2;
                 }
                 Thread.sleep(200);
                 changeOptionColor(actual);
@@ -152,21 +151,27 @@ public class CreateCharacterScreen implements Screen {
     }
 
     private void executeAction() {
-        try{
+        try {
             switch (this.actual) {
                 case 0:
+                    Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(1);
                     System.out.println(gestorCharacter.getCharacter().info_Character());
+                    this.dispose();
                     break;
 
                 case 1:
+                    Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(2);
                     System.out.println(gestorCharacter.getCharacter().info_Character());
+                    this.dispose();
                     break;
 
                 case 2:
+                    Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(3);
                     System.out.println(gestorCharacter.getCharacter().info_Character());
+                    this.dispose();
                     break;
             }
             Thread.sleep(200);
