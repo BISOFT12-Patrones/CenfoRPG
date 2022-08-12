@@ -1,7 +1,8 @@
 package com.bisoft12.cenforpg.patterns.Behavioral;
 
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.EstadoCasa;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Est_Recuperar;
+import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.Estado;
+import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Pelear;
+import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Recuperar;
 import com.bisoft12.cenforpg.patterns.Behavioral.Estado.objeto.Casa;
 
 /************************************************************
@@ -21,14 +22,21 @@ public class Gestor_Estado {
         objEstadoCasa = new Casa();
     }
 
-    public String Cambiar_Estado() {
-        EstadoCasa estado=null;
-        estado = new Est_Recuperar();
+    public String Cambiar_Estado(int pID) {
+        Estado estado=null;
+        switch (pID) {
+            case 1:
+                estado = new Recuperar();
+                break;
+            case 2:
+                estado = new Pelear();
+                break;
+        }
         objEstadoCasa.setEstado(estado);
         return Mostrar_Estado();
     }
     public String Mostrar_Estado() {
-        return objEstadoCasa.mostrar();
+        return objEstadoCasa.activarEstado();
     }
 
 

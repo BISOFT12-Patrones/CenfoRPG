@@ -1,18 +1,17 @@
 package com.bisoft12.cenforpg.patterns.Behavioral.Estado.objeto;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.EstadoCasa;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Est_Recuperar;
+import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.Estado;
+import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Pelear;
 
 public class Casa {
-    private EstadoCasa objEstadoCasa;
+    private Estado objEstadoCasa;
     public Casa() {
-        setEstado(new Est_Recuperar());
+        setEstado(new Pelear());
     }
-
-    public void setEstado( EstadoCasa objEstadoCasa ) {
+    public void setEstado( Estado objEstadoCasa ) {
         this.objEstadoCasa = objEstadoCasa;
     }
-    public String mostrar() {
-        return this.objEstadoCasa.mostrar();
+    public String activarEstado() {
+        return this.objEstadoCasa.activarEstado();
     }
 
 }//
