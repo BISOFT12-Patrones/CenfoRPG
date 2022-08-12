@@ -32,8 +32,10 @@ public class TerrainMonster implements Screen {
         screen.setDungeonLayer(1);
         //Zonas peleas
         screen.setMonster(true);
-        screen.setMonsterLayer(3);
-
+        screen.setMonsterLayer(4);
+        //Ir ciudad
+        screen.setCity(true);
+        screen.setCityLayer(2);
         screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
 
