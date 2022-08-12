@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.bisoft12.cenforpg.elements.Text;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 
 public class Player extends Sprite {
 
@@ -21,7 +22,10 @@ public class Player extends Sprite {
     private World world;
     private Body b2Body;
 
-    private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright};
+
+    private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright}
+
+    ;
 
     private State currentState;
     private State previousState;
@@ -36,10 +40,12 @@ public class Player extends Sprite {
 
     private TextureRegion playerStand;
 
+    private FabricaCharacter gestorCharacte = new FabricaCharacter();
+
     //Player stats
     private static int HP = 100;
     private static int EXP = 100;
-    private static int LEVEL = EXP/100;
+    private static int LEVEL = EXP / 100;
 
     public static int getHP() {
         return HP;
@@ -55,7 +61,7 @@ public class Player extends Sprite {
 
     public static void setEXP(int EXP) {
         Player.EXP = EXP;
-        LEVEL = Player.EXP/100;
+        LEVEL = Player.EXP / 100;
     }
 
     public static int getLEVEL() {
@@ -67,7 +73,9 @@ public class Player extends Sprite {
     }
 
     public Player(TextureAtlas pAtlas, float pX, float pY, World pWorld) {
-        super(pAtlas.findRegion("CaballeroSprites"));
+
+        super(pAtlas.findRegion("ArqueroSprites"));
+
         this.X = pX;
         this.Y = pY;
         this.world = pWorld;
@@ -77,30 +85,37 @@ public class Player extends Sprite {
         previousState = State.STANDINGdown;
         stateTimer = 0;
 
+        int y = 0;
+        if (gestorCharacte.getCharacter().getTipeCharacter().equals("Mago"))
+            y = 1;
+        else if (gestorCharacte.getCharacter().getTipeCharacter().equals("Arquero"))
+            y = 69;
+        else if (gestorCharacte.getCharacter().getTipeCharacter().equals("Caballero"))
+            y = 35;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
         //Para la animacion del personaje
         //Derecha
         for (int i = 3; i < 6; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, y, 32, 32));
         }
         playerRunR = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
         //Abajo
         for (int i = 0; i < 3; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, y, 32, 32));
         }
         playerRunD = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
         //Arriba
         for (int i = 6; i < 9; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, y, 32, 32));
         }
         playerRunU = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
         //Izquierda
         for (int i = 9; i < 12; i++) {
-            frames.add(new TextureRegion(getTexture(), i * 32, 35, 32, 32));
+            frames.add(new TextureRegion(getTexture(), i * 32, y, 32, 32));
         }
         playerRunL = new com.badlogic.gdx.graphics.g2d.Animation<TextureRegion>(0.1f, frames);
         frames.clear();
@@ -110,7 +125,8 @@ public class Player extends Sprite {
         definePlayer();
 
         setBounds(0, 0, 32, 32);
-        playerStand = new TextureRegion(this.getTexture(), 0, 35, 32, 32);;
+        playerStand = new TextureRegion(this.getTexture(), 0, y, 32, 32);
+
         setRegion(playerStand); //Esto lo que hace es ya asociar al body
     }
 
@@ -202,7 +218,7 @@ public class Player extends Sprite {
                 break;
             default:
                 region = playerStand;
-            break;
+                break;
         }
         stateTimer = currentState == previousState ? stateTimer + delta : 0;
         return region;

@@ -68,20 +68,13 @@ public class TownScreen implements Screen {
                 Thread.sleep(200);
             }
             if (this.cont == 1) {
-                this.dialogs.setText("Juss wakin' up in tha mornnin', " +
-                        "gotta thank God I don't know but today seems kinda odd No barkin' " +
-                        "from the dog, no smog And momma cooked a breakfast with no hog I got my grub on" +
-                        ", but didn't pig out Finally got a call from a girl I wanna dig out Hooked it up fo' later as I hit the do' Thinkin");
+                this.dialogs.setText("Hola");
             }
             if (this.cont == 2) {
-                this.dialogs.setText("Will I live another twenty-fo'?" +
-                        "I gotta go 'cause I got me a drop top" +
-                        "And if I hit the switch, I can make the ass drop" +
-                        "Had to stop, at a red light" +
-                        "Lookin' in my mirror, not a jacker in sight");
+                this.dialogs.setText("Mi nombre es");
             }
             if (this.cont == 3) {
-                this.dialogs.setText("Today was Good Day");
+                this.dialogs.setText("Test");
             }
             if (this.cont == 4) {
                 this.cont = 0;
