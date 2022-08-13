@@ -28,4 +28,12 @@ public class Resources {
 
     public static final String PLAYER_HEALTH_FONT = "fonts/pokemon.ttf";
 
+
+
+    //test
+    public static String CURRENT_LOCATION = "City";
+    public static String dialog = "";
+
+
+
 }
