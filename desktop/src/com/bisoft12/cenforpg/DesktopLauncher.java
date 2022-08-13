@@ -15,18 +15,18 @@ public class DesktopLauncher {
 	}
 
 
-	public static void main (String[] arg) {
+	//public static void main (String[] arg) {
 
 
-		int iOpc = 0;
+	//	int iOpc = 0;
 
-		do {
-			iOpc = mostrarMenu();
-			System.out.print(FabricaCharacter.processFuntion(iOpc));
-		} while (iOpc !=5 );
+	//	do {
+	//		iOpc = mostrarMenu();
+	//		System.out.print(FabricaCharacter.processFuntion(iOpc));
+	//	} while (iOpc !=5 );
 
 
-	}
+	//}
 
 	private static int mostrarMenu() {
 		String cad="";
