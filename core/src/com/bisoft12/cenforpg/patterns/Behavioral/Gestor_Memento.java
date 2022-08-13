@@ -13,7 +13,7 @@ import com.bisoft12.cenforpg.patterns.Behavioral.Memento.Originator;
  ************************************************************/
 
 public class Gestor_Memento {
-    private Character _Personaje;
+    private  Character _Personaje;
     private Originator _Creador;
     private CareTaker _Vigilante;
 
@@ -22,7 +22,7 @@ public class Gestor_Memento {
         this._Vigilante = new CareTaker();
     }
 
-    public String nuevaPersonaje(int pLevel, int pExperience) {
+    public String nuevaPersonaje() {
         this._Personaje = new Character(pLevel, pExperience);
         _Creador.nuevoEstado(pLevel, pExperience);
         Actualizar_Memento();
