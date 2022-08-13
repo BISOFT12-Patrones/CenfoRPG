@@ -8,6 +8,7 @@ import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
@@ -28,6 +29,8 @@ public class CreateCharacterScreen implements Screen {
 
     private FabricaCharacter gestorCharacter;
 
+    private GestorPrototipo gestorPrototipo;
+
     private int actual = 0;
 
     public CreateCharacterScreen() {
@@ -40,6 +43,7 @@ public class CreateCharacterScreen implements Screen {
         titulo = new Text(Resources.GAME_FONT, 160, 450, 40, "Seleccione su personaje");
         options = new ArrayList<>();
         gestorCharacter = new FabricaCharacter();
+        gestorPrototipo = new GestorPrototipo(0, 0, 0, 0);
     }
 
     @Override
@@ -163,6 +167,7 @@ public class CreateCharacterScreen implements Screen {
                 case 1:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(2);
+                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(1,2));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
                     this.dispose();
                     break;
