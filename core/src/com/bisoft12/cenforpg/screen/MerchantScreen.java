@@ -1,5 +1,4 @@
 package com.bisoft12.cenforpg.screen;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
@@ -17,7 +16,7 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
-import com.bisoft12.cenforpg.patterns.Creational.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.Gestor_Pocion;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuPociones;

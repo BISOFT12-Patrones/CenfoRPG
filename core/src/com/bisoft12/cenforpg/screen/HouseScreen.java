@@ -2,12 +2,25 @@ package com.bisoft12.cenforpg.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.bisoft12.cenforpg.characters.Player;
+import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Main.Gestor_Estado;
+import com.bisoft12.cenforpg.screen.BattleOptions.OptionsBattle;
+import com.bisoft12.cenforpg.screen.HouseOptions.OptionsHouse;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+
+import java.awt.*;
+
+import static com.bisoft12.cenforpg.utils.Resources.DIALOGS_BACKGROUND;
 
 public class HouseScreen implements Screen {
     //Para el jugador
@@ -15,20 +28,28 @@ public class HouseScreen implements Screen {
     private Inputs input;
     private Pantalla screen;
     private Player player;
+
+    /////////////Caja de Texto para Timer/////////////
+
+    private String dialogBox;
+    private static Gestor_Estado gEstado;
+    private OptionsHouse optionsHouse;
+    /////////////////////////////////////////////
+
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
-
     ////////
     private float timeSeconds = 0f;
     private float period = 1f;
     ////////
 
     public HouseScreen() {
+        this.gEstado = new Gestor_Estado();
         input = new Inputs();
         screen = new Pantalla("maps/map/house.tmx");
-
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
         player = new Player(atlas, 284, 146, this.screen.getWorld());
+        optionsHouse = new OptionsHouse(render.Batch);
     }
 
     @Override
@@ -38,17 +59,20 @@ public class HouseScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
         render.clearScreen();
+
+        gEstado.Cambiar_Estado(1); //ID = Estado Recuperar
 
         screen.update(delta);
         player.update(delta);
 
-        //Carga imagen de muñeco
+        render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
+        optionsHouse.stage.draw();
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
         player.draw(render.Batch);
+
         render.Batch.end();
 
         inputHandler();
