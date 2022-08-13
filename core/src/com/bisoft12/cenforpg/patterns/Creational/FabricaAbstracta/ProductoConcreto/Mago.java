@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public class Mago implements Character {
 
 
-    private int level;
+    private static int level;
 
-    private int experience;
-    private int defense;
-    private int attack;
-    private boolean key;
-    private int coin;
+    private static int experience;
+    private static int defense;
+    private static int attack;
+    private static boolean key;
+    private static int coin;
     private static final String tipeCharacter = "Mago";
-    public ArrayList<Arma> armas = new ArrayList<Arma>();
-    private boolean dungeon = false;
+    public static ArrayList<Arma> armas = new ArrayList<Arma>();
+    private static boolean dungeon = false;
 
     public Mago() {
     }
@@ -64,6 +64,7 @@ public class Mago implements Character {
     public int getCoin() {
         return coin;
     }
+
     public boolean isKey() {
         return key;
     }

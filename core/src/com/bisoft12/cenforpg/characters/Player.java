@@ -23,6 +23,8 @@ public class Player extends Sprite {
     private Body b2Body;
 
 
+
+
     private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright}
 
     ;
@@ -99,7 +101,6 @@ public class Player extends Sprite {
 
         setRegion(playerStand); //Esto lo que hace es ya asociar al body
     }
-
 
     /**
      * Getters y setters

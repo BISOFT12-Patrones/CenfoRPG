@@ -9,17 +9,17 @@ import java.util.ArrayList;
 public class Arquero implements Character {
 
 
-    private int level;//experiencia /100
-    private int experience;
-    private int defense;
-    private int attack;
-    private boolean key;
-    private int coin;
-    private boolean dungeon = false;
+    private static int level;//experiencia /100
+    private static int experience;
+    private static int defense;
+    private static int attack;
+    private static boolean key;
+    private static int coin;
+    private static boolean dungeon = false;
 
     private static final String tipeCharacter = "Arquero";
 
-    private ArrayList<Arma> armas = new ArrayList<Arma>();
+    private static ArrayList<Arma> armas = new ArrayList<Arma>();
 
     public Arquero() {
     }

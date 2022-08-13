@@ -4,6 +4,11 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.Fabrica
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
+import com.bisoft12.cenforpg.screen.CityScreen;
+import com.bisoft12.cenforpg.screen.HouseScreen;
+import com.bisoft12.cenforpg.screen.TerrainMonster;
+import com.bisoft12.cenforpg.utils.InteractiveObjects.House;
+import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
 
@@ -21,15 +26,28 @@ public class FightClass {
         }
     }
 
-    public void opcionPeleaJugador(int pAtaque, NPC pEnemy) {
+    public void opcionPeleaJugador(int pAtaque, NPC pEnemy) throws InterruptedException {
         double ataqueArma = pAtaque / 150;
         int ataqueTot = (int) (player.getAttack() * ataqueArma);
-
+        if (ataqueTot == 0)
+            ataqueTot = player.getAttack() / 2;
+        System.out.println("Ataque realizado " + ataqueTot);
         pEnemy.setDefense(ataqueTot);
+        if (pEnemy.getDefense() < 0) {
+            Thread.sleep(5000);
+            Resources.MAIN.setScreen(new TerrainMonster());
+        } else
+            opcionPeleaEnemigo(pEnemy);
     }
 
-    private void ejecucionDano(int pDano) {
+    private void opcionPeleaEnemigo(NPC pEnemy) throws InterruptedException {
 
+        double ataqueEnemigo = (pEnemy.getAttack() / player.getDefense()) * 45 / 2;
+        vidaJugador -= ataqueEnemigo;
+        if (vidaJugador < 0) {
+            Thread.sleep(5000);
+            Resources.MAIN.setScreen(new HouseScreen());
+        }
     }
 
     public int getVidaJugador() {

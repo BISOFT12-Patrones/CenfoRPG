@@ -12,22 +12,16 @@ import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorProto
 public class FabricaCharacter {
 
     private static Character arCharacter;
-    private static GestorPrototipo gestorArmas = new GestorPrototipo(1,2,3,4);
+    private static GestorPrototipo gestorArmas = new GestorPrototipo(1, 2, 3, 4);
 
     public FabricaCharacter() {
-        processFuntion(2);
+
     }
 
     public static String CreateFabricaCharacter(GameCharacter pFabrica) {
         Character objCharacter = pFabrica.createCharacter();
         arCharacter = objCharacter;
 
-        arCharacter.setArma(gestorArmas.nuevaArma(0));
-        arCharacter.setLevel();
-        arCharacter.setLevel();
-        arCharacter.setLevel();
-        arCharacter.setLevel();
-        arCharacter.setKey(true);
         return objCharacter.info_Character();
     }
 
@@ -48,7 +42,7 @@ public class FabricaCharacter {
         return arCharacter;
     }
 
-    public static String processFuntion(int pOpc) {
+    public static String processFunction(int pOpc) {
         String sMessage = "";
         switch (pOpc) {
             case 1:

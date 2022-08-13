@@ -58,8 +58,8 @@ public class OptionsBattle implements Disposable {
     private Label ataqueEnemy;
     private Label ataqueaEnemyTot;
 
-    private Table table;
-    private Table tableEnemy;
+    private Table table = new Table();
+    private Table tableEnemy = new Table();
     private FabricaCharacter gestorCharacter = new FabricaCharacter();
     Character player = gestorCharacter.getCharacter();
     private FightClass fight = new FightClass();
@@ -85,6 +85,32 @@ public class OptionsBattle implements Disposable {
         viewport = new FitViewport(Resources.WIDTH, Resources.HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
+
+        //Para mostrar las opciones
+        this.sum = 0.0008F;
+        this.alpha = 0;
+        this.armas = new ArrayList<Text>();
+        this.input = new Inputs();
+        this.border = new ShapeRenderer();
+        this.gameName = new Text(Resources.GAME_FONT, (Resources.WIDTH / 2) / 2, Resources.HEIGHT - 100, 25, "Selecciona un arma para atacar");
+
+    }
+
+    public NPC getEnemy() {
+        return enemy;
+    }
+
+    public void update(float dt) {
+        vidaTot = new Label(String.format("%01d", fight.getVidaJugador()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        defensaTot = new Label(String.format("%01d", player.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        ataqueTot = new Label(String.format("%01d", player.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        vidaEnemyTot = new Label(String.format("%01d", enemy.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        ataqueaEnemyTot = new Label(String.format("%01d", enemy.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+    }
+
+    public void mostrarPlayerStat() {
+        table.clear();
         //define a table used to organize our hud's labels
         table = new Table();
         //Top-Align table
@@ -107,9 +133,9 @@ public class OptionsBattle implements Disposable {
 
 
         //add our labels to our table, padding the top, and giving them all equal width with expandX
-        table.add(vida).expandX().padTop(5);
-        table.add(defensa).expandX().padTop(5);
-        table.add(ataque).expandX().padTop(5);
+        table.add(vida).expandX().padTop(10);
+        table.add(defensa).expandX().padTop(10);
+        table.add(ataque).expandX().padTop(10);
         //add a second row to our table
         table.row();
         table.add(vidaTot).expandX();
@@ -119,33 +145,11 @@ public class OptionsBattle implements Disposable {
         //add our table to the stage
         stage.addActor(table);
         mostrarEnemyStat();
-
-        //Para mostrar las opciones
-        this.sum = 0.0008F;
-        this.alpha = 0;
-        this.armas = new ArrayList<Text>();
-        this.input = new Inputs();
-        this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, (Resources.WIDTH / 2) / 2, Resources.HEIGHT - 100, 25, "Selecciona un arma para atacar");
-
-    }
-
-    public NPC getEnemy() {
-        return enemy;
-    }
-
-    public void update(float dt) {
-        vidaTot = new Label(String.format("%01d", fight.getVidaJugador()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        defensaTot = new Label(String.format("%01d", player.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        ataqueTot = new Label(String.format("%01d", player.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        vidaEnemyTot = new Label(String.format("%01d", enemy.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        ataqueaEnemyTot = new Label(String.format("%01d", enemy.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-
     }
 
     public void mostrarEnemyStat() {
         //define a table used to organize our hud's labels
-        tableEnemy = new Table();
+        tableEnemy.clear();
         //Top-Align table
         tableEnemy.bottom();
         //make the table fill the entire stage
@@ -162,8 +166,8 @@ public class OptionsBattle implements Disposable {
 
 
         //add our labels to our table, padding the top, and giving them all equal width with expandX
-        tableEnemy.add(vidaEnemy).expandX().padTop(5);
-        tableEnemy.add(ataqueEnemy).expandX().padTop(5);
+        tableEnemy.add(vidaEnemy).expandX().padBottom(10);
+        tableEnemy.add(ataqueEnemy).expandX().padBottom(10);
         //add a second row to our table
         tableEnemy.row();
         tableEnemy.add(vidaEnemyTot).expandX();
@@ -182,7 +186,8 @@ public class OptionsBattle implements Disposable {
         }
 
         render.Batch.end();
-
+        mostrarEnemyStat();
+        mostrarPlayerStat();
     }
 
     public void generatePoderes() {
@@ -192,23 +197,23 @@ public class OptionsBattle implements Disposable {
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
         if (player.getArmas().size() > 0) {
             for (int i = 0; i < player.getArmas().size(); i++) {
-                if (player.getArmas().get(i).getNombre().equals("Espada") || player.getArmas().get(i).getNombre().equals("Flecha") || player.getArmas().get(i).getNombre().equals("Hacha") ||player.getArmas().get(i).getNombre().equals("Varita")) {
-                    this.armas.add(new Text(player.getArmas().get(i).getTipo().getNombre(), mFontSize, Resources.MENU_FONT));
-                    this.armasHash.put(cantidadArmas, player.getArmas().get(i).getNombre());
+                if (player.getArmas().get(i).getNombre().equals("Espada") || player.getArmas().get(i).getNombre().equals("Flecha") || player.getArmas().get(i).getNombre().equals("Hacha") || player.getArmas().get(i).getNombre().equals("Varita")) {
                     cantidadArmas++;
+                    this.armas.add(new Text(player.getArmas().get(i).getTipo().getNombre() + " - " + player.getArmas().get(i).getTipo().getAtaque(), mFontSize, Resources.GAME_FONT));
+                    this.armasHash.put(cantidadArmas, player.getArmas().get(i).getTipo().getNombre());
                 }
             }
             if (armas.isEmpty()) {
-                this.armas.add(new Text("Puño", mFontSize, Resources.MENU_FONT));
+                this.armas.add(new Text("Puño", mFontSize, Resources.GAME_FONT));
                 this.armasHash.put(cantidadArmas, "Puño");
                 cantidadArmas++;
-                this.armas.add(new Text("Cahetada", mFontSize, Resources.MENU_FONT));
+                this.armas.add(new Text("Cahetada", mFontSize, Resources.GAME_FONT));
                 this.armasHash.put(cantidadArmas, "Puño");
                 cantidadArmas++;
             }
 
         } else {
-            this.armas.add(new Text("Puño", mFontSize, Resources.MENU_FONT));
+            this.armas.add(new Text("Puño", mFontSize, Resources.GAME_FONT));
             this.armasHash.put(cantidadArmas, "Puño");
             cantidadArmas++;
         }
@@ -234,15 +239,13 @@ public class OptionsBattle implements Disposable {
     }
 
 
-    public void executeAction() {
+    public void executeAction() throws InterruptedException {
         System.out.println("CLICK EN EJECUCION");
         for (int i = 0; i < player.getArmas().size(); i++) {
-            for (int j = 0; j < cantidadArmas; j++) {
-                if (player.getArmas().get(i).getNombre().equals(armasHash.get(j))) {
-                    fight.opcionPeleaJugador(player.getArmas().get(i).getAtaque(), enemy);
-                }
+            System.out.println(player.getArmas().get(i).getTipo().getNombre());
+            if (player.getArmas().get(i).getTipo().getNombre().equals(armasHash.get(this.actual + 1))) {
+                fight.opcionPeleaJugador(player.getArmas().get(i).getAtaque(), enemy);
             }
-
         }
 
     }

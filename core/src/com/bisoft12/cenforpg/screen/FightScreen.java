@@ -2,10 +2,13 @@ package com.bisoft12.cenforpg.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Fight.FightClass;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
 import com.bisoft12.cenforpg.screen.BattleOptions.OptionsBattle;
@@ -24,7 +27,10 @@ public class FightScreen implements Screen {
     private FightClass fightClass = new FightClass();
 
     private OptionsBattle optionsBattle;
-    private NPC enemy = new NPC();
+    private FabricaCharacter gestorCharacte = new FabricaCharacter();
+    private NPC enemy = new NPC(gestorCharacte.getCharacter().getLevel());
+
+    private Sprite enemigoSprite;
 
     public FightScreen() {
         input = new Inputs();
@@ -33,8 +39,9 @@ public class FightScreen implements Screen {
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
         player = new Player(atlas, 284, 146, this.screen.getWorld());
         fightClass.datosPlayer();
-
         optionsBattle = new OptionsBattle(render.Batch);
+
+        enemigoSprite = enemy.getSprite();
 
     }
 
@@ -51,24 +58,21 @@ public class FightScreen implements Screen {
         screen.update(delta);
         player.update(delta);
 
+        render.Batch.begin();
+
+        enemigoSprite.draw(render.Batch);
+        render.Batch.end();
         render.Batch.setProjectionMatrix(optionsBattle.stage.getCamera().combined);
 
         optionsBattle.stage.draw();
         optionsBattle.update(delta);
-
-
         //Carga imagen de muñeco
         optionsBattle.render(delta);
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
-
         player.draw(render.Batch);
         render.Batch.end();
-
-        render.Batch.begin();
-        enemy.getSprite().draw(render.Batch);
-        render.Batch.end();
-
+        System.out.println(enemy.getDefense());
 
         validateKeys();
     }
@@ -98,24 +102,13 @@ public class FightScreen implements Screen {
         atlas.dispose();
     }
 
-    public void validateMouse() {
-        for (int i = 0; i < optionsBattle.getArmas().size(); i++) {
-            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
-            Text mTemp = optionsBattle.getArmas().get(i);
-            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
-                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
-                    optionsBattle.changeOptionColor(i);
-            if (this.input.isClicked())
-                optionsBattle.executeAction();
-        }
-    }
-
     private void validateKeys() {
         try {
             int mTime = 200;
             if (this.input.isDown()) {
                 optionsBattle.setActual(optionsBattle.getActual() + 1);
-                if (optionsBattle.getActual() > 1)
+
+                if (optionsBattle.getActual() > optionsBattle.getArmas().size() - 1)
                     optionsBattle.setActual(0);
                 optionsBattle.changeOptionColor(optionsBattle.getActual());
                 Thread.sleep(mTime);
@@ -128,6 +121,7 @@ public class FightScreen implements Screen {
                 optionsBattle.changeOptionColor(optionsBattle.getActual());
             }
             if (this.input.isEnter()) {
+                Thread.sleep(mTime);
                 optionsBattle.executeAction();
             }
         } catch (InterruptedException e) {
