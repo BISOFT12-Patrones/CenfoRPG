@@ -160,6 +160,7 @@ public class CreateCharacterScreen implements Screen {
                 case 0:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(1);
+                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(1,7));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
                     this.dispose();
                     break;
@@ -167,7 +168,7 @@ public class CreateCharacterScreen implements Screen {
                 case 1:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(2);
-                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(1,2));
+                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(0,4));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
                     this.dispose();
                     break;
@@ -175,7 +176,8 @@ public class CreateCharacterScreen implements Screen {
                 case 2:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(3);
-                    System.out.println(gestorCharacter.getCharacter().info_Character());
+                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(3,11));
+                    System.out.println(gestorCharacter.getCharacter().getArmas());
                     this.dispose();
                     break;
             }

@@ -87,7 +87,7 @@ public class Merchant_MenuEspada implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > 2)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -95,7 +95,7 @@ public class Merchant_MenuEspada implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 2;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -137,7 +137,7 @@ public class Merchant_MenuEspada implements Screen {
                 break;
             case 2:
                 //Salir
-                Resources.MAIN.setScreen(new CityScreen());
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());
                 this.dispose();
                 break;
         }

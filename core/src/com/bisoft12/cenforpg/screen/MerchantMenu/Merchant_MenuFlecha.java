@@ -87,7 +87,7 @@ public class Merchant_MenuFlecha implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > 4)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -95,7 +95,7 @@ public class Merchant_MenuFlecha implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 4;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -144,12 +144,14 @@ public class Merchant_MenuFlecha implements Screen {
                 break;
             case 3://Triple Flecha
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(1,12);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 4:
                 //Salir
-                Resources.MAIN.setScreen(new CityScreen());
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());
                 this.dispose();
                 break;
         }
