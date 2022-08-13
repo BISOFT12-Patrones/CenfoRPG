@@ -1,6 +1,9 @@
 package com.bisoft12.cenforpg.patterns.Comportamiento.Main;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.CareTaker;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.Originator;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.objeto.PersonajeOb;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 
 /************************************************************
  * Patrón: Memento
@@ -9,55 +12,44 @@ import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.Originator;
  * Originator (Originator)
  * Memento (Memento)
  * Vigilante (Vigilante)
+ * Objeto (PersonajeOb)
  * Gestor (Gestor_Memento)
  ************************************************************/
 
 public class Gestor_Memento {
-    private  Character _Personaje;
+    private Character _Personaje;
+    private PersonajeOb personajeOb;
     private Originator _Creador;
     private CareTaker _Vigilante;
+    private FabricaCharacter gestorPlayer = new FabricaCharacter();
 
     public Gestor_Memento() {
         this._Creador = new Originator();
         this._Vigilante = new CareTaker();
     }
 
-    public String nuevaPersonaje() {
-        this._Personaje = new Character(pLevel, pExperience);
-        _Creador.nuevoEstado(pLevel, pExperience);
+    public void nuevoPersonaje() {
+        this._Personaje = gestorPlayer.getCharacter();
+       _Creador.nuevoEstado(_Personaje); //Estado de la Casa "Recuperacion"
         Actualizar_Memento();
-        return "Personaje ["+pLevel+" "+pExperience+"] instanceados y 'guardados en Memento' \n";
     }
-
-    public String actualizarPersonaje(int pLevel, int pExperience) {
-        String mensaje = "Personaje  ["+this._Personaje.getLevel+" "+this._Personaje.getExperience+"]";
-        mensaje += _Creador.nuevoEstado(pLevel, pExperience);
-        this._Personaje.set_Level(_Creador.obtenerEstado(0));
-        this._Personaje.set_Experience(_Creador.obtenerEstado(1));
-        return mensaje +"\n";
+    public void actualizarPersonaje(Character pCharacter) {
+        this.personajeOb.setCharacter(_Creador.obtenerEstado(0));
     }
 
     /*==========================================================================
      *						 Seccion donde usamos el memento.
      ==========================================================================*/
-    public String actualizarPersonajeConMemento(int pLevel, int pExperience,  int ... pArgs ) {
-        int opcionales[] = pArgs;
-        String mensaje = "Memento actualizado > " ;
-
-        if(opcionales.length > 0)
-            mensaje+= actualizarPersonaje (pLevel,pExperience);
-        else
-            mensaje+= actualizarPersonaje (pLevel,pExperience);
+    public void actualizarPersonajeConMemento(Character pCharacter) {
         Actualizar_Memento();
-        return mensaje;
     }
 
     private void Actualizar_Memento() {
-        _Vigilante.setMemento( _Creador.crearMemento() );
+        _Vigilante.setMemento( _Creador.crearMemento(personajeOb));
     }
 
     public void Restaurar_Memento() {
-        _Creador.restaurarMemento( _Vigilante.getMemento() );
+        _Creador.restaurarMemento( _Vigilante.getMemento());
     }
 
 
