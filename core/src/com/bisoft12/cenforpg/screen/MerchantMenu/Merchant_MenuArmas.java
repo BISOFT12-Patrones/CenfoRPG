@@ -1,7 +1,6 @@
 package com.bisoft12.cenforpg.screen.MerchantMenu;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
@@ -9,7 +8,6 @@ import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
-import com.bisoft12.cenforpg.screen.TownScreen;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 import java.util.ArrayList;
@@ -29,7 +27,7 @@ public class Merchant_MenuArmas implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige un Arma");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige un Arma");
     }
 
     @Override
@@ -116,10 +114,10 @@ public class Merchant_MenuArmas implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Espada", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Flecha", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Hacha", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Espada", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Flecha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Hacha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();

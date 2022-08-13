@@ -10,8 +10,7 @@ public class StatusText{
     private FabricaCharacter gestor = new FabricaCharacter();
 
     public StatusText() {
-
-        this.text = new Text(Resources.DIALOGS_FONT);
+        this.text = new Text(Resources.PLAYER_HEALTH_FONT);
         this.text.setCoordinates(600, 595);
     }
 

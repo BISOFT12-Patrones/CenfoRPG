@@ -4,25 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
-import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class MerchantScreen implements Screen {
@@ -42,7 +31,7 @@ public class MerchantScreen implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
     }
 
     @Override
@@ -151,10 +140,10 @@ public class MerchantScreen implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Armas", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Armaduras", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Pociones", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Armas", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Armaduras", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Pociones", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
