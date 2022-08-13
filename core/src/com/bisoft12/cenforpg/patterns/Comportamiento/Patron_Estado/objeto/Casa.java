@@ -1,6 +1,6 @@
-package com.bisoft12.cenforpg.patterns.Behavioral.Estado.objeto;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.Estado;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Pelear;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.objeto;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.abstracto.Estado;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Pelear;
 
 public class Casa {
     private Estado objEstadoCasa;

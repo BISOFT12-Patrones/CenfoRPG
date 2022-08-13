@@ -1,4 +1,4 @@
-package com.bisoft12.cenforpg.patterns.Behavioral.Memento;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento;
 
 public class CareTaker {
     private Memento memento;

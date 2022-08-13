@@ -1,9 +1,9 @@
-package com.bisoft12.cenforpg.patterns.Behavioral;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Main;
 
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.Estado;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Pelear;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto.Recuperar;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.objeto.Casa;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.abstracto.Estado;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Pelear;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Recuperar;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.objeto.Casa;
 
 /************************************************************
  * Patrón: Estado

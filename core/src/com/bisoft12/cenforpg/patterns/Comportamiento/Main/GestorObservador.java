@@ -1,7 +1,7 @@
-package com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Main;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Main;
 
-import com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Concreto.BatallaC;
-import com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Concreto.ObservadorC;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Concreto.BatallaC;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Concreto.ObservadorC;
 
 import java.util.HashMap;
 

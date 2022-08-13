@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
-import com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Main.GestorObservador;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Main.GestorObservador;
 import com.bisoft12.cenforpg.screen.FightScreen;
 import com.bisoft12.cenforpg.utils.InteractiveTileObject;
 import com.bisoft12.cenforpg.utils.Resources;

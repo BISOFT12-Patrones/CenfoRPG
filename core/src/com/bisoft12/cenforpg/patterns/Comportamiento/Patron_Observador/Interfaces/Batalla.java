@@ -1,4 +1,4 @@
-package com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Interfaces;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Interfaces;
 
 public interface Batalla {
     void addObserver(Observador o);

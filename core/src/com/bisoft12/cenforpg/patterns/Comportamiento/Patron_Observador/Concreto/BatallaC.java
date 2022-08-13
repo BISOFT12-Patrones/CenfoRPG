@@ -1,7 +1,7 @@
-package com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Concreto;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Concreto;
 
-import com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Interfaces.Batalla;
-import com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Interfaces.Observador;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Interfaces.Batalla;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Interfaces.Observador;
 
 import java.util.ArrayList;
 import java.util.List;

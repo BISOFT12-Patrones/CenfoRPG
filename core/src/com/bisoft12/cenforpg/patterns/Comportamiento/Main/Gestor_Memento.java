@@ -1,6 +1,6 @@
-package com.bisoft12.cenforpg.patterns.Behavioral;
-import com.bisoft12.cenforpg.patterns.Behavioral.Memento.CareTaker;
-import com.bisoft12.cenforpg.patterns.Behavioral.Memento.Originator;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Main;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.CareTaker;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.Originator;
 
 /************************************************************
  * Patrón: Memento

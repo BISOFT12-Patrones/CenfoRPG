@@ -1,6 +1,6 @@
-package com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Concreto;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Concreto;
 
-import com.bisoft12.cenforpg.patterns.Comportamiento.Observador.Interfaces.Observador;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Observador.Interfaces.Observador;
 import com.bisoft12.cenforpg.screen.FightScreen;
 import com.bisoft12.cenforpg.utils.Resources;
 

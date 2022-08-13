@@ -1,5 +1,5 @@
-package com.bisoft12.cenforpg.patterns.Behavioral.Memento;
-import com.bisoft12.cenforpg.patterns.Behavioral.Memento.auxiliar.Snapshoot;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.auxiliar.Snapshoot;
 
 import java.util.ArrayList;
 

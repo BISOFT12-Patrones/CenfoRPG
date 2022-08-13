@@ -1,5 +1,5 @@
-package com.bisoft12.cenforpg.patterns.Behavioral.Estado.concreto;
-import com.bisoft12.cenforpg.patterns.Behavioral.Estado.abstracto.Estado;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.abstracto.Estado;
 
 public class Recuperar extends Estado {
     @Override

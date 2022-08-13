@@ -1,4 +1,4 @@
-package com.bisoft12.cenforpg.patterns.Behavioral.Memento.auxiliar;
+package com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Memento.auxiliar;
 
 import java.util.ArrayList;
 
