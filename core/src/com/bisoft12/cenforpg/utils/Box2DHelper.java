@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.bisoft12.cenforpg.patterns.Structural.Composite.compositeGestor;
 import com.bisoft12.cenforpg.utils.InteractiveObjects.*;
 
 public class Box2DHelper {
@@ -19,6 +20,7 @@ public class Box2DHelper {
     private FixtureDef FDEF;
     private Body BODY;
 
+    private compositeGestor npcGestor;
 
     public World getWORLD() {
         return WORLD;
@@ -36,7 +38,7 @@ public class Box2DHelper {
         BDEF = new BodyDef();
         SHAPE = new PolygonShape();
         FDEF = new FixtureDef();
-
+        npcGestor = new compositeGestor();
     }
 
     public void create2DBoxes(TiledMap pMap, int pIdLayer) {
@@ -55,6 +57,15 @@ public class Box2DHelper {
             BODY.createFixture(FDEF);
 
         }
+    }
+
+    public void npcObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            npcGestor.newNpc(Resources.CURRENT_LOCATION,"Good", "Pedro", 0, 0, "Debes buscar al rey!", true, false);
+            new Npc(WORLD, pMap, rect);
+        }
+
     }
 
     public void houseObject(TiledMap pMap, int pIdLayer) {

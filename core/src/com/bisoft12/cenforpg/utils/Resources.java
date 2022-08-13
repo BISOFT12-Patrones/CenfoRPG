@@ -25,4 +25,12 @@ public class Resources {
     public static final String MENU_FONT = "fonts/gameria.ttf";
     public static final String DIALOGS_FONT = "fonts/pokemon.ttf";
 
+
+
+    //test
+    public static String CURRENT_LOCATION = "City";
+    public static String dialog = "";
+
+
+
 }

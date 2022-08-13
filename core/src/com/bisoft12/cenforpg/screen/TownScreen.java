@@ -8,6 +8,7 @@ import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.io.StatusText;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
@@ -16,6 +17,7 @@ public class TownScreen implements Screen {
 
     private Render render;
     private Inputs inputs;
+    private FabricaCharacter gestor = new FabricaCharacter();
 
     private int cont;
 
@@ -42,7 +44,6 @@ public class TownScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
         Render.clearScreen();
         this.screen.update(delta);
         Render.Batch.begin();
@@ -64,7 +65,7 @@ public class TownScreen implements Screen {
 
             if (this.inputs.isEnter()) {
                 this.cont++;
-                Player.setEXP(Player.getEXP() + 50);
+                gestor.getCharacter().setLevel();
                 Thread.sleep(200);
             }
             if (this.cont == 1) {
