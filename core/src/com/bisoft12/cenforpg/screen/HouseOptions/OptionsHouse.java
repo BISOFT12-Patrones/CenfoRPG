@@ -1,4 +1,5 @@
 package com.bisoft12.cenforpg.screen.HouseOptions;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -7,8 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Pelear;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Recuperar;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Fight.FightClass;
@@ -18,17 +22,11 @@ public class OptionsHouse implements Disposable {
 
     public Stage stage;
     private Viewport viewport;
-
-    private Integer worldTimer;
-    private boolean timeUp;
-    private float timeCount;
-    private static Integer score;
-
-    private Label time;
+    private Label header;
+    private Label timer;
     private Table table;
 
     public OptionsHouse(SpriteBatch sb) {
-
         viewport = new FitViewport(Resources.WIDTH, Resources.HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
@@ -36,15 +34,15 @@ public class OptionsHouse implements Disposable {
         table.top();
         table.setFillParent(true);
 
-        time = new Label("PASO DEL TIEMPO:", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        table.add(time).expandX().padTop(25);
+        header = new Label("PASO DEL TIEMPO:", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        table.add(header).expandX().padTop(25);
         stage.addActor(table);
+
     }
 
-
-    @Override
+   @Override
     public void dispose() {
         stage.dispose();
     }
 
-}
+}//

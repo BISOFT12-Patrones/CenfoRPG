@@ -17,8 +17,10 @@ import com.bisoft12.cenforpg.screen.HouseOptions.OptionsHouse;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+import jdk.internal.org.jline.utils.ShutdownHooks;
 
 import java.awt.*;
+import java.util.Timer;
 
 import static com.bisoft12.cenforpg.utils.Resources.DIALOGS_BACKGROUND;
 
@@ -28,13 +30,8 @@ public class HouseScreen implements Screen {
     private Inputs input;
     private Pantalla screen;
     private Player player;
-
-    /////////////Caja de Texto para Timer/////////////
-
-    private String dialogBox;
     private static Gestor_Estado gEstado;
     private OptionsHouse optionsHouse;
-    /////////////////////////////////////////////
 
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
@@ -63,6 +60,7 @@ public class HouseScreen implements Screen {
 
         gEstado.Cambiar_Estado(1); //ID = Estado Recuperar
 
+
         screen.update(delta);
         player.update(delta);
 
@@ -74,13 +72,19 @@ public class HouseScreen implements Screen {
         player.draw(render.Batch);
 
         render.Batch.end();
-
         inputHandler();
+
     }
+
+    public void returnCity(){
+        Resources.MAIN.setScreen(new CityScreen());
+    }
+
 
     @Override
     public void resize(int width, int height) {
-        screen.resize(width, height);    }
+        screen.resize(width, height);
+    }
 
     @Override
     public void pause() {
@@ -97,7 +101,6 @@ public class HouseScreen implements Screen {
 
     @Override
     public void dispose() {
-        //Limpiamos cuando se salga de la pantalla
         screen.dispose();
     }
 
@@ -124,4 +127,4 @@ public class HouseScreen implements Screen {
        //System.out.println(player.getX() +","+player.getY());
     }
 
-}
+}//
