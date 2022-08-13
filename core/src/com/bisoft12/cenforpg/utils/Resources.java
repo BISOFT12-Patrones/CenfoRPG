@@ -15,18 +15,25 @@ public class Resources {
 
     //Images
     public static final String CHARACTER_PATH = "characters/";
-
     public static final String COMPANY_LOGO = "Images/reboot.png";
-
     public static final String MENU_BACKGROUND = "background/castillo.jpg";
-
+    public static final String MENU_Merchant = "background/MerchantBackground.jpg";
     public static final String LORE_BACKGROUND = "background/lore.jpeg";
 
+    public static final String CREATE_CHARACTER_BACKGROUND = "assets/background/pickcharacterbackground.png";
     public static final String DIALOGS_BACKGROUND = "background/dialog.png";
 
     //Fonts
+    public static final String GAME_FONT = "fonts/gameria.ttf";
 
-    public static final String MENU_FONT = "fonts/gameria.ttf";
-    public static final String DIALOGS_FONT = "fonts/pokemon.ttf";
+    public static final String PLAYER_HEALTH_FONT = "fonts/pokemon.ttf";
+
+
+
+    //test
+    public static String CURRENT_LOCATION = "City";
+    public static String dialog = "";
+
+
 
 }

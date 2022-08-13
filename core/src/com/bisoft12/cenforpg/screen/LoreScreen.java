@@ -11,21 +11,16 @@ import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
 public class LoreScreen implements Screen {
-
     private Text text;
-
     private ShapeRenderer border;
-
     private float alpha;
-
     private float sum;
-
     private int contadorPalabras;
     private Inputs input;
     private Images background;
 
     public LoreScreen() {
-        this.text = new Text(Resources.MENU_FONT, 50, 400, 22,
+        this.text = new Text(Resources.GAME_FONT, 50, 400, 22,
                 "¡Vamos despierta que vas a llegar tarde!" + "\n" +
                         "…." + "\n" +
                         "¡Qué bien, has despertado! Recuerda que hoy es el día " + "\n" +
@@ -38,9 +33,7 @@ public class LoreScreen implements Screen {
         this.input = new Inputs();
         this.sum = 0.0008F;
         this.alpha = 0;
-
     }
-
     @Override
     public void show() {
         this.background.setsize(800, 800);
@@ -59,7 +52,6 @@ public class LoreScreen implements Screen {
         nextText();
 
     }
-
     @Override
     public void resize(int width, int height) {
 

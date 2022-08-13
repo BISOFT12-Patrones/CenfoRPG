@@ -14,7 +14,6 @@ public class Merchant extends InteractiveTileObject {
 
     public Merchant(World pWorld, TiledMap pMap, Rectangle pBounds ){
         super(pWorld,pMap, pBounds);
-
         FIXTURE.setUserData(this);
     }
 

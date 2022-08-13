@@ -7,9 +7,7 @@ import com.bisoft12.cenforpg.utils.Resources;
 
 
 public class Dialogs {
-
     private Images image;
-
     private Text text;
 
 
@@ -44,14 +42,14 @@ public class Dialogs {
         this.image.setCoordinates(0, 0);
         this.text.setCoordinates(20, 125);
     }
+    public void setCoordinates(int pX, int pY) {
+        this.image.setCoordinates(pX, pY);
+        this.text.setCoordinates(pX+20, pY+125);
+    }
 
 
     public String getCoordinates() {
         return this.image.getX() + "\n" + this.image.getY();
     }
 
-    public void dispose() {
-        this.text.setText("");
-        this.image.dispose();
-    }
 }

@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
-import jdk.internal.loader.Resource;
 
 
 public class Text {
@@ -23,7 +22,7 @@ public class Text {
     //Constructores
     public Text(String pText, int pFontSize) {
         initLayout();
-        generateText(Resources.MENU_FONT, pFontSize, this.FONT_COLOR, false);
+        generateText(Resources.GAME_FONT, pFontSize, this.FONT_COLOR, false);
         this.setCoordinates(1f, 1f);
         this.setText(pText);
     }
@@ -38,7 +37,13 @@ public class Text {
 
     public Text() {
         initLayout();
-        generateText(Resources.MENU_FONT, this.fontSize, FONT_COLOR, false);
+        generateText(Resources.GAME_FONT, this.fontSize, FONT_COLOR, false);
+        this.setCoordinates(100, 100f);
+        this.setText("");
+    }
+    public Text(String pFont) {
+        initLayout();
+        generateText(pFont, 20, FONT_COLOR, true);
         this.setCoordinates(100, 100f);
         this.setText("");
     }
@@ -153,7 +158,8 @@ public class Text {
         this.font.draw(Render.Batch, this.getText(), this.getX(), this.getY(), Resources.WIDTH - 50, 60, true);
     }
 
-    public void centerTextScreen() {
+    public void
+    centerTextScreen() {
         float w = (Resources.HEIGHT / 2) - (this.getHeight() / 2);
         float h = (Resources.WIDTH / 2) - (this.getWidth() / 2);
         this.setCoordinates(w, h);
@@ -172,8 +178,6 @@ public class Text {
         }
         this.setFontSize(pFontSize);
         this.font = generator.generateFont(parameter);
-
-
     }
 
     private void initLayout() {
@@ -181,4 +185,11 @@ public class Text {
     }
 
 
+    public void setVisible(boolean b) {
+        if (b){
+            this.text = "-";
+        }else{
+            this.text = "*";
+        }
+    }
 }

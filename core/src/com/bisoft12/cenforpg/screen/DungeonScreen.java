@@ -4,12 +4,11 @@ package com.bisoft12.cenforpg.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Vector2;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
-import com.bisoft12.cenforpg.utils.Resources;
 
 public class DungeonScreen implements Screen {
 
@@ -21,6 +20,7 @@ public class DungeonScreen implements Screen {
     private TextureAtlas atlas;
 
     public DungeonScreen() {
+
         input = new Inputs();
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
 
