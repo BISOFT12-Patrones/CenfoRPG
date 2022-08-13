@@ -185,4 +185,11 @@ public class Text {
     }
 
 
+    public void setVisible(boolean b) {
+        if (b){
+            this.text = "-";
+        }else{
+            this.text = "*";
+        }
+    }
 }

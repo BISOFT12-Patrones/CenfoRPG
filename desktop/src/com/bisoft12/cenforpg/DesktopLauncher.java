@@ -17,8 +17,3 @@ public class DesktopLauncher {
 		//new Lwjgl3Application(new StartGame(), config);
 	}
 }// End of Main
-
-
-
-
-
