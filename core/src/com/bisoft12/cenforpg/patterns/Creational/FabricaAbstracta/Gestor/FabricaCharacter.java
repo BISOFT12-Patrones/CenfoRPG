@@ -34,7 +34,6 @@ public class FabricaCharacter {
     }
 
     public Character getCharacter() {
-
         return arCharacter;
     }
 

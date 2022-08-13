@@ -4,12 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
+import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 import com.bisoft12.cenforpg.utils.WorldContactListener;
+
+import java.util.Objects;
 
 
 public class CityScreen implements Screen {
@@ -21,6 +24,7 @@ public class CityScreen implements Screen {
     private Player player;
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
+    private Dialogs dialogs;
 
 
 
@@ -39,6 +43,9 @@ public class CityScreen implements Screen {
         screen.setTerrain(true);
         screen.setTerrainLayer(3);
 
+        screen.setNpc(true);
+        screen.setNpcLayer(5);
+
         screen.Box2DMaplayers(layers);
 
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
@@ -48,10 +55,14 @@ public class CityScreen implements Screen {
 
 
         screen.getWorld().setContactListener(new WorldContactListener());
+
+        this.dialogs = new Dialogs();
     }
 
     @Override
     public void show() {
+        this.dialogs.getImage().setsize(150, Resources.WIDTH);
+        this.dialogs.setCoordinates();
         Gdx.input.setInputProcessor(this.input);
     }
 
@@ -62,14 +73,21 @@ public class CityScreen implements Screen {
         screen.update(delta);
         player.update(delta);
 
+
+
         //Carga imagen de muñeco
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
         player.draw(render.Batch);
+        if (!Objects.equals(Resources.dialog, "")) {
+            this.dialogs.setText(Resources.dialog);
+            this.dialogs.draw();
+        }
         render.Batch.end();
         //---------------
         inputHandler();
+
 
 
     }
@@ -101,7 +119,7 @@ public class CityScreen implements Screen {
     }
 
     private void inputHandler() {
-        if (input.isUp() || input.isDown() || input.isRight() || input.isLeft()) {
+        if (input.isUp() || input.isDown() || input.isRight() || input.isLeft() || input.isEnter()) {
             if (input.isDown()) {
                 player.move("down");
             }
@@ -113,6 +131,9 @@ public class CityScreen implements Screen {
             }
             if (input.isUp()) {
                 player.move("up");
+            }
+            if(input.isEnter()){
+                Resources.dialog = "";
             }
         } else {
             player.move("none");
