@@ -7,10 +7,12 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcret
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Arquero;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Mago;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 
 public class FabricaCharacter {
 
     private static Character arCharacter;
+    private static GestorPrototipo gestorArmas = new GestorPrototipo(1,2,3,4);
 
     public FabricaCharacter() {
         processFuntion(2);
@@ -19,6 +21,13 @@ public class FabricaCharacter {
     public static String CreateFabricaCharacter(GameCharacter pFabrica) {
         Character objCharacter = pFabrica.createCharacter();
         arCharacter = objCharacter;
+
+        arCharacter.setArma(gestorArmas.nuevaArma(0));
+        arCharacter.setLevel();
+        arCharacter.setLevel();
+        arCharacter.setLevel();
+        arCharacter.setLevel();
+        arCharacter.setKey(true);
         return objCharacter.info_Character();
     }
 

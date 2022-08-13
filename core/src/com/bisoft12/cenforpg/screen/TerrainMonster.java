@@ -26,7 +26,7 @@ public class TerrainMonster implements Screen {
 
 
         //Para la creacion de box2D en los objetos del mapa
-        int[] layers = {2, 4};
+        int[] layers = {3,5};
         //Puerta Dungeon
         screen.setDungeon(true);
         screen.setDungeonLayer(1);
@@ -37,6 +37,7 @@ public class TerrainMonster implements Screen {
         screen.setCity(true);
         screen.setCityLayer(2);
         screen.Box2DMaplayers(layers);
+
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
 
         player = new Player(atlas, 566.9954f, 1095.9785f, this.screen.getWorld());

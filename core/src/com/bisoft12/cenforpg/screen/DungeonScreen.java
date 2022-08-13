@@ -25,7 +25,13 @@ public class DungeonScreen implements Screen {
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
 
         //Para la creacion de box2D en los objetos del mapa
-        int[] layers = {2, 3};
+        int[] layers = {4, 3};
+
+        screen.setMonster(true);
+        screen.setMonsterLayer(5);
+
+
+        //6 boss
         screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
         player = new Player(atlas, 244, 242, this.screen.getWorld());
@@ -50,7 +56,7 @@ public class DungeonScreen implements Screen {
         player.draw(render.Batch);
         render.Batch.end();
         //---------------
-        /*inputHandler();*/
+        inputHandler();
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
     }

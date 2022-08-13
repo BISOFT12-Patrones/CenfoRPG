@@ -15,6 +15,7 @@ public class Caballero implements Character {
     private int coin;
     private static final String tipeCharacter = "Caballero";
     public ArrayList<Arma> armas = new ArrayList<Arma>();
+    private boolean dungeon = false;
 
     public Caballero() {
     }
@@ -22,6 +23,8 @@ public class Caballero implements Character {
 
     public void setLevel() {
         this.level++;
+        this.setAttack(50);
+        this.setDefense(100);
     }
 
     public int getLevel() {
@@ -79,6 +82,14 @@ public class Caballero implements Character {
 
     public void setArma(Arma pArma) {
         armas.add(pArma);
+    }
+
+    public boolean isDungeon() {
+        return dungeon;
+    }
+
+    public void setDungeon(boolean pDungeon) {
+        dungeon = pDungeon;
     }
 
     public String info_Character() {

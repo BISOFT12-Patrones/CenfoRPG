@@ -39,4 +39,6 @@ public interface Character {
 
     void setArma(Arma pArma);
 
+    boolean isDungeon();
+    void setDungeon(boolean pDungeon);
 }

@@ -20,7 +20,7 @@ public class GestorPrototipo {
     private Arma prototipoHacha;
     private Arma prototipoVarita;
 
-    GestorPrototipo(int pIdEspada, int pIdFlecha, int pIdHacha, int pIdVarita) {
+    public GestorPrototipo(int pIdEspada, int pIdFlecha, int pIdHacha, int pIdVarita) {
         this.idEspada = pIdEspada;
         this.idFlecha = pIdFlecha;
         this.idHacha = pIdHacha;
@@ -31,7 +31,7 @@ public class GestorPrototipo {
         this.prototipoVarita = new Varita(idVarita, "Varita que tiene poderes distintos, unicamente el mago la usara", 1, 2, 3);
     }
 
-    public void nuevaArma(int pNum) {
+    public Arma nuevaArma(int pNum) {
         int mid = 0;
         if (pNum == 0) {
             arrArmas.add(this.prototipoEspada.clone());
@@ -56,13 +56,14 @@ public class GestorPrototipo {
             ++this.idVarita;
             mid = this.idVarita;
         }
-        updateCloneArma(pNum, mid);
+        return updateCloneArma(pNum, mid);
+
     }
 
-    private static void updateCloneArma(int pId, int pMid) {
+    private static Arma updateCloneArma(int pId, int pMid) {
         Arma aa = arrArmas.get(pId);
         aa.setTipo(Helper.definirArma(Helper.randomizer()));
-
+        return aa;
     }
 
     public String obtenerDatos() {

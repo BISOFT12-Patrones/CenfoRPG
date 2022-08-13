@@ -15,6 +15,7 @@ public class Arquero implements Character {
     private int attack;
     private boolean key;
     private int coin;
+    private boolean dungeon = false;
 
     private static final String tipeCharacter = "Arquero";
 
@@ -25,6 +26,8 @@ public class Arquero implements Character {
 
     public void setLevel() {
         this.level++;
+        this.setAttack(50);
+        this.setDefense(100);
     }
 
     public int getLevel() {
@@ -69,6 +72,14 @@ public class Arquero implements Character {
 
     public void setArma(Arma pArma) {
         armas.add(pArma);
+    }
+
+    public boolean isDungeon() {
+        return dungeon;
+    }
+
+    public void setDungeon(boolean pDungeon) {
+        dungeon = pDungeon;
     }
 
     public boolean isKey() {

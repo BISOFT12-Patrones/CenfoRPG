@@ -17,12 +17,16 @@ public class Mago implements Character {
     private int coin;
     private static final String tipeCharacter = "Mago";
     public ArrayList<Arma> armas = new ArrayList<Arma>();
+    private boolean dungeon = false;
+
     public Mago() {
     }
 
 
     public void setLevel() {
         this.level++;
+        this.setAttack(50);
+        this.setDefense(100);
     }
 
     public int getLevel() {
@@ -68,9 +72,6 @@ public class Mago implements Character {
         this.key = key;
     }
 
-
-
-
     public String getTipeCharacter() {
         return "Mago";
     }
@@ -81,6 +82,14 @@ public class Mago implements Character {
 
     public void setArma(Arma pArma) {
         armas.add(pArma);
+    }
+
+    public boolean isDungeon() {
+        return dungeon;
+    }
+
+    public void setDungeon(boolean pDungeon) {
+        dungeon = pDungeon;
     }
 
     public String info_Character() {
