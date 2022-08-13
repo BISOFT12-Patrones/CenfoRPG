@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Render;
@@ -23,6 +24,8 @@ public class Merchant_MenuFlecha implements Screen {
     private int actual = 0;
     ShapeRenderer border;
 
+    private GestorPrototipo gestorPrototipo;
+
     public Merchant_MenuFlecha() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -30,7 +33,8 @@ public class Merchant_MenuFlecha implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el Tipo de Flecha");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Flecha");
+        gestorPrototipo = new GestorPrototipo(0, 0, 0, 0);
     }
 
     @Override
@@ -77,6 +81,7 @@ public class Merchant_MenuFlecha implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateKeys() {
         try {
             int mTime = 200;
@@ -101,6 +106,7 @@ public class Merchant_MenuFlecha implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateMouse() {
         for (int i = 0; i < this.options.size(); i++) {
             float mX = this.input.getMouseX(), mY = this.input.getMouseY();
@@ -112,20 +118,27 @@ public class Merchant_MenuFlecha implements Screen {
                 executeAction();
         }
     }
+
     private void executeAction() {
         switch (this.actual) {
             case 0: //DobleFlecha
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(1, 2);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 1: //Flecha Bomba
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(1, 6);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 2://Flecha Simple
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(1, 7);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
@@ -141,16 +154,17 @@ public class Merchant_MenuFlecha implements Screen {
                 break;
         }
     }
+
     private void generateMenu() {
         int mFontSize = 35;
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
-        this.options.add(new Text("Doble Flecha", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Flecha Bomba", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Flecha Simple", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Triple Flecha", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Doble Flecha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Flecha Bomba", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Flecha Simple", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Triple Flecha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
@@ -161,6 +175,7 @@ public class Merchant_MenuFlecha implements Screen {
         }
         changeOptionColor(0);
     }
+
     private void changeOptionColor(int pId) {
         for (Text mTemp : this.options) {
             mTemp.setColor(Color.WHITE);
@@ -172,16 +187,20 @@ public class Merchant_MenuFlecha implements Screen {
     }
 
     @Override
-    public void pause() {    }
+    public void pause() {
+    }
 
     @Override
-    public void resume() {    }
+    public void resume() {
+    }
 
     @Override
-    public void hide() {    }
+    public void hide() {
+    }
 
     @Override
-    public void dispose() {    }
+    public void dispose() {
+    }
 
 
 }//

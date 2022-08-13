@@ -51,6 +51,9 @@ public class Pantalla {
     //Para detectar mosntruos
     boolean monster;
     int monsterLayer;
+    //Para detectar npcs
+    boolean npc;
+    int npcLayer;
 
     boolean dispose = false;
 
@@ -168,6 +171,13 @@ public class Pantalla {
         this.monsterLayer = monsterLayer;
     }
 
+    public void setNpc(boolean npc) {
+        this.npc = npc;
+    }
+    public void setNpcLayer(int npcLayer) {
+        this.npcLayer = npcLayer;
+    }
+
     public void isDispose(boolean valor) {
         this.dispose = valor;
     }
@@ -225,6 +235,11 @@ public class Pantalla {
                 BH.add(box);
             }
 
+            if (npc) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.npcObject(this.MAP, npcLayer);
+                BH.add(box);
+            }
             if (house) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.houseObject(this.MAP, houseLayer);

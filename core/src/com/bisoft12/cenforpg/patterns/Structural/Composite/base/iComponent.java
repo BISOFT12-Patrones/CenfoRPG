@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.physics.box2d.World;
 import com.bisoft12.cenforpg.characters.Player;
 
+import java.util.ArrayList;
+
 public abstract class iComponent{
     public static final int ZONE = 0;
     public static final int TYPE = 1;
@@ -30,5 +32,7 @@ public abstract class iComponent{
     }
 
     //Abstracts
-    public abstract void draw();
+    public abstract String talk();
+    public abstract void addComponent(iComponent component);
+    public abstract ArrayList<iComponent> getComponents();
 }

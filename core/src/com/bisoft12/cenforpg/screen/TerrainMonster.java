@@ -4,10 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
+import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
+import com.bisoft12.cenforpg.utils.Resources;
 import com.bisoft12.cenforpg.utils.WorldContactListener;
+
+import java.util.Objects;
 
 public class TerrainMonster implements Screen {
 
@@ -19,25 +23,27 @@ public class TerrainMonster implements Screen {
     private Player player;
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
+    private Dialogs dialogs;
 
     public TerrainMonster() {
         input = new Inputs();
         screen = new Pantalla("maps/map/terrainMonster.tmx", 561, 950);
-
+        this.dialogs = new Dialogs();
 
         //Para la creacion de box2D en los objetos del mapa
-        int[] layers = {3,5};
+        int[] layers = {2, 4};
         //Puerta Dungeon
         screen.setDungeon(true);
         screen.setDungeonLayer(1);
         //Zonas peleas
         screen.setMonster(true);
-        screen.setMonsterLayer(4);
-        //Ir ciudad
-        screen.setCity(true);
-        screen.setCityLayer(2);
-        screen.Box2DMaplayers(layers);
+        screen.setMonsterLayer(3);
 
+        screen.setNpc(true);
+        screen.setNpcLayer(5);
+
+
+        screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
 
         player = new Player(atlas, 566.9954f, 1095.9785f, this.screen.getWorld());
@@ -48,6 +54,7 @@ public class TerrainMonster implements Screen {
 
     @Override
     public void show() {
+        this.dialogs.getImage().setsize(150, Resources.WIDTH);
         Gdx.input.setInputProcessor(this.input);
     }
 
@@ -64,12 +71,16 @@ public class TerrainMonster implements Screen {
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
         player.draw(render.Batch);
+        if (!Objects.equals(Resources.dialog, "")) {
+            this.dialogs.setText(Resources.dialog);
+            this.dialogs.draw();
+        }
         render.Batch.end();
         //---------------
         inputHandler();
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
-
+        this.dialogs.setCoordinates( (int)player.getX(), (int)player.getY());
 
     }
 
@@ -101,7 +112,7 @@ public class TerrainMonster implements Screen {
     }
 
     private void inputHandler() {
-        if (input.isUp() || input.isDown() || input.isRight() || input.isLeft()) {
+        if (input.isUp() || input.isDown() || input.isRight() || input.isLeft() || input.isEnter()) {
             if (input.isDown()) {
                 player.move("down");
             }
@@ -113,6 +124,9 @@ public class TerrainMonster implements Screen {
             }
             if (input.isUp()) {
                 player.move("up");
+            }
+            if(input.isEnter()){
+                Resources.dialog = "";
             }
         } else {
             player.move("none");

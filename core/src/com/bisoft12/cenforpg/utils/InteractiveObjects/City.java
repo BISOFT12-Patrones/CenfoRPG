@@ -12,7 +12,6 @@ public class City extends InteractiveTileObject {
 
     public City(World pWorld, TiledMap pMap, Rectangle pBounds ){
         super(pWorld,pMap, pBounds);
-
         FIXTURE.setUserData(this);
     }
 
