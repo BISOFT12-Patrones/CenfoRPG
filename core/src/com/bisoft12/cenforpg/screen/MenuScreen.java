@@ -1,4 +1,5 @@
 package com.bisoft12.cenforpg.screen;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -10,12 +11,13 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.Fabrica
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+
 import java.util.ArrayList;
 
 public class MenuScreen implements Screen {
     private Images back;
     private Inputs input;
-   /* private Text info;*/
+    /* private Text info;*/
 
     private Text gameName;
     private ArrayList<Text> options;
@@ -33,8 +35,8 @@ public class MenuScreen implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-       /* this.info = new Text(Resources.MENU_FONT, 10f, 100, 16, "Cordenadas X: Y:");*/
-        this.gameName = new Text(Resources.MENU_FONT, 80, 354, 80, "Orden del Tiempo");
+        /* this.info = new Text(Resources.MENU_FONT, 10f, 100, 16, "Cordenadas X: Y:");*/
+        this.gameName = new Text(Resources.GAME_FONT, 80, 354, 80, "Orden del Tiempo");
     }
 
     @Override
@@ -51,17 +53,8 @@ public class MenuScreen implements Screen {
         for (Text mTemp : this.options) {
             mTemp.draw();
         }
-     /*   this.info.draw();*/
         Render.Batch.end();
-     /*   updateInfo();*/
-     /*   //Estos bordes nos sirven para la parte de box collider
-        this._Border.begin(ShapeRenderer.ShapeType.Line);
-        this._Border.setColor(Color.CYAN);
-        for (Text mTemp : this._Options)
-            this._Border.rect(mTemp.getX(), (mTemp.getY() - mTemp.getHeight()), mTemp.getWidth(), mTemp.getHeight());
-        this._Border.end();*/
-        //Para revisar la parte de las colisiones.
-        validateMouse();
+        /*validateMouse();*/
         validateKeys();
         showLoreScreen();
     }
@@ -80,8 +73,8 @@ public class MenuScreen implements Screen {
                 this.actual--;
                 if (this.actual < 0)
                     this.actual = 1;
-                Thread.sleep(mTime);
                 changeOptionColor(this.actual);
+                Thread.sleep(mTime);
             }
             if (this.input.isEnter()) {
                 executeAction();
@@ -91,23 +84,11 @@ public class MenuScreen implements Screen {
         }
     }
 
-    private void validateMouse() {
-        for (int i = 0; i < this.options.size(); i++) {
-            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
-            Text mTemp = this.options.get(i);
-            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
-                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
-                    changeOptionColor(i);
-            if (this.input.isClicked())
-                executeAction();
-        }
-
-    }
 
     private void executeAction() {
         switch (this.actual) {
             case 0:
-                Resources.MAIN.setScreen(new TownScreen());
+                Resources.MAIN.setScreen(new CreateCharacterScreen());
                 this.dispose();
 
                 //Tu gestor y objetos
@@ -115,8 +96,6 @@ public class MenuScreen implements Screen {
                 //Fin de tu gestor y objetos
                 FabricaCharacter gestorCharacter = new FabricaCharacter();
                 Character player = gestorCharacter.getCharacter();
-
-
 
                 break;
             case 1:
@@ -161,8 +140,8 @@ public class MenuScreen implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
-        this.options.add(new Text("Nuevo juego", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Nuevo juego", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
