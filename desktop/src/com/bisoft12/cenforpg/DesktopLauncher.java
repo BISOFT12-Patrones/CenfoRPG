@@ -15,7 +15,6 @@ public class DesktopLauncher {
 		config.setResizable(false);
 		config.setWindowedMode(Resources.WIDTH, Resources.HEIGHT);
 		new Lwjgl3Application(Resources.MAIN, config);
-		new Lwjgl3Application(new StartGame(), config);
 	}
 }// End of Main
 
