@@ -56,7 +56,7 @@ public class FabricaCharacter {
                 sMessage = get_information_Character();
                 break;
             case 5:
-                sMessage = "Thank you for using the sosftware";
+                sMessage = "Thank you for using the software";
                 break;
             default:
                 sMessage = "Invalid option";

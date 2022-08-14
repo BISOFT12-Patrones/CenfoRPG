@@ -5,6 +5,7 @@ import com.bisoft12.cenforpg.patterns.Structural.Composite.base.iComponent;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NpcType;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NpcZone;
+import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
 
@@ -54,7 +55,18 @@ public class compositeGestor {
         return null;
     }
 
-    public void newNpc(String pZone, String pType, String pName, int attack, int defense, String dialog, Boolean hasDialog, Boolean isKing ){
+    public void newNpc(int i){
+        String[] names = {"Pedro", "Juan", "Nado"};
+        String pZone = Resources.CURRENT_LOCATION;
+        String pType = "Good";
+        String pName = names[i];
+        int attack = 0;
+        int defense = 0;
+        String[] dialogs = {"Debes buscar al rey!", "Yo, el rey Nado, te otorgo esta llave!"};
+        String dialog = i == 2 ? dialogs[1]:dialogs[0];
+        Boolean hasDialog = true;
+        Boolean isKing = i == 2;
+
         if (!existsZone(pZone)) {
             newZone(pZone);
         }
@@ -62,7 +74,7 @@ public class compositeGestor {
             newType(pZone, pType);
         }
         if(!existsNpc(pZone,pType,pName)){
-            addNpc(pZone, pType, pName,attack,defense,dialog,hasDialog, isKing);
+            addNpc(pZone, pType, pName,attack, defense, dialog ,hasDialog, isKing);
         }
     }
 
