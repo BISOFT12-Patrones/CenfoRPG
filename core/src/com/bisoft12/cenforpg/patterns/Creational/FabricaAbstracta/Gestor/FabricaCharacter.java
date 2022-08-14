@@ -7,7 +7,6 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcret
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 
 public class FabricaCharacter {
-
     private static Character arCharacter;
 
     public FabricaCharacter() {

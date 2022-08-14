@@ -128,6 +128,7 @@ public class Merchant_MenuArmas implements Screen {
         }
         changeOptionColor(0);
     }
+
     private void changeOptionColor(int pId) {
         for (Text mTemp : this.options) {
             mTemp.setColor(com.badlogic.gdx.graphics.Color.WHITE);
