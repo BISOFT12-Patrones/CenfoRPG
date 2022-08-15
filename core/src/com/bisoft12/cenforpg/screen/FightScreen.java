@@ -9,6 +9,8 @@ import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Main.Gestor_Memento;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Fight.FightClass;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
@@ -29,8 +31,13 @@ public class FightScreen implements Screen {
     private TextureAtlas atlas;
 
     private FightClass fightClass = new FightClass();
-
     private OptionsBattle optionsBattle;
+
+    ////////Gestor Memento////////////////
+    private Gestor_Memento gMemento = new Gestor_Memento();
+
+    /////////////////////////////////////
+
     private FabricaCharacter gestorCharacte = new FabricaCharacter();
     private NPC enemy = new NPC(gestorCharacte.getCharacter().getLevel());
 
@@ -39,6 +46,7 @@ public class FightScreen implements Screen {
     private Dialogs dialogs;
     private boolean dialogoOn = false;
     private int fightEnd = 0;
+
 
     public FightScreen() {
         input = new Inputs();
@@ -64,6 +72,7 @@ public class FightScreen implements Screen {
     @Override
     public void render(float delta) {
         render.clearScreen();
+
 
         screen.update(delta);
         player.update(delta);
