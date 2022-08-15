@@ -13,6 +13,7 @@ import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Main.Gestor_Estado;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Main.Gestor_Memento;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Pelear;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Recuperar;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.objeto.Casa;
@@ -34,7 +35,10 @@ public class HouseScreen implements Screen {
     private Inputs input;
     private Pantalla screen;
     private Player player;
+    ////////////////////////
     private Gestor_Estado gEstado = new Gestor_Estado();
+    private Gestor_Memento gMemento = new Gestor_Memento();
+    ////////////////////////
     private OptionsHouse optionsHouse;
 
     //Para cargar las texturas del jugador movible
@@ -64,15 +68,16 @@ public class HouseScreen implements Screen {
     optionsHouse.stage.draw();
     render.Batch.begin();
     player.draw(render.Batch);
-    render.Batch.end();
     inputHandler();
-        if (gEstado.Mostrar_Estado().equals("Pelear")) {
+
+    if (gEstado.Mostrar_Estado().equals("Pelear")) {
+            gMemento.Restaurar_Memento();
             Resources.MAIN.setScreen(new CityScreen());
         } else {
             gEstado.Cambiar_Estado(1); //ID = Estado Recuperar
         }
+        render.Batch.end();
     }
-
     @Override
     public void resize(int width, int height) {
         screen.resize(width, height);

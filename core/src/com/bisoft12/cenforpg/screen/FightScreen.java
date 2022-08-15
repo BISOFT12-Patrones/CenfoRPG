@@ -4,6 +4,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Main.Gestor_Memento;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Fight.FightClass;
 import com.bisoft12.cenforpg.screen.BattleOptions.OptionsBattle;
 import com.bisoft12.cenforpg.utils.Pantalla;
@@ -19,8 +21,11 @@ public class FightScreen implements Screen {
     private TextureAtlas atlas;
 
     private FightClass fightClass = new FightClass();
-
     private OptionsBattle optionsBattle;
+    ////////Gestor Memento////////////////
+    private Gestor_Memento gMemento = new Gestor_Memento();
+
+    /////////////////////////////////////
 
     public FightScreen() {
         input = new Inputs();
@@ -41,6 +46,7 @@ public class FightScreen implements Screen {
     @Override
     public void render(float delta) {
         render.clearScreen();
+
 
         screen.update(delta);
         player.update(delta);

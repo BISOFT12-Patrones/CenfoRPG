@@ -13,8 +13,8 @@ public class StartGame extends Game {
 		//Resources.MAIN.setScreen(new LoadScreen());
 		//Resources.MAIN.setScreen(new CityScreen());
 		//Resources.MAIN.setScreen(new DungeonScreen());
-	  //Resources.MAIN.setScreen(new HouseScreen());
-		Resources.MAIN.setScreen(new MerchantScreen());
+	  Resources.MAIN.setScreen(new HouseScreen());
+		//Resources.MAIN.setScreen(new MerchantScreen());
 		//Resources.MAIN.setScreen(new TerrainMonster());
 		//Resources.MAIN.setScreen(new FightScreen());
 		//Resources.MAIN.setScreen(new CreateCharacterScreen());
