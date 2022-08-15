@@ -5,10 +5,10 @@ public class Ciclon extends TipoArma {
 
     public Ciclon(){
         this.setNombre("Ciclon");
-        this.setAtaque(0);
-        this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setAtaque(65);
+        this.setDefensa(30);
+        this.setMagia(40);
+        this.setPrecio(200);
     }
 
     public int getId() {

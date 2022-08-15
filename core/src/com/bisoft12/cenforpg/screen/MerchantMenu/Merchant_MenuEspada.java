@@ -123,17 +123,17 @@ public class Merchant_MenuEspada implements Screen {
         switch (this.actual) {
             case 0:
                 //Enviar al Patron Prototipo el id
-                gestorPrototipo.nuevaArma(0, 4);
-                System.out.println(gestorPrototipo.obtenerDatos() + "\n");
+                gestorPrototipo.nuevaArma(0, 5);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 1:
-                //Enviar al Patron Prototipo el id
-                gestorPrototipo.nuevaArma(0, 5);
-                System.out.println(gestorPrototipo.obtenerDatos() + "\n");
+                gestorPrototipo.nuevaArma(0, 3);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
+
                 break;
             case 2:
                 //Salir
@@ -148,8 +148,8 @@ public class Merchant_MenuEspada implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Espada de Hierro", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Espada Plata", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Espada Doble Mano", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();

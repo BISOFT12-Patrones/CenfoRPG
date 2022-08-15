@@ -58,7 +58,7 @@ public class Merchant_MenuArmas implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 3)
+                if (this.actual > 4)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -66,7 +66,7 @@ public class Merchant_MenuArmas implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 3;
+                    this.actual = 4;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -107,7 +107,11 @@ public class Merchant_MenuArmas implements Screen {
                 Resources.MAIN.setScreen(new Merchant_MenuHacha());
                 this.dispose();
                 break;
-            case 3: //Salir
+
+            case 3:
+                Resources.MAIN.setScreen(new Merchant_MenuVarita() );
+                break;
+            case 4: //Salir
                 Resources.MAIN.setScreen(new MerchantScreen());
                 this.dispose();
                 break;
@@ -122,6 +126,7 @@ public class Merchant_MenuArmas implements Screen {
         this.options.add(new Text("Espada", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Flecha", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Hacha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Varita", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();

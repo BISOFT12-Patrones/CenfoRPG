@@ -77,6 +77,12 @@ public class Helper {
             case 22:
                 tipoArma = new Fundir();
                 break;
+            case 23:
+                tipoArma = new GolpeMental();
+                break;
+            case 24:
+                tipoArma = new PazMental();
+                break;
             default:
                 break;
         }

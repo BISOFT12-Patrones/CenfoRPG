@@ -6,10 +6,10 @@ public class Fundir extends TipoArma {
 
     public Fundir() {
         this.setNombre("Fundir");
-        this.setAtaque(0);
+        this.setAtaque(75);
         this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setMagia(70);
+        this.setPrecio(450);
     }
 
     public int getId() {

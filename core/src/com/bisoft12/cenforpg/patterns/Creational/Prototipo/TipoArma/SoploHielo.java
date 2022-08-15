@@ -5,10 +5,10 @@ public class SoploHielo extends TipoArma {
 
     public SoploHielo() {
         this.setNombre("Soplo Hielo");
-        this.setAtaque(0);
-        this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setAtaque(40);
+        this.setDefensa(15);
+        this.setMagia(25);
+        this.setPrecio(100);
     }
 
     public int getId() {

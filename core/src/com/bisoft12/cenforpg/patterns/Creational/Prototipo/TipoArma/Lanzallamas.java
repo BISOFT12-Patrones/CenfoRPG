@@ -5,10 +5,10 @@ public class Lanzallamas extends TipoArma {
 
     public Lanzallamas() {
         this.setNombre("Lanza llamas");
-        this.setAtaque(0);
-        this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setAtaque(40);
+        this.setDefensa(15);
+        this.setMagia(25);
+        this.setPrecio(100);
     }
 
     public int getId() {

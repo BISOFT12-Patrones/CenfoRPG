@@ -6,10 +6,10 @@ public class ClaridadMental extends TipoArma {
 
     public ClaridadMental() {
         this.setNombre("Claridad Mental");
-        this.setAtaque(0);
-        this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setAtaque(40);
+        this.setDefensa(35);
+        this.setMagia(55);
+        this.setPrecio(300);
     }
 
     public int getId() {

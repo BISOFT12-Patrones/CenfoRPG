@@ -8,6 +8,7 @@ import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
@@ -160,24 +161,33 @@ public class CreateCharacterScreen implements Screen {
                 case 0:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(1);
-                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(1,7));
+                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(1, 7));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
+                    for (Arma arma:gestorCharacter.getCharacter().getArmas()) {
+                        System.out.println(arma.getTipo().getNombre());
+                    }
                     this.dispose();
                     break;
 
                 case 1:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(2);
-                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(0,4));
+                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(0, 4));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
+                    for (Arma arma:gestorCharacter.getCharacter().getArmas()) {
+                        System.out.println(arma.getTipo().getNombre());
+                    }
                     this.dispose();
                     break;
 
                 case 2:
                     Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(3);
-                    gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(3,11));
-                    System.out.println(gestorCharacter.getCharacter().getArmas());
+                    gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 23));
+                    gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 24));
+                    for (Arma arma:gestorCharacter.getCharacter().getArmas()) {
+                        System.out.println(arma.getTipo().getNombre());
+                    }
                     this.dispose();
                     break;
             }

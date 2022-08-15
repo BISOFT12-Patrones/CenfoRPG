@@ -6,9 +6,9 @@ public class VitalidadGrupal extends TipoArma {
     public VitalidadGrupal() {
         this.setNombre("Vitalidad Grupal");
         this.setAtaque(0);
-        this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setDefensa(40);
+        this.setMagia(60);
+        this.setPrecio(350);
     }
 
     public int getId() {

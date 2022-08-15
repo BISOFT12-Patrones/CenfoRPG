@@ -5,10 +5,10 @@ public class Recuperacion5 extends TipoArma {
 
     public Recuperacion5() {
         this.setNombre("Recuperacion 5%");
-        this.setPrecio(0);
         this.setAtaque(0);
-        this.setMagia(0);
         this.setDefensa(0);
+        this.setMagia(25);
+        this.setPrecio(50);
     }
 
     public int getId() {

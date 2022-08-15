@@ -5,10 +5,10 @@ public class BombaDeHielo extends TipoArma {
 
     public BombaDeHielo() {
         this.setNombre("Bomba de hielo");
-        this.setAtaque(0);
-        this.setDefensa(0);
-        this.setMagia(0);
-        this.setPrecio(0);
+        this.setAtaque(60);
+        this.setDefensa(45);
+        this.setMagia(60);
+        this.setPrecio(400);
     }
 
     public int getId() {
