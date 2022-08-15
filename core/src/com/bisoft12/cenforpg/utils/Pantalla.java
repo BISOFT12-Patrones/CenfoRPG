@@ -54,9 +54,15 @@ public class Pantalla {
     //Para detectar npcs
     boolean npc;
     int npcLayer;
+
     //Para detectar al jefe
     boolean jefe;
     int jefeLayer;
+
+    //Para detectar al rey
+    boolean king;
+    int kingLayer;
+
 
     boolean dispose = false;
 
@@ -182,6 +188,7 @@ public class Pantalla {
         this.npcLayer = npcLayer;
     }
 
+
     public boolean isJefe() {
         return jefe;
     }
@@ -196,6 +203,14 @@ public class Pantalla {
 
     public void setJefeLayer(int jefeLayer) {
         this.jefeLayer = jefeLayer;
+
+    public void setKing(boolean king) {
+        this.king = king;
+    }
+
+    public void setKingLayer(int kingLayer) {
+        this.kingLayer = kingLayer;
+
     }
 
     public void isDispose(boolean valor) {
@@ -251,13 +266,16 @@ public class Pantalla {
             for (int layer : pLayers) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.create2DBoxes(this.MAP, layer);
-
                 BH.add(box);
             }
-
             if (npc) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.npcObject(this.MAP, npcLayer);
+                BH.add(box);
+            }
+            if (king) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.kingObject(this.MAP, kingLayer);
                 BH.add(box);
             }
             if (house) {

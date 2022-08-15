@@ -2,11 +2,13 @@ package com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcr
 
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
+import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
 
 
 public class Arquero implements Character {
+
 
 
     private static int level;//experiencia /100
@@ -18,6 +20,7 @@ public class Arquero implements Character {
     private static boolean dungeon = false;
     private static boolean fight = false;
     private static boolean jefe = false;
+
 
     private static final String tipeCharacter = "Arquero";
 
@@ -89,11 +92,11 @@ public class Arquero implements Character {
     }
 
     public boolean isKey() {
-        return key;
+        return Resources.key;
     }
 
     public void setKey(boolean key) {
-        this.key = key;
+        Resources.key = key;
     }
 
     public String getTipeCharacter() {

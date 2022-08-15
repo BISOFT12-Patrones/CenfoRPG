@@ -81,6 +81,7 @@ public class TerrainMonster implements Screen {
 
     @Override
     public void show() {
+        Resources.CURRENT_LOCATION = "Terrain";
         this.dialogs.getImage().setsize(150, Resources.WIDTH);
         Gdx.input.setInputProcessor(this.input);
     }

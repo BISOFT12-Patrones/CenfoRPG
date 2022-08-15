@@ -66,6 +66,9 @@ public class CityScreen implements Screen {
         screen.setNpc(true);
         screen.setNpcLayer(5);
 
+        screen.setKing(true);
+        screen.setKingLayer(6);
+
         screen.Box2DMaplayers(layers);
 
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
@@ -156,7 +159,7 @@ public class CityScreen implements Screen {
             player.move("none");
         }
 
-        //System.out.println(player.getX() +","+player.getY());
+
     }
 
 

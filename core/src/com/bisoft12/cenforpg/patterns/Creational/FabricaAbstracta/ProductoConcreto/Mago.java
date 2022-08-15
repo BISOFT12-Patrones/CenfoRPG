@@ -2,6 +2,7 @@ package com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcr
 
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
+import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,8 @@ public class Mago implements Character {
     private static int attack;
     private static boolean key;
     private static int coin;
+
+ 
     private static final String tipeCharacter = "Mago";
     public static ArrayList<Arma> armas = new ArrayList<Arma>();
     private static boolean dungeon = false;
@@ -72,11 +75,11 @@ public class Mago implements Character {
     }
 
     public boolean isKey() {
-        return key;
+        return Resources.key;
     }
 
     public void setKey(boolean key) {
-        this.key = key;
+        Resources.key = key;
     }
 
     public String getTipeCharacter() {
