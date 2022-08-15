@@ -106,7 +106,8 @@ public class DungeonScreen implements Screen {
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
 
-        this.dialogs.setCoordinates((int) player.getX(), (int) player.getY());
+        this.dialogs.setCoordinates(((int) player.getX() - (Resources.WIDTH/2) ), ((int) player.getY() - (Resources.HEIGHT/2)));
+        this.statusText.setCoordinates(((int) player.getX() + (Resources.WIDTH/2) )- 200, ((int) player.getY() + (Resources.HEIGHT/2)-25));
 
         player.setXFight(screen.getCAMERA().position.x);
         player.setYFight(screen.getCAMERA().position.y);
