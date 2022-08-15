@@ -34,7 +34,7 @@ public class Merchant_MenuPociones implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el tipo de Pocion");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el tipo de Pocion");
 
      }
 
@@ -117,8 +117,8 @@ public class Merchant_MenuPociones implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
-        this.options.add(new Text("Curativa", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Pelea", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Curativa", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Pelea", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
