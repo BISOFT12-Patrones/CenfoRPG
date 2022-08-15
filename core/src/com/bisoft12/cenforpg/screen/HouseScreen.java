@@ -1,5 +1,4 @@
 package com.bisoft12.cenforpg.screen;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -8,10 +7,15 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Timer;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.elements.Text;
+import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Main.Gestor_Estado;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Pelear;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Recuperar;
+import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.objeto.Casa;
 import com.bisoft12.cenforpg.screen.BattleOptions.OptionsBattle;
 import com.bisoft12.cenforpg.screen.HouseOptions.OptionsHouse;
 import com.bisoft12.cenforpg.utils.Pantalla;
@@ -20,7 +24,7 @@ import com.bisoft12.cenforpg.utils.Resources;
 import jdk.internal.org.jline.utils.ShutdownHooks;
 
 import java.awt.*;
-import java.util.Timer;
+import java.util.Objects;
 
 import static com.bisoft12.cenforpg.utils.Resources.DIALOGS_BACKGROUND;
 
@@ -30,15 +34,11 @@ public class HouseScreen implements Screen {
     private Inputs input;
     private Pantalla screen;
     private Player player;
-    private static Gestor_Estado gEstado;
+    private Gestor_Estado gEstado = new Gestor_Estado();
     private OptionsHouse optionsHouse;
 
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
-    ////////
-    private float timeSeconds = 0f;
-    private float period = 1f;
-    ////////
 
     public HouseScreen() {
         this.gEstado = new Gestor_Estado();
@@ -56,30 +56,22 @@ public class HouseScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        render.clearScreen();
-
-        gEstado.Cambiar_Estado(1); //ID = Estado Recuperar
-
-
-        screen.update(delta);
-        player.update(delta);
-
-        render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
-        optionsHouse.stage.draw();
-
-        render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
-        render.Batch.begin();
-        player.draw(render.Batch);
-
-        render.Batch.end();
-        inputHandler();
-
+    render.clearScreen();
+    screen.update(delta);
+    player.update(delta);
+    //Carga imagen de muñeco
+    render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
+    optionsHouse.stage.draw();
+    render.Batch.begin();
+    player.draw(render.Batch);
+    render.Batch.end();
+    inputHandler();
+        if (gEstado.Mostrar_Estado().equals("Pelear")) {
+            Resources.MAIN.setScreen(new CityScreen());
+        } else {
+            gEstado.Cambiar_Estado(1); //ID = Estado Recuperar
+        }
     }
-
-    public void returnCity(){
-        Resources.MAIN.setScreen(new CityScreen());
-    }
-
 
     @Override
     public void resize(int width, int height) {
@@ -103,8 +95,6 @@ public class HouseScreen implements Screen {
     public void dispose() {
         screen.dispose();
     }
-
-
     private void inputHandler() {
         //En este mapa no hace falta el movimiento del jugador
        /* if (input.isUp() || input.isDown() || input.isRight() || input.isLeft()) {

@@ -1,5 +1,4 @@
 package com.bisoft12.cenforpg.patterns.Comportamiento.Main;
-
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.abstracto.Estado;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Pelear;
 import com.bisoft12.cenforpg.patterns.Comportamiento.Patron_Estado.concreto.Recuperar;
@@ -23,7 +22,7 @@ public class Gestor_Estado {
     }
 
     public String Cambiar_Estado(int pID) {
-        Estado estado=null;
+        Estado estado=  new Pelear();
         switch (pID) {
             case 1:
                 estado = new Recuperar();
@@ -38,6 +37,5 @@ public class Gestor_Estado {
     public String Mostrar_Estado() {
         return objEstadoCasa.activarEstado();
     }
-
 
 }//

@@ -116,8 +116,6 @@ public class MenuScreen implements Screen {
                 FabricaCharacter gestorCharacter = new FabricaCharacter();
                 Character player = gestorCharacter.getCharacter();
 
-
-
                 break;
             case 1:
                 Render.close();

@@ -19,7 +19,6 @@ import com.bisoft12.cenforpg.patterns.Fight.FightClass;
 import com.bisoft12.cenforpg.utils.Resources;
 
 public class OptionsHouse implements Disposable {
-
     public Stage stage;
     private Viewport viewport;
     private Label header;
@@ -34,10 +33,9 @@ public class OptionsHouse implements Disposable {
         table.top();
         table.setFillParent(true);
 
-        header = new Label("PASO DEL TIEMPO:", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        table.add(header).expandX().padTop(25);
+        header = new Label("Recuperando...", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        table.add(header).expandX().padTop(50);
         stage.addActor(table);
-
     }
 
    @Override

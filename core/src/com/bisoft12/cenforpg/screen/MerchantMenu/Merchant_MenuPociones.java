@@ -2,13 +2,13 @@ package com.bisoft12.cenforpg.screen.MerchantMenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
-import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.Fab_Pociones;
-import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.Gestor_Pocion;
+import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.principal.Gestor_Pocion;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Render;
@@ -35,7 +35,8 @@ public class Merchant_MenuPociones implements Screen {
         this.input = new Inputs();
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el tipo de Pocion");
-    }
+
+     }
 
     @Override
     public void show() {
