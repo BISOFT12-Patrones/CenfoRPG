@@ -32,15 +32,17 @@ public class MerchantScreen implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
     }
 
     @Override
     public void show() {
         generateMenu();
         Gdx.input.setInputProcessor(this.input);
+
         sound = Gdx.audio.newSound(Gdx.files.internal("music/BackgroundMusic.mp3"));
         sound.play();
+
     }
 
     @Override
@@ -60,7 +62,7 @@ public class MerchantScreen implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual >options.size() - 1)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -145,10 +147,10 @@ public class MerchantScreen implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Armas", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Armaduras", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Pociones", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Armas", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Armaduras", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Pociones", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();

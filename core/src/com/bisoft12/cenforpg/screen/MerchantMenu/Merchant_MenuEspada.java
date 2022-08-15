@@ -1,4 +1,5 @@
 package com.bisoft12.cenforpg.screen.MerchantMenu;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -6,10 +7,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+
 import java.util.ArrayList;
 
 public class Merchant_MenuEspada implements Screen {
@@ -21,6 +24,8 @@ public class Merchant_MenuEspada implements Screen {
     private int actual = 0;
     ShapeRenderer border;
 
+    private GestorPrototipo gestorPrototipo;
+
     public Merchant_MenuEspada() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -28,7 +33,8 @@ public class Merchant_MenuEspada implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el Tipo de Espada");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Espada");
+        gestorPrototipo = new GestorPrototipo(0, 0, 0, 0);
     }
 
     @Override
@@ -75,12 +81,13 @@ public class Merchant_MenuEspada implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateKeys() {
         try {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > options.size()-1)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -99,6 +106,7 @@ public class Merchant_MenuEspada implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateMouse() {
         for (int i = 0; i < this.options.size(); i++) {
             float mX = this.input.getMouseX(), mY = this.input.getMouseY();
@@ -110,15 +118,20 @@ public class Merchant_MenuEspada implements Screen {
                 executeAction();
         }
     }
+
     private void executeAction() {
         switch (this.actual) {
             case 0:
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(0, 4);
+                System.out.println(gestorPrototipo.obtenerDatos() + "\n");
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 1:
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(0, 5);
+                System.out.println(gestorPrototipo.obtenerDatos() + "\n");
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
@@ -135,9 +148,9 @@ public class Merchant_MenuEspada implements Screen {
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
-        this.options.add(new Text("Espada de Hierro", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Espada Plata", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Espada de Hierro", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Espada Plata", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
@@ -148,6 +161,7 @@ public class Merchant_MenuEspada implements Screen {
         }
         changeOptionColor(0);
     }
+
     private void changeOptionColor(int pId) {
         for (Text mTemp : this.options) {
             mTemp.setColor(com.badlogic.gdx.graphics.Color.WHITE);
@@ -160,16 +174,20 @@ public class Merchant_MenuEspada implements Screen {
 
 
     @Override
-    public void pause() {    }
+    public void pause() {
+    }
 
     @Override
-    public void resume() {    }
+    public void resume() {
+    }
 
     @Override
-    public void hide() {    }
+    public void hide() {
+    }
 
     @Override
-    public void dispose() {    }
+    public void dispose() {
+    }
 
 
 }//

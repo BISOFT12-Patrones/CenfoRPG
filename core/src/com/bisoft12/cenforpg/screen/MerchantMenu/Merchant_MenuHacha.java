@@ -30,7 +30,7 @@ public class Merchant_MenuHacha implements Screen {
         this.options = new ArrayList<Text>();
         this.input = new Inputs();
         this.border = new ShapeRenderer();
-        this.gameName = new Text(Resources.MENU_FONT, 50, 450, 50, "Elige el Tipo de Hacha");
+        this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Hacha");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Merchant_MenuHacha implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > options.size() - 1)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -77,6 +77,7 @@ public class Merchant_MenuHacha implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateKeys() {
         try {
             int mTime = 200;
@@ -101,6 +102,7 @@ public class Merchant_MenuHacha implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateMouse() {
         for (int i = 0; i < this.options.size(); i++) {
             float mX = this.input.getMouseX(), mY = this.input.getMouseY();
@@ -112,6 +114,7 @@ public class Merchant_MenuHacha implements Screen {
                 executeAction();
         }
     }
+
     private void executeAction() {
         switch (this.actual) {
             case 0: //Hacha Hierro
@@ -131,14 +134,15 @@ public class Merchant_MenuHacha implements Screen {
                 break;
         }
     }
+
     private void generateMenu() {
         int mFontSize = 35;
         float mNextY = 0;
         int mRest = 50;
         this.gameName.setColor(Color.WHITE);
-        this.options.add(new Text("Hacha Hierro", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Hacha Plata", mFontSize, Resources.MENU_FONT));
-        this.options.add(new Text("Salir", mFontSize, Resources.MENU_FONT));
+        this.options.add(new Text("Hacha Hierro", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Hacha Plata", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
         mNextY = this.options.get(0).getY();
@@ -149,6 +153,7 @@ public class Merchant_MenuHacha implements Screen {
         }
         changeOptionColor(0);
     }
+
     private void changeOptionColor(int pId) {
         for (Text mTemp : this.options) {
             mTemp.setColor(Color.WHITE);
@@ -160,16 +165,20 @@ public class Merchant_MenuHacha implements Screen {
     }
 
     @Override
-    public void pause() {    }
+    public void pause() {
+    }
 
     @Override
-    public void resume() {    }
+    public void resume() {
+    }
 
     @Override
-    public void hide() {    }
+    public void hide() {
+    }
 
     @Override
-    public void dispose() {    }
+    public void dispose() {
+    }
 
 
 }//

@@ -42,6 +42,10 @@ public class Dialogs {
         this.image.setCoordinates(0, 0);
         this.text.setCoordinates(20, 125);
     }
+    public void setCoordinates(int pX, int pY) {
+        this.image.setCoordinates(pX, pY);
+        this.text.setCoordinates(pX+20, pY+125);
+    }
 
 
     public String getCoordinates() {
