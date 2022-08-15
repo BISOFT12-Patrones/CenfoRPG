@@ -46,8 +46,8 @@ public class armedCharacter extends DecoratedPlayer {
     }
 
     @Override
-    public void setLevel() {
-        this.cCharacter.setLevel();
+    public void setLevel(int pDif) {
+        this.cCharacter.setLevel(pDif);
     }
 
     @Override
@@ -98,5 +98,35 @@ public class armedCharacter extends DecoratedPlayer {
     @Override
     public void setArma(Arma pArma) {
         this.cCharacter.setArma(pArma);
+    }
+
+    @Override
+    public boolean isDungeon() {
+        return this.cCharacter.isDungeon();
+    }
+
+    @Override
+    public void setDungeon(boolean pDungeon) {
+        this.cCharacter.setDungeon(pDungeon);
+    }
+
+    @Override
+    public void setFight(boolean pFight) {
+        this.cCharacter.setFight(pFight);
+    }
+
+    @Override
+    public boolean isFight() {
+        return this.cCharacter.isFight();
+    }
+
+    @Override
+    public void setJefe(boolean pFeje) {
+        this.cCharacter.setJefe(pFeje);
+    }
+
+    @Override
+    public boolean isFeje() {
+        return this.cCharacter.isFeje();
     }
 }

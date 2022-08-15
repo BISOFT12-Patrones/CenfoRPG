@@ -34,24 +34,7 @@ public class CityScreen implements Screen {
 
 
     public CityScreen() {
-        //Para la creacion del personaje PRUEBA
-        gestor.processFunction(2);
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setLevel();
-        gestor.getCharacter().setKey(true);
-        gestor.getCharacter().setArma(gestorArma.nuevaArma(0, 1));
-        gestor.getCharacter().setArma(gestorArma.nuevaArma(0, 2));
-        gestor.getCharacter().setArma(gestorArma.nuevaArma(0, 3));
 
-//Fin de prueba
         input = new Inputs();
         screen = new Pantalla("maps/map/city.tmx");
         this.statusText = new StatusText();
