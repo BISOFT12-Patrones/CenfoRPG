@@ -1,13 +1,13 @@
 package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
-public class TripleFlecha extends TipoArma {
+public class Lanzallamas extends TipoArma {
     private int id;
 
-    public TripleFlecha() {
-        this.setNombre("Triple Flecha");
+    public Lanzallamas() {
+        this.setNombre("Lanza llamas");
         this.setAtaque(40);
         this.setDefensa(15);
-        this.setMagia(0);
+        this.setMagia(25);
         this.setPrecio(100);
     }
 

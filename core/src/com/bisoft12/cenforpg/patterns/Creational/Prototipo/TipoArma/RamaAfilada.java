@@ -1,13 +1,13 @@
 package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
-public class FlechaBomba extends TipoArma {
+public class RamaAfilada extends TipoArma{
     private int id;
 
-    public FlechaBomba() {
-        this.setNombre("Flecha Bomba");
+    public RamaAfilada(){
+        this.setNombre("Rama Afilada");
         this.setAtaque(60);
         this.setDefensa(25);
-        this.setMagia(0);
+        this.setMagia(35);
         this.setPrecio(150);
     }
 

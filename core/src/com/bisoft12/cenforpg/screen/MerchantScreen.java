@@ -54,7 +54,6 @@ public class MerchantScreen implements Screen {
             mTemp.draw();
         }
         Render.Batch.end();
-        validateMouse();
         validateKeys();
     }
     private void validateKeys() {
@@ -62,7 +61,7 @@ public class MerchantScreen implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual >options.size() - 1)
+                if (this.actual > 3)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -70,7 +69,7 @@ public class MerchantScreen implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 3;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -82,17 +81,6 @@ public class MerchantScreen implements Screen {
         }
     }
 
-    private void validateMouse() {
-        for (int i = 0; i < this.options.size(); i++) {
-            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
-            Text mTemp = this.options.get(i);
-            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
-                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
-                    changeOptionColor(i);
-            if (this.input.isClicked())
-                executeAction();
-        }
-    }
 
     private void executeAction() {
         switch (this.actual) {

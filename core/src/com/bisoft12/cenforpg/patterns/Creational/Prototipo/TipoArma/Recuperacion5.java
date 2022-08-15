@@ -1,13 +1,13 @@
 package com.bisoft12.cenforpg.patterns.Creational.Prototipo.TipoArma;
 
-public class EspadaPlata extends TipoArma {
+public class Recuperacion5 extends TipoArma {
     private int id;
 
-    public EspadaPlata() {
-        this.setNombre("Espada de Plata");
-        this.setAtaque(25);
-        this.setMagia(0);
-        this.setDefensa(10);
+    public Recuperacion5() {
+        this.setNombre("Recuperacion 5%");
+        this.setAtaque(0);
+        this.setDefensa(0);
+        this.setMagia(25);
         this.setPrecio(50);
     }
 

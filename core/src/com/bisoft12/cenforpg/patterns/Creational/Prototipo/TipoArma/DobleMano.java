@@ -5,10 +5,10 @@ public class DobleMano extends TipoArma {
 
     public DobleMano() {
         this.setNombre("Doble Mano");
-        this.setPrecio(0);
-        this.setAtaque(0);
+        this.setAtaque(40);
         this.setMagia(0);
-        this.setDefensa(0);
+        this.setDefensa(10);
+        this.setPrecio(50);
     }
 
     public int getId() {
