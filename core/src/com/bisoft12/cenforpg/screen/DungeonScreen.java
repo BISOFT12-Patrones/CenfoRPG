@@ -32,7 +32,7 @@ public class DungeonScreen implements Screen {
 
         input = new Inputs();
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
-        this.statusText = new StatusText();
+        this.statusText = new StatusText(false);
         this.dialogs = new Dialogs();
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {4, 3};
@@ -106,7 +106,8 @@ public class DungeonScreen implements Screen {
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
 
-        this.dialogs.setCoordinates((int) player.getX(), (int) player.getY());
+        this.dialogs.setCoordinates(((int) player.getX() - (Resources.WIDTH/2) ), ((int) player.getY() - (Resources.HEIGHT/2)));
+        this.statusText.setCoordinates(((int) player.getX() + (Resources.WIDTH/2) )- 200, ((int) player.getY() + (Resources.HEIGHT/2)-25));
 
         player.setXFight(screen.getCAMERA().position.x);
         player.setYFight(screen.getCAMERA().position.y);

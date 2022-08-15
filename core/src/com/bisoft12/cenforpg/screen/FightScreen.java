@@ -162,12 +162,12 @@ public class FightScreen implements Screen {
                         Resources.MAIN.setScreen(new TerrainMonster(player.getXFight(), player.getYFight()));
                 } else if (fightEnd == 2) {
                     Resources.MAIN.setScreen(new HouseScreen());
-                } else if( fightEnd == 3){
+                } else if (fightEnd == 3) {
                     gestorCharacte.getCharacter().setDungeon(false);
                     Resources.MAIN.setScreen(new CityScreen());
                 }
 
-
+                Thread.sleep(mTime);
             }
         } catch (InterruptedException e) {
             Render.print(e.toString());
