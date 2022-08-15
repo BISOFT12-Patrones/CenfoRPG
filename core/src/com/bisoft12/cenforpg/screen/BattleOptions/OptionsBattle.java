@@ -17,6 +17,7 @@ import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
 import com.bisoft12.cenforpg.patterns.Fight.FightClass;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
 import com.bisoft12.cenforpg.screen.CityScreen;
@@ -64,7 +65,7 @@ public class OptionsBattle implements Disposable {
     Character player = gestorCharacter.getCharacter();
     private FightClass fight = new FightClass();
 
-    private NPC enemy = new NPC(player.getLevel());
+    private NPC enemy;
 
     //Para el menu de poderes
     private Inputs input;
@@ -93,7 +94,12 @@ public class OptionsBattle implements Disposable {
         this.input = new Inputs();
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.GAME_FONT, (Resources.WIDTH / 2) / 2, Resources.HEIGHT - 100, 25, "Selecciona un arma para atacar");
-
+        if (player.isDungeon())
+            enemy = new NPC(10);
+        else if (!player.isDungeon())
+            enemy = new NPC(player.getLevel());
+        else if(player.isFeje())
+            enemy = new NPC(15);
     }
 
     public NPC getEnemy() {
@@ -239,15 +245,14 @@ public class OptionsBattle implements Disposable {
     }
 
 
-    public void executeAction() throws InterruptedException {
-        System.out.println("CLICK EN EJECUCION");
+    public int executeAction() throws InterruptedException {
+        ArrayList<Arma>ArmasEnemigo = player.getArmas();
         for (int i = 0; i < player.getArmas().size(); i++) {
-            System.out.println(player.getArmas().get(i).getTipo().getNombre());
-            if (player.getArmas().get(i).getTipo().getNombre().equals(armasHash.get(this.actual + 1))) {
-                fight.opcionPeleaJugador(player.getArmas().get(i).getAtaque(), enemy);
+            if (ArmasEnemigo.get(i).getTipo().getNombre().equals(armasHash.get(this.actual + 1))) {
+                return fight.opcionPeleaJugador(ArmasEnemigo.get(i).getTipo().getAtaque(), enemy);
             }
         }
-
+        return 0;
     }
 
     public int getActual() {

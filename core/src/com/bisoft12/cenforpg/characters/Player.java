@@ -15,14 +15,14 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.Fabrica
 
 public class Player extends Sprite {
 
-    private float X;
-    private float Y;
+    private  float X;
+    private  float Y;
+    private static float XF;
+    private static float YF;
     private int SPEED = 2;
     //private Texture texture;
     private World world;
     private Body b2Body;
-
-
 
 
     private enum State {STANDINGup, STANDINGdown, STANDINGleft, STANDINGright, RUNNINGup, RUNNINGdown, RUNNINGleft, RUNNINGright}
@@ -116,6 +116,23 @@ public class Player extends Sprite {
         return b2Body.getPosition().y;
     }
 
+
+    public float getYFight() {
+        return this.YF;
+    }
+
+    public float getXFight() {
+        return this.XF;
+    }
+
+    public void setYFight(float pY) {
+        this.YF = pY;
+    }
+
+    public void setXFight(float pX) {
+        this.XF = pX;
+    }
+
     /**
      * Metodos publicos
      **/
@@ -148,6 +165,8 @@ public class Player extends Sprite {
     public void update(float delta) {
         setPosition(getX() - getWidth() / 2, getY() - getHeight() / 2); //Para que se este en el mismo lugar que el cuerpo y la imagen
         setRegion(getFrame(delta));
+        this.X = b2Body.getPosition().x;
+        this.Y = b2Body.getPosition().y;
     }
 
     /**

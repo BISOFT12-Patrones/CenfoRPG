@@ -17,7 +17,7 @@ public interface Character {
 
     void setKey(boolean pKey);
 
-    void setLevel();
+    void setLevel(int pDif);
 
     void setExperience(int experience);
 
@@ -40,5 +40,14 @@ public interface Character {
     void setArma(Arma pArma);
 
     boolean isDungeon();
+
     void setDungeon(boolean pDungeon);
+
+    void setFight(boolean pFight);
+
+    boolean isFight();
+
+    void setJefe(boolean pFeje);
+
+    boolean isFeje();
 }

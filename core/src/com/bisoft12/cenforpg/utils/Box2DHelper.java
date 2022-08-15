@@ -126,6 +126,15 @@ public class Box2DHelper {
         }
 
     }
+    public void jefeObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new JefeTierra(WORLD, pMap, rect);
+
+        }
+
+    }
     public void dispose() {
         System.out.println(WORLD.getBodyCount());
         Array<Body> bodies = new Array<Body>(WORLD.getBodyCount());

@@ -54,6 +54,9 @@ public class Pantalla {
     //Para detectar npcs
     boolean npc;
     int npcLayer;
+    //Para detectar al jefe
+    boolean jefe;
+    int jefeLayer;
 
     boolean dispose = false;
 
@@ -174,8 +177,25 @@ public class Pantalla {
     public void setNpc(boolean npc) {
         this.npc = npc;
     }
+
     public void setNpcLayer(int npcLayer) {
         this.npcLayer = npcLayer;
+    }
+
+    public boolean isJefe() {
+        return jefe;
+    }
+
+    public void setJefe(boolean jefe) {
+        this.jefe = jefe;
+    }
+
+    public int getJefeLayer() {
+        return jefeLayer;
+    }
+
+    public void setJefeLayer(int jefeLayer) {
+        this.jefeLayer = jefeLayer;
     }
 
     public void isDispose(boolean valor) {
@@ -195,7 +215,7 @@ public class Pantalla {
         if (dispose) {
             this.box2Helper.dispose();
             dispose();
-        }else{
+        } else {
             this.CAMERA.update();
             this.RENDERER.setView(CAMERA);
             this.RENDERER.render();
@@ -268,6 +288,11 @@ public class Pantalla {
             if (monster) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.monsterObject(this.MAP, monsterLayer);
+                BH.add(box);
+            }
+            if (jefe) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.jefeObject(this.MAP, jefeLayer);
                 BH.add(box);
             }
 

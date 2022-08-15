@@ -10,9 +10,9 @@ import com.bisoft12.cenforpg.screen.FightScreen;
 import com.bisoft12.cenforpg.utils.InteractiveTileObject;
 import com.bisoft12.cenforpg.utils.Resources;
 
-public class MonsterZones extends InteractiveTileObject {
+public class JefeTierra extends InteractiveTileObject {
 
-    public MonsterZones(World pWorld, TiledMap pMap, Rectangle pBounds) {
+    public JefeTierra(World pWorld, TiledMap pMap, Rectangle pBounds) {
         super(pWorld, pMap, pBounds);
 
         FIXTURE.setUserData(this);
@@ -21,20 +21,15 @@ public class MonsterZones extends InteractiveTileObject {
 
     @Override
     public void onHit() {
-        Gdx.app.log("MonsterZone", "Collision");
+        Gdx.app.log("BossZone", "Collision");
         GestorObservador gestor = new GestorObservador();
         gestor.nuevaBatalla("Batalla");
         gestor.NuevoObservador("Battle", "Batalla");
-        int numero = (int) (Math.random() * 10 + 1);
         FabricaCharacter gestorCharacter = new FabricaCharacter();
-        if (!gestorCharacter.getCharacter().isFight()) {
-            if (numero <= 3 || gestorCharacter.getCharacter().isDungeon()) {
-                Resources.MAIN.setScreen(new FightScreen());
-                gestorCharacter.getCharacter().setFight(true);
-            }
-        } else {
-            gestorCharacter.getCharacter().setFight(false);
-        }
+
+        gestorCharacter.getCharacter().setJefe(true);
+        gestorCharacter.getCharacter().setFight(true);
+        Resources.MAIN.setScreen(new FightScreen());
 
     }
 }

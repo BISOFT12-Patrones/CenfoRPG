@@ -12,7 +12,6 @@ import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorProto
 public class FabricaCharacter {
 
     private static Character arCharacter;
-    private static GestorPrototipo gestorArmas = new GestorPrototipo(1, 2, 3, 4);
 
     public FabricaCharacter() {
 

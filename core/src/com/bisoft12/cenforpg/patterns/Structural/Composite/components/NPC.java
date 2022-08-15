@@ -36,17 +36,26 @@ public class NPC extends iComponent {
     }
 
     public NPC(int pLevel) {
-        if (gestorCharacter.getCharacter().isDungeon()) {
-            this.attack = (300);
-            this.defense = (675);
-            texture = new Texture(Gdx.files.internal("assets/characters/nonPlayableCharacters/Monstruo_Tierra/big_zombie_idle_anim_f0-1.png"));
-            sprite = new Sprite(texture, 32, 32);
-            sprite.setPosition(300, 146);
-        } else {
+        if (gestorCharacter.getCharacter().isFeje()) {
             this.attack = (pLevel * 110);
-            this.defense = (pLevel * 155);
-            randomTexture();
+            this.defense = (pLevel * 200);
+            texture = new Texture(Gdx.files.internal("assets/characters/nonPlayableCharacters/Jefes Finales/jefeTierraPeque.png"));
+            sprite = new Sprite(texture);
+            sprite.setPosition(550, 140);
+        } else {
+            if (gestorCharacter.getCharacter().isDungeon()) {
+                this.attack = (pLevel * 110);
+                this.defense = (pLevel * 175);
+                texture = new Texture("assets/characters/nonPlayableCharacters/Monstruo_Tierra/big_zombie_idle_anim_f0-1Peque.png");
+                sprite = new Sprite(texture);
+                sprite.setPosition(550, 140);
+            } else {
+                this.attack = (pLevel * 110);
+                this.defense = (pLevel * 155);
+                randomTexture();
+            }
         }
+
     }
 
     public int getAttack() {

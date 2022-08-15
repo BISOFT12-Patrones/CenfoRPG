@@ -9,7 +9,6 @@ public class Mago implements Character {
 
 
     private static int level;
-
     private static int experience;
     private static int defense;
     private static int attack;
@@ -18,23 +17,30 @@ public class Mago implements Character {
     private static final String tipeCharacter = "Mago";
     public static ArrayList<Arma> armas = new ArrayList<Arma>();
     private static boolean dungeon = false;
+    private static boolean fight = false;
+    private static boolean jefe = false;
+
 
     public Mago() {
     }
 
 
-    public void setLevel() {
-        this.level++;
-        this.setAttack(50);
-        this.setDefense(100);
-    }
-
-    public int getLevel() {
-        return level;
+    public void setLevel(int dif) {
+        this.level = dif;
+        this.setAttack(15 * dif);
+        this.setDefense(18 * dif);
     }
 
     public void setExperience(int experience) {
         this.experience += experience;
+        int dif = this.experience / 100;
+        if (dif > getLevel()) {
+            setLevel(dif);
+        }
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public int getExperience() {
@@ -42,7 +48,7 @@ public class Mago implements Character {
     }
 
     public void setDefense(int defense) {
-        this.defense += defense;
+        this.defense = defense;
     }
 
     public int getDefense() {
@@ -50,7 +56,7 @@ public class Mago implements Character {
     }
 
     public void setAttack(int attacK) {
-        this.attack += attacK;
+        this.attack = attacK;
     }
 
     public int getAttack() {
@@ -91,6 +97,22 @@ public class Mago implements Character {
 
     public void setDungeon(boolean pDungeon) {
         dungeon = pDungeon;
+    }
+
+    public void setFight(boolean pFight) {
+        this.fight = pFight;
+    }
+
+    public boolean isFight() {
+        return this.fight;
+    }
+
+    public void setJefe(boolean pJefe) {
+        this.jefe = pJefe;
+    }
+
+    public boolean isFeje() {
+        return this.jefe;
     }
 
     public String info_Character() {
