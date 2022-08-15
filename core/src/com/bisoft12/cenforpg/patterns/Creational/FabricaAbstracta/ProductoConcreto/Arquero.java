@@ -10,29 +10,41 @@ import java.util.ArrayList;
 public class Arquero implements Character {
 
 
-    private int level;//experiencia /100
-    private int experience;
-    private int defense;
-    private int attack;
-    private int coin;
+
+    private static int level;//experiencia /100
+    private static int experience;
+    private static int defense;
+    private static int attack;
+    private static boolean key;
+    private static int coin;
+    private static boolean dungeon = false;
+    private static boolean fight = false;
+    private static boolean jefe = false;
+
 
     private static final String tipeCharacter = "Arquero";
 
-    private ArrayList<Arma> armas = new ArrayList<Arma>();
+    private static ArrayList<Arma> armas = new ArrayList<Arma>();
 
     public Arquero() {
     }
 
-    public void setLevel() {
-        this.level++;
-    }
-
-    public int getLevel() {
-        return level;
+    public void setLevel(int dif) {
+        this.level = dif;
+        this.setAttack(55 * dif);
+        this.setDefense(60 * dif);
     }
 
     public void setExperience(int experience) {
         this.experience += experience;
+        int dif = this.experience / 100;
+        if (dif > getLevel()) {
+            setLevel(dif);
+        }
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public int getExperience() {
@@ -40,7 +52,7 @@ public class Arquero implements Character {
     }
 
     public void setDefense(int defense) {
-        this.defense += defense;
+        this.defense = defense;
     }
 
     public int getDefense() {
@@ -48,7 +60,7 @@ public class Arquero implements Character {
     }
 
     public void setAttack(int attacK) {
-        this.attack += attacK;
+        this.attack = attacK;
     }
 
     public int getAttack() {
@@ -71,6 +83,14 @@ public class Arquero implements Character {
         armas.add(pArma);
     }
 
+    public boolean isDungeon() {
+        return dungeon;
+    }
+
+    public void setDungeon(boolean pDungeon) {
+        dungeon = pDungeon;
+    }
+
     public boolean isKey() {
         return Resources.key;
     }
@@ -83,6 +103,21 @@ public class Arquero implements Character {
         return "Arquero";
     }
 
+    public void setFight(boolean pFight) {
+        this.fight = pFight;
+    }
+
+    public boolean isFight() {
+        return this.fight;
+    }
+
+    public void setJefe(boolean pJefe) {
+        this.jefe = pJefe;
+    }
+
+    public boolean isFeje() {
+        return this.jefe;
+    }
 
     public String info_Character() {
         return "Tipe of Character is: " + this.getTipeCharacter() + ", This Level is : " + this.getLevel() + ", This experience is : " + this.getExperience()

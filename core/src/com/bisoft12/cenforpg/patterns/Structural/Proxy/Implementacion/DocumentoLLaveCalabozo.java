@@ -10,6 +10,7 @@ public class DocumentoLLaveCalabozo implements ILLaveCalabozo {
     @Override
     public boolean acceder(Character player) {
         //Si llega a este punto es que si tiene la llave para acceder al calabozo
+        player.setDungeon(true);
         Resources.MAIN.setScreen(new DungeonScreen());
         return true;
     }

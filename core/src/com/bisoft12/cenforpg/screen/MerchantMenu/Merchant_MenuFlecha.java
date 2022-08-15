@@ -87,7 +87,7 @@ public class Merchant_MenuFlecha implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > options.size()-1)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
