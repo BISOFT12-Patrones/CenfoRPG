@@ -43,6 +43,8 @@ public class TerrainMonster implements Screen {
         //Zonas peleas
         screen.setMonster(true);
         screen.setMonsterLayer(3);
+        screen.setCity(true);
+        screen.setCityLayer(6);
 
         screen.setNpc(true);
         screen.setNpcLayer(5);
@@ -73,6 +75,8 @@ public class TerrainMonster implements Screen {
 
         screen.setNpc(true);
         screen.setNpcLayer(5);
+        screen.setCity(true);
+        screen.setCityLayer(6);
 
 
         screen.Box2DMaplayers(layers);
