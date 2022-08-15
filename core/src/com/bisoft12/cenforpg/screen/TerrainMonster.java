@@ -49,6 +49,8 @@ public class TerrainMonster implements Screen {
         screen.setNpc(true);
         screen.setNpcLayer(5);
 
+        screen.setCity(true);
+        screen.setCityLayer(6);
 
         screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
@@ -78,6 +80,8 @@ public class TerrainMonster implements Screen {
         screen.setCity(true);
         screen.setCityLayer(6);
 
+        screen.setCity(true);
+        screen.setCityLayer(6);
 
         screen.Box2DMaplayers(layers);
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
