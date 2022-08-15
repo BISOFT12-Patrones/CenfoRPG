@@ -203,6 +203,7 @@ public class Pantalla {
 
     public void setJefeLayer(int jefeLayer) {
         this.jefeLayer = jefeLayer;
+    }
 
     public void setKing(boolean king) {
         this.king = king;

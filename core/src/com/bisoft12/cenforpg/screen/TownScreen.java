@@ -65,7 +65,7 @@ public class TownScreen implements Screen {
 
             if (this.inputs.isEnter()) {
                 this.cont++;
-                gestor.getCharacter().setLevel();
+                //gestor.getCharacter().setLevel();
                 Thread.sleep(200);
             }
             if (this.cont == 1) {
