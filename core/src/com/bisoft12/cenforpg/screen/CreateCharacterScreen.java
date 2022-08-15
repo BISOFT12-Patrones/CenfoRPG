@@ -159,35 +159,38 @@ public class CreateCharacterScreen implements Screen {
         try {
             switch (this.actual) {
                 case 0:
-                    Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(1);
                     gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(1, 7));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
-                    for (Arma arma:gestorCharacter.getCharacter().getArmas()) {
+                    gestorCharacter.getCharacter().setExperience(300);
+                    for (Arma arma : gestorCharacter.getCharacter().getArmas()) {
                         System.out.println(arma.getTipo().getNombre());
                     }
+                    Resources.MAIN.setScreen(new CityScreen());
                     this.dispose();
                     break;
 
                 case 1:
-                    Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(2);
                     gestorCharacter.getCharacter().setArma(gestorPrototipo.nuevaArma(0, 4));
                     System.out.println(gestorCharacter.getCharacter().info_Character());
-                    for (Arma arma:gestorCharacter.getCharacter().getArmas()) {
+                    gestorCharacter.getCharacter().setExperience(300);
+                    for (Arma arma : gestorCharacter.getCharacter().getArmas()) {
                         System.out.println(arma.getTipo().getNombre());
                     }
+                    Resources.MAIN.setScreen(new CityScreen());
                     this.dispose();
                     break;
 
                 case 2:
-                    Resources.MAIN.setScreen(new CityScreen());
                     gestorCharacter.processFunction(3);
+                    gestorCharacter.getCharacter().setExperience(300);
                     gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 23));
                     gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 24));
-                    for (Arma arma:gestorCharacter.getCharacter().getArmas()) {
+                    for (Arma arma : gestorCharacter.getCharacter().getArmas()) {
                         System.out.println(arma.getTipo().getNombre());
                     }
+                    Resources.MAIN.setScreen(new CityScreen());
                     this.dispose();
                     break;
             }

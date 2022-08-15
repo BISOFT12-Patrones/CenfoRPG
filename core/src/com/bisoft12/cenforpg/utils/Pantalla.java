@@ -55,6 +55,15 @@ public class Pantalla {
     boolean npc;
     int npcLayer;
 
+    //Para detectar al jefe
+    boolean jefe;
+    int jefeLayer;
+
+    //Para detectar al rey
+    boolean king;
+    int kingLayer;
+
+
     boolean dispose = false;
 
     /************************************CONSTRUCTORES**********************************************************************************************/
@@ -174,8 +183,35 @@ public class Pantalla {
     public void setNpc(boolean npc) {
         this.npc = npc;
     }
+
     public void setNpcLayer(int npcLayer) {
         this.npcLayer = npcLayer;
+    }
+
+
+    public boolean isJefe() {
+        return jefe;
+    }
+
+    public void setJefe(boolean jefe) {
+        this.jefe = jefe;
+    }
+
+    public int getJefeLayer() {
+        return jefeLayer;
+    }
+
+    public void setJefeLayer(int jefeLayer) {
+        this.jefeLayer = jefeLayer;
+    }
+
+    public void setKing(boolean king) {
+        this.king = king;
+    }
+
+    public void setKingLayer(int kingLayer) {
+        this.kingLayer = kingLayer;
+
     }
 
     public void isDispose(boolean valor) {
@@ -195,7 +231,7 @@ public class Pantalla {
         if (dispose) {
             this.box2Helper.dispose();
             dispose();
-        }else{
+        } else {
             this.CAMERA.update();
             this.RENDERER.setView(CAMERA);
             this.RENDERER.render();
@@ -231,13 +267,16 @@ public class Pantalla {
             for (int layer : pLayers) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.create2DBoxes(this.MAP, layer);
-
                 BH.add(box);
             }
-
             if (npc) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.npcObject(this.MAP, npcLayer);
+                BH.add(box);
+            }
+            if (king) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.kingObject(this.MAP, kingLayer);
                 BH.add(box);
             }
             if (house) {
@@ -268,6 +307,11 @@ public class Pantalla {
             if (monster) {
                 Box2DHelper box = new Box2DHelper(world);
                 box.monsterObject(this.MAP, monsterLayer);
+                BH.add(box);
+            }
+            if (jefe) {
+                Box2DHelper box = new Box2DHelper(world);
+                box.jefeObject(this.MAP, jefeLayer);
                 BH.add(box);
             }
 

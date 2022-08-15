@@ -1,5 +1,4 @@
 package com.bisoft12.cenforpg.screen.MerchantMenu;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;

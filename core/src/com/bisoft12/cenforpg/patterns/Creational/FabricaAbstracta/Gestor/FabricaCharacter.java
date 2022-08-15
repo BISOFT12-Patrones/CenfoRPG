@@ -5,18 +5,21 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcret
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcreta.FabricaArquero;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.FabricaConcreta.FabricaCaballero;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Arquero;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcreto.Mago;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 
 public class FabricaCharacter {
-
     private static Character arCharacter;
 
     public FabricaCharacter() {
-        processFunction(2);
+
     }
 
     public static String CreateFabricaCharacter(GameCharacter pFabrica) {
         Character objCharacter = pFabrica.createCharacter();
         arCharacter = objCharacter;
+
         return objCharacter.info_Character();
     }
 
@@ -35,6 +38,10 @@ public class FabricaCharacter {
 
     public Character getCharacter() {
         return arCharacter;
+    }
+
+    public void setCharacter(Character arCharacter) {
+        FabricaCharacter.arCharacter = arCharacter;
     }
 
     public static String processFunction(int pOpc) {
@@ -56,7 +63,7 @@ public class FabricaCharacter {
                 sMessage = get_information_Character();
                 break;
             case 5:
-                sMessage = "Thank you for using the sosftware";
+                sMessage = "Thank you for using the software";
                 break;
             default:
                 sMessage = "Invalid option";
