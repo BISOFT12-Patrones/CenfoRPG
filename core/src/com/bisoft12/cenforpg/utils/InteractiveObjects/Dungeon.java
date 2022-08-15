@@ -25,6 +25,8 @@ public class Dungeon extends InteractiveTileObject {
 
         Character player = gestorCharacter.getCharacter();
        // player.setKey(true);
+
         gestor.dungeonAcces(player);
+
     }
 }

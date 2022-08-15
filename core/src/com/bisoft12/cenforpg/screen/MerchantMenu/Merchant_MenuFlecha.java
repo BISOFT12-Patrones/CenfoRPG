@@ -87,7 +87,7 @@ public class Merchant_MenuFlecha implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > 3)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -95,7 +95,7 @@ public class Merchant_MenuFlecha implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 3;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -135,21 +135,16 @@ public class Merchant_MenuFlecha implements Screen {
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
-            case 2://Flecha Simple
+            case 2://Triple Flecha
                 //Enviar al Patron Prototipo el id
-                gestorPrototipo.nuevaArma(1, 7);
+                gestorPrototipo.nuevaArma(1,12);
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
-            case 3://Triple Flecha
-                //Enviar al Patron Prototipo el id
-                Resources.MAIN.setScreen(new TerrainMonster());
-                this.dispose();
-                break;
-            case 4:
+            case 3:
                 //Salir
-                Resources.MAIN.setScreen(new CityScreen());
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());
                 this.dispose();
                 break;
         }
@@ -158,11 +153,10 @@ public class Merchant_MenuFlecha implements Screen {
     private void generateMenu() {
         int mFontSize = 35;
         float mNextY = 0;
-        int mRest = 50;
+        int mRest = 39;
         this.gameName.setColor(Color.WHITE);
         this.options.add(new Text("Doble Flecha", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Flecha Bomba", mFontSize, Resources.GAME_FONT));
-        this.options.add(new Text("Flecha Simple", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Triple Flecha", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 

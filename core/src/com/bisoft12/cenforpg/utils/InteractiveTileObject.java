@@ -31,6 +31,7 @@ public abstract class InteractiveTileObject{
 
         fdef.shape = shape;
         fdef.isSensor= true;//Para que no colisione con el personaje, solo detecte
+
         BODY = pWorld.createBody(bdef);
         BODY.createFixture(fdef);
 

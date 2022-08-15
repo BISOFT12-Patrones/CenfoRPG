@@ -33,7 +33,7 @@ public class Resources {
     //test
     public static String CURRENT_LOCATION = "City";
     public static String dialog = "";
-
+    public static Boolean key = false;
 
 
 }

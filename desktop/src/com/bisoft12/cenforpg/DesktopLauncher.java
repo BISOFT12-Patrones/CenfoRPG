@@ -2,7 +2,6 @@ package com.bisoft12.cenforpg;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-
 import com.bisoft12.cenforpg.utils.Resources;
 
 public class DesktopLauncher {
@@ -15,9 +14,6 @@ public class DesktopLauncher {
 		config.setResizable(false);
 		config.setWindowedMode(Resources.WIDTH, Resources.HEIGHT);
 		new Lwjgl3Application(Resources.MAIN, config);
-		new Lwjgl3Application(new StartGame(), config);
+		//new Lwjgl3Application(new StartGame(), config);
 	}
 }// End of Main
-
-
-

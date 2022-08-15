@@ -60,12 +60,21 @@ public class Box2DHelper {
     }
 
     public void npcObject(TiledMap pMap, int pIdLayer) {
+        int i = 0;
         for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            npcGestor.newNpc(Resources.CURRENT_LOCATION,"Good", "Pedro", 0, 0, "Debes buscar al rey!", true, false);
+            npcGestor.newNpc(i);
             new Npc(WORLD, pMap, rect);
+            i++;
         }
 
+    }
+
+    public void kingObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new King(WORLD, pMap, rect);
+        }
     }
 
     public void houseObject(TiledMap pMap, int pIdLayer) {
@@ -122,6 +131,15 @@ public class Box2DHelper {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             new MonsterZones(WORLD, pMap, rect);
+
+        }
+
+    }
+    public void jefeObject(TiledMap pMap, int pIdLayer) {
+        for (MapObject object : pMap.getLayers().get(pIdLayer).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new JefeTierra(WORLD, pMap, rect);
 
         }
 

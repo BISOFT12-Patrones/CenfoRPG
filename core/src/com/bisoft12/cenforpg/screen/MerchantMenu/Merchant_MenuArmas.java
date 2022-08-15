@@ -7,9 +7,11 @@ import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.screen.CityScreen;
+import com.bisoft12.cenforpg.screen.MerchantScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+
 import java.util.ArrayList;
 
 public class Merchant_MenuArmas implements Screen {
@@ -20,7 +22,8 @@ public class Merchant_MenuArmas implements Screen {
     private float alpha, sum;
     private int actual = 0;
     ShapeRenderer border;
-     public Merchant_MenuArmas() {
+
+    public Merchant_MenuArmas() {
         this.sum = 0.0008F;
         this.alpha = 0;
         this.back = new Images(Resources.MENU_Merchant);
@@ -54,7 +57,7 @@ public class Merchant_MenuArmas implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > 4)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -62,7 +65,7 @@ public class Merchant_MenuArmas implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 4;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -73,6 +76,7 @@ public class Merchant_MenuArmas implements Screen {
             Render.print(e.toString());
         }
     }
+
     private void validateMouse() {
         for (int i = 0; i < this.options.size(); i++) {
             float mX = this.input.getMouseX(), mY = this.input.getMouseY();
@@ -99,11 +103,15 @@ public class Merchant_MenuArmas implements Screen {
                 break;
             case 2:
                 //Enviar al Patron Prototipo el id
-                Resources.MAIN.setScreen(new TerrainMonster());
+                Resources.MAIN.setScreen(new Merchant_MenuHacha());
                 this.dispose();
                 break;
-            case 3: //Salir
-                Resources.MAIN.setScreen(new CityScreen());
+
+            case 3:
+                Resources.MAIN.setScreen(new Merchant_MenuVarita() );
+                break;
+            case 4: //Salir
+                Resources.MAIN.setScreen(new MerchantScreen());
                 this.dispose();
                 break;
         }
@@ -117,6 +125,7 @@ public class Merchant_MenuArmas implements Screen {
         this.options.add(new Text("Espada", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Flecha", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Hacha", mFontSize, Resources.GAME_FONT));
+        this.options.add(new Text("Varita", mFontSize, Resources.GAME_FONT));
         this.options.add(new Text("Salir", mFontSize, Resources.GAME_FONT));
 
         this.options.get(0).centerTextScreen();
@@ -128,6 +137,7 @@ public class Merchant_MenuArmas implements Screen {
         }
         changeOptionColor(0);
     }
+
     private void changeOptionColor(int pId) {
         for (Text mTemp : this.options) {
             mTemp.setColor(com.badlogic.gdx.graphics.Color.WHITE);

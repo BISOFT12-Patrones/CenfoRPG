@@ -47,6 +47,42 @@ public class Helper {
             case 12:
                 tipoArma = new TripleFlecha();
                 break;
+            case 13:
+                tipoArma = new Recuperacion5();
+                break;
+            case 14:
+                tipoArma = new SoploHielo();
+                break;
+            case 15:
+                tipoArma = new Lanzallamas();
+                break;
+            case 16:
+                tipoArma = new RamaAfilada();
+                break;
+            case 17:
+                tipoArma = new Ciclon();
+                break;
+            case 18:
+                tipoArma = new ClaridadMental();
+                break;
+            case 19:
+                tipoArma = new Recuperacion20();
+                break;
+            case 20:
+                tipoArma = new VitalidadGrupal();
+                break;
+            case 21:
+                tipoArma = new BombaDeHielo();
+                break;
+            case 22:
+                tipoArma = new Fundir();
+                break;
+            case 23:
+                tipoArma = new GolpeMental();
+                break;
+            case 24:
+                tipoArma = new PazMental();
+                break;
             default:
                 break;
         }
