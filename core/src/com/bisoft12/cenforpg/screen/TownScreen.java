@@ -30,7 +30,7 @@ public class TownScreen implements Screen {
     public TownScreen() {
         this.screen = new Pantalla("maps/map/townMap.tmx");
         this.dialogs = new Dialogs();
-        this.statusText = new StatusText();
+        this.statusText = new StatusText(true);
         this.inputs = new Inputs();
         this.cont = 0;
     }

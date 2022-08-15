@@ -32,7 +32,7 @@ public class DungeonScreen implements Screen {
 
         input = new Inputs();
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
-        this.statusText = new StatusText();
+        this.statusText = new StatusText(false);
         this.dialogs = new Dialogs();
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {4, 3};
