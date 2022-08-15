@@ -35,7 +35,6 @@ public class Merchant_MenuPociones implements Screen {
         this.input = new Inputs();
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el tipo de Pocion");
-
      }
 
     @Override
