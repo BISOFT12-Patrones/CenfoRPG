@@ -7,9 +7,11 @@ import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
 public class StartGame extends Game {
+
     @Override
     public void create() {
         Render.Batch = new SpriteBatch();
+
 
         //Resources.MAIN.setScreen(new CreateCharacterScreen());
         //Resources.MAIN.setScreen(new TownScreen());

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.io.StatusText;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
@@ -24,10 +25,14 @@ public class TerrainMonster implements Screen {
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
     private Dialogs dialogs;
+    private StatusText statusText;
 
     public TerrainMonster() {
+        Resources.CURRENT_LOCATION = "Terrain";
+
         input = new Inputs();
         screen = new Pantalla("maps/map/terrainMonster.tmx", 561, 950);
+        this.statusText = new StatusText();
         this.dialogs = new Dialogs();
 
         //Para la creacion de box2D en los objetos del mapa
@@ -81,7 +86,6 @@ public class TerrainMonster implements Screen {
 
     @Override
     public void show() {
-        Resources.CURRENT_LOCATION = "Terrain";
         this.dialogs.getImage().setsize(150, Resources.WIDTH);
         Gdx.input.setInputProcessor(this.input);
     }
@@ -98,6 +102,7 @@ public class TerrainMonster implements Screen {
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
+        this.statusText.draw();
         player.draw(render.Batch);
         if (!Objects.equals(Resources.dialog, "")) {
             this.dialogs.setText(Resources.dialog);

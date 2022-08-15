@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.io.StatusText;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
@@ -23,12 +24,15 @@ public class DungeonScreen implements Screen {
     private Player player;
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
+
+    private StatusText statusText;
     private Dialogs dialogs;
 
     public DungeonScreen() {
 
         input = new Inputs();
         screen = new Pantalla("maps/map/dungeon.tmx", 400, 118);
+        this.statusText = new StatusText();
         this.dialogs = new Dialogs();
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {4, 3};
@@ -87,10 +91,14 @@ public class DungeonScreen implements Screen {
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
+
+        this.statusText.draw();
+
         if (!Objects.equals(Resources.dialog, "")) {
             this.dialogs.setText(Resources.dialog);
             this.dialogs.draw();
         }
+
         player.draw(render.Batch);
         render.Batch.end();
         //---------------

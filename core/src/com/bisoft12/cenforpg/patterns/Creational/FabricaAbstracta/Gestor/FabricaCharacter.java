@@ -10,7 +10,6 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoConcre
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 
 public class FabricaCharacter {
-
     private static Character arCharacter;
 
     public FabricaCharacter() {
@@ -39,6 +38,10 @@ public class FabricaCharacter {
 
     public Character getCharacter() {
         return arCharacter;
+    }
+
+    public void setCharacter(Character arCharacter) {
+        FabricaCharacter.arCharacter = arCharacter;
     }
 
     public static String processFunction(int pOpc) {

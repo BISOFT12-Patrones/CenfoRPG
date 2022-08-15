@@ -8,6 +8,7 @@ import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NpcZone;
 import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class compositeGestor {
     private static ArrayList<iComponent> npcComposite;
@@ -23,7 +24,7 @@ public class compositeGestor {
         npcComposite.add(zone);
     }
 
-    private iComponent getZone(String pName){
+    public iComponent getZone(String pName){
         for (iComponent zone:
              npcComposite) {
             if(pName.equals(zone.getName())){
@@ -62,7 +63,7 @@ public class compositeGestor {
         String pName = names[i];
         int attack = 0;
         int defense = 0;
-        String[] dialogs = {"Debes buscar al rey!", "Yo, el rey Nado, te otorgo esta llave!"};
+        String[] dialogs = pZone.equals("City") ? new String[]{"Debes buscar al rey!", "Yo, el rey Nado, te otorgo esta llave!"} : new String[]{"Cuidado hay monstruos ocultos"};
         String dialog = i == 2 ? dialogs[1]:dialogs[0];
         Boolean hasDialog = true;
         Boolean isKing = i == 2;

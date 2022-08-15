@@ -84,7 +84,7 @@ public class NPC extends iComponent {
 
     @Override
     public String talk() {
-        return this.name + ": " + this.dialog;
+        return this.dialog;
     }
 
     @Override
