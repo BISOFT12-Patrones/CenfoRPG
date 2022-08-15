@@ -10,15 +10,21 @@ public class StartGame extends Game {
 	public void create() {
 		Render.Batch = new SpriteBatch();
 
+		//Resources.MAIN.setScreen(new CityScreen());
 		//Resources.MAIN.setScreen(new CreateCharacterScreen());
-		//Resources.MAIN.setScreen(new TownScreen());
-		//Resources.MAIN.setScreen(new LoadScreen());
-		Resources.MAIN.setScreen(new CityScreen());
-		//Resources.MAIN.setScreen(new DungeonScreen());
-	  //Resources.MAIN.setScreen(new HouseScreen()); VALIDAR FUNCION
-		//Resources.MAIN.setScreen(new MerchantScreen());
-		//Resources.MAIN.setScreen(new TerrainMonster());
-		Resources.MAIN.setScreen(new MerchantScreen());
+		// 3 Resources.MAIN.setScreen(new DungeonScreen());
+		// 4 Resources.MAIN.setScreen(new FightScreen());
+		// 5 Resources.MAIN.setScreen(new LoadScreen());
+		 //Resources.MAIN.setScreen(new LoreScreen());
+		 // Resources.MAIN.setScreen(new MenuScreen())
+		 // 8 Resources.MAIN.setScreen(new MerchantScreen());
+		// 9 Resources.MAIN.setScreen(new TerrainMonster());
+		// 10 Resources.MAIN.setScreen(new TownScreen());
+		// 11 Resources.MAIN.setScreen(new HouseScreen()); //VALIDAR FUNCION
+	;
+
+
+
 
 	}
 
