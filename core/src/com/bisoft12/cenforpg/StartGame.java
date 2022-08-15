@@ -10,7 +10,7 @@ public class StartGame extends Game {
 	public void create() {
 		Render.Batch = new SpriteBatch();
 
-		//Resources.MAIN.setScreen(new CityScreen());
+		Resources.MAIN.setScreen(new CityScreen());
 		//Resources.MAIN.setScreen(new CreateCharacterScreen());
 		// 3 Resources.MAIN.setScreen(new DungeonScreen());
 		// 4 Resources.MAIN.setScreen(new FightScreen());
