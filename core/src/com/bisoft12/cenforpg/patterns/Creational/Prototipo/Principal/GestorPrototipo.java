@@ -84,7 +84,10 @@ public class GestorPrototipo {
     public String obtenerDatos() {
         String datos = "";
         for (Arma a : arrArmas) {
-            datos = datos + a.getNombre() + " " + a.getTipo().getNombre() + "\n";
+            datos = datos + a.getTipo().getNombre() + "\n" + " Ataque: " +
+                    a.getTipo().getAtaque() + "\n" + " Defensa: " +
+                    a.getTipo().getDefensa() + "\n" + " Magia: " +
+                    a.getTipo().getMagia() + "\n" + " Precio: " + a.getTipo().getPrecio() + "\n";
         }
         return datos;
     }

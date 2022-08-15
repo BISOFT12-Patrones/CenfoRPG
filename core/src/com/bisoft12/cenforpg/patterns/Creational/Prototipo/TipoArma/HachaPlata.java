@@ -5,10 +5,10 @@ public class HachaPlata extends TipoArma {
 
     public HachaPlata(){
         this.setNombre("Hacha de Plata");
-        this.setPrecio(0);
-        this.setAtaque(0);
+        this.setAtaque(60);
+        this.setDefensa(25);
         this.setMagia(0);
-        this.setDefensa(0);
+        this.setPrecio(150);
     }
 
     public int getId() {

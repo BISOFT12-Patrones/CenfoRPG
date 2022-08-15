@@ -5,10 +5,10 @@ public class DobleFlecha extends TipoArma {
 
     public DobleFlecha() {
         this.setNombre("Doble Flecha");
-        this.setPrecio(0);
-        this.setAtaque(0);
+        this.setAtaque(25);
+        this.setDefensa(10);
         this.setMagia(0);
-        this.setDefensa(0);
+        this.setPrecio(50);
     }
 
     public int getId() {

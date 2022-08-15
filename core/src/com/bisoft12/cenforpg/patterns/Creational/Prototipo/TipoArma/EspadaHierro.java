@@ -5,10 +5,10 @@ public class EspadaHierro extends TipoArma{
 
     public EspadaHierro(){
         this.setNombre("Espada de Hierro");
-        this.setPrecio(0);
-        this.setAtaque(0);
+        this.setAtaque(15);
         this.setMagia(0);
-        this.setDefensa(0);
+        this.setDefensa(5);
+        this.setPrecio(0);
     }
 
     public int getId() {

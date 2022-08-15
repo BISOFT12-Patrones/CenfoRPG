@@ -61,7 +61,7 @@ public class TerrainMonster implements Screen {
         input = new Inputs();
         screen = new Pantalla("maps/map/terrainMonster.tmx", 561, 950);
         this.dialogs = new Dialogs();
-
+        this.statusText = new StatusText();
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {2, 4};
         //Puerta Dungeon

@@ -5,10 +5,10 @@ public class EspadaPlata extends TipoArma {
 
     public EspadaPlata() {
         this.setNombre("Espada de Plata");
-        this.setPrecio(0);
-        this.setAtaque(0);
+        this.setAtaque(25);
         this.setMagia(0);
-        this.setDefensa(0);
+        this.setDefensa(10);
+        this.setPrecio(50);
     }
 
     public int getId() {

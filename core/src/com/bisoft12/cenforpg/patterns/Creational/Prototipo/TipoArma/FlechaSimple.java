@@ -5,10 +5,10 @@ public class FlechaSimple extends TipoArma {
 
     public FlechaSimple() {
         this.setNombre("Flecha Simple");
-        this.setPrecio(0);
-        this.setAtaque(0);
+        this.setAtaque(15);
+        this.setDefensa(5);
         this.setMagia(0);
-        this.setDefensa(0);
+        this.setPrecio(0);
     }
 
     public int getId() {

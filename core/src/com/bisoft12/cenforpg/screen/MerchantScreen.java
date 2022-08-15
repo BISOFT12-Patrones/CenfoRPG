@@ -1,5 +1,4 @@
 package com.bisoft12.cenforpg.screen;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
@@ -8,7 +7,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
+import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuPociones;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
@@ -23,7 +24,7 @@ public class MerchantScreen implements Screen {
     private int actual = 0;
     ShapeRenderer border;
     Sound sound;
-
+    private static FabricaCharacter gCharacter;
     public MerchantScreen() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -38,8 +39,10 @@ public class MerchantScreen implements Screen {
     public void show() {
         generateMenu();
         Gdx.input.setInputProcessor(this.input);
-        sound = Gdx.audio.newSound(Gdx.files.internal("music/MerchantMusic.mp3"));
-       // sound.play();
+
+        sound = Gdx.audio.newSound(Gdx.files.internal("music/BackgroundMusic.mp3"));
+        sound.play();
+
     }
 
     @Override
@@ -51,7 +54,6 @@ public class MerchantScreen implements Screen {
             mTemp.draw();
         }
         Render.Batch.end();
-        validateMouse();
         validateKeys();
     }
     private void validateKeys() {
@@ -59,7 +61,7 @@ public class MerchantScreen implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual >options.size() - 1)
+                if (this.actual > 3)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -67,7 +69,7 @@ public class MerchantScreen implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 3;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -79,36 +81,29 @@ public class MerchantScreen implements Screen {
         }
     }
 
-    private void validateMouse() {
-        for (int i = 0; i < this.options.size(); i++) {
-            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
-            Text mTemp = this.options.get(i);
-            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
-                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
-                    changeOptionColor(i);
-            if (this.input.isClicked())
-                executeAction();
-        }
-    }
 
     private void executeAction() {
         switch (this.actual) {
             case 0: //Armas
-                Resources.MAIN.setScreen(new Merchant_MenuArmas());//
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());
                 this.dispose();
                 sound.stop();
                 break;
+
             case 1: //Armaduras
                 //Enviar al Patron Prototipo el ID
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 sound.stop();
                 break;
+
             case 2: //Pociones
-                Resources.MAIN.setScreen(new TownScreen());//
+                //gCharacter.get
+                Resources.MAIN.setScreen(new Merchant_MenuPociones());
                 this.dispose();
                 sound.stop();
                 break;
+
             case 3: //Salir
                 Resources.MAIN.setScreen(new CityScreen());
                 this.dispose();

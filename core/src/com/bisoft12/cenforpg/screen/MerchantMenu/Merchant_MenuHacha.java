@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Render;
@@ -23,6 +24,8 @@ public class Merchant_MenuHacha implements Screen {
     private int actual = 0;
     ShapeRenderer border;
 
+    private GestorPrototipo gestorPrototipo;
+
     public Merchant_MenuHacha() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -31,6 +34,7 @@ public class Merchant_MenuHacha implements Screen {
         this.input = new Inputs();
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Hacha");
+        gestorPrototipo = new GestorPrototipo(0, 0, 0, 0);
     }
 
     @Override
@@ -48,7 +52,6 @@ public class Merchant_MenuHacha implements Screen {
             mTemp.draw();
         }
         Render.Batch.end();
-        validateMouse();
         validateKeys();
     }
 
@@ -58,7 +61,7 @@ public class Merchant_MenuHacha implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > options.size() - 1)
+                if (this.actual > 2)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -66,7 +69,7 @@ public class Merchant_MenuHacha implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 2;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -83,7 +86,7 @@ public class Merchant_MenuHacha implements Screen {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 1)
+                if (this.actual > 2)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -91,7 +94,7 @@ public class Merchant_MenuHacha implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 1;
+                    this.actual = 2;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
@@ -103,33 +106,26 @@ public class Merchant_MenuHacha implements Screen {
         }
     }
 
-    private void validateMouse() {
-        for (int i = 0; i < this.options.size(); i++) {
-            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
-            Text mTemp = this.options.get(i);
-            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
-                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
-                    changeOptionColor(i);
-            if (this.input.isClicked())
-                executeAction();
-        }
-    }
 
     private void executeAction() {
         switch (this.actual) {
             case 0: //Hacha Hierro
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(2, 8);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 1: //Hacha Plata
                 //Enviar al Patron Prototipo el id
+                gestorPrototipo.nuevaArma(2, 9);
+                System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 2:
                 //Salir
-                Resources.MAIN.setScreen(new CityScreen());
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());
                 this.dispose();
                 break;
         }
