@@ -21,6 +21,10 @@ public class GestorObservador {
         listaBatalla.get(pProducto).addObserver(new ObservadorC(pObservador));
     }
 
+    public void irBatalla(String pObservador){
+        listaBatalla.get(pObservador).notifyObservers();
+    }
+
     public void limpiaBatallas(){
         listaBatalla.clear();
     }
