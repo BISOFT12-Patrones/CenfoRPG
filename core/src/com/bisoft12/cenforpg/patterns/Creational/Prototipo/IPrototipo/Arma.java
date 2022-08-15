@@ -13,7 +13,6 @@ public abstract class Arma {
 
     private int defensa;
 
-
     public Arma() {
 
     }

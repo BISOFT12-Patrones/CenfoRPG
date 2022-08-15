@@ -36,6 +36,10 @@ public class FabricaCharacter {
         return arCharacter;
     }
 
+    public void setCharacter(Character arCharacter) {
+        FabricaCharacter.arCharacter = arCharacter;
+    }
+
     public static String processFunction(int pOpc) {
         String sMessage = "";
         switch (pOpc) {

@@ -25,8 +25,8 @@ public class Npc extends InteractiveTileObject {
 
     @Override
     public void onHit() {
-        ArrayList<iComponent> zone = npcGestor.getArrayNpcs();
-        ArrayList<iComponent> type = zone.get(0).getComponents();
+        iComponent zone = npcGestor.getZone(Resources.CURRENT_LOCATION);
+        ArrayList<iComponent> type = zone.getComponents();
         iComponent npc = type.get(0).getComponents().get(0);
         Gdx.app.log("Npc", "Collision");
         String text = npc.talk();

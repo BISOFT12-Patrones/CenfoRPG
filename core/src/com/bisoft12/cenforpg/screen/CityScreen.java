@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.bisoft12.cenforpg.characters.Player;
 import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.io.StatusText;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
@@ -25,12 +26,13 @@ public class CityScreen implements Screen {
     //Para cargar las texturas del jugador movible
     private TextureAtlas atlas;
     private Dialogs dialogs;
-
+    private StatusText statusText;
 
 
     public CityScreen() {
         input = new Inputs();
         screen = new Pantalla("maps/map/city.tmx");
+        this.statusText = new StatusText();
 
         int[] layers = {1, 3};
         //Para los objetos interactivos
@@ -82,6 +84,7 @@ public class CityScreen implements Screen {
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
         render.Batch.begin();
+        this.statusText.draw();
         player.draw(render.Batch);
         if (!Objects.equals(Resources.dialog, "")) {
             this.dialogs.setText(Resources.dialog);
