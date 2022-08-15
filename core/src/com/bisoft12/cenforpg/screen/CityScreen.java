@@ -34,11 +34,10 @@ public class CityScreen implements Screen {
 
 
     public CityScreen() {
-
         input = new Inputs();
         screen = new Pantalla("maps/map/city.tmx");
         this.statusText = new StatusText(true);
-
+        Resources.CURRENT_LOCATION = "City";
         int[] layers = {1, 3};
         //Para los objetos interactivos
         screen.setHouse(true);
