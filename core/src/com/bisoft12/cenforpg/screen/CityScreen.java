@@ -37,7 +37,7 @@ public class CityScreen implements Screen {
 
         input = new Inputs();
         screen = new Pantalla("maps/map/city.tmx");
-        this.statusText = new StatusText();
+        this.statusText = new StatusText(true);
 
         int[] layers = {1, 3};
         //Para los objetos interactivos
