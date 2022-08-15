@@ -8,6 +8,7 @@ import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.io.StatusText;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.utils.Pantalla;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
@@ -27,9 +28,30 @@ public class CityScreen implements Screen {
     private TextureAtlas atlas;
     private Dialogs dialogs;
     private StatusText statusText;
+    private FabricaCharacter gestor = new FabricaCharacter();
+    private GestorPrototipo gestorArma = new GestorPrototipo(0, 1, 2, 3);
+
 
 
     public CityScreen() {
+        //Para la creacion del personaje PRUEBA
+        gestor.processFunction(2);
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setLevel();
+        gestor.getCharacter().setKey(true);
+        gestor.getCharacter().setArma(gestorArma.nuevaArma(0, 1));
+        gestor.getCharacter().setArma(gestorArma.nuevaArma(0, 2));
+        gestor.getCharacter().setArma(gestorArma.nuevaArma(0, 3));
+
+//Fin de prueba
         input = new Inputs();
         screen = new Pantalla("maps/map/city.tmx");
         this.statusText = new StatusText();
@@ -55,7 +77,6 @@ public class CityScreen implements Screen {
 
         atlas = new TextureAtlas("characters/mainCharacters/Pack/playerAssets.pack");
 
-
         player = new Player(atlas, 417, 285, this.screen.getWorld());
 
 
@@ -79,7 +100,6 @@ public class CityScreen implements Screen {
         player.update(delta);
 
 
-
         //Carga imagen de muñeco
 
         render.Batch.setProjectionMatrix(screen.getCAMERA().combined);
@@ -93,7 +113,6 @@ public class CityScreen implements Screen {
         render.Batch.end();
         //---------------
         inputHandler();
-
 
 
     }
@@ -138,7 +157,7 @@ public class CityScreen implements Screen {
             if (input.isUp()) {
                 player.move("up");
             }
-            if(input.isEnter()){
+            if (input.isEnter()) {
                 Resources.dialog = "";
             }
         } else {

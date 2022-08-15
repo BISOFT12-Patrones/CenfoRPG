@@ -4,16 +4,32 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.bisoft12.cenforpg.elements.Images;
+import com.bisoft12.cenforpg.elements.Text;
+import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstracto.Character;
+import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
 import com.bisoft12.cenforpg.patterns.Fight.FightClass;
+import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
+import com.bisoft12.cenforpg.screen.CityScreen;
+import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuEspada;
+import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuFlecha;
+import com.bisoft12.cenforpg.screen.TerrainMonster;
+import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class OptionsBattle implements Disposable {
@@ -36,22 +52,71 @@ public class OptionsBattle implements Disposable {
     private Label defensa;
     private Label defensaTot;
 
-    private Table table;
+    //Para ememigos
+    private Label vidaEnemy;
+    private Label vidaEnemyTot;
+
+    private Label ataqueEnemy;
+    private Label ataqueaEnemyTot;
+
+    private Table table = new Table();
+    private Table tableEnemy = new Table();
     private FabricaCharacter gestorCharacter = new FabricaCharacter();
     Character player = gestorCharacter.getCharacter();
     private FightClass fight = new FightClass();
 
+    private NPC enemy;
 
+    //Para el menu de poderes
+    private Inputs input;
+    private com.bisoft12.cenforpg.elements.Text gameName;
+    private ArrayList<Text> armas;
+    private HashMap<Integer, String> armasHash = new HashMap<Integer, String>();
+    private int cantidadArmas = 0;
+    private float alpha, sum;
+    private int actual = 0;
+    ShapeRenderer border;
+    private Render render = new Render();
 
     public OptionsBattle(SpriteBatch sb) {
         //define our tracking variables
-
 
         //setup the HUD viewport using a new camera seperate from our gamecam
         //define our stage using that viewport and our games spritebatch
         viewport = new FitViewport(Resources.WIDTH, Resources.HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
+
+        //Para mostrar las opciones
+        this.sum = 0.0008F;
+        this.alpha = 0;
+        this.armas = new ArrayList<Text>();
+        this.input = new Inputs();
+        this.border = new ShapeRenderer();
+        this.gameName = new Text(Resources.GAME_FONT, (Resources.WIDTH / 2) / 2, Resources.HEIGHT - 100, 25, "Selecciona un arma para atacar");
+        if (player.isDungeon())
+            enemy = new NPC(10);
+        else if (!player.isDungeon())
+            enemy = new NPC(player.getLevel());
+        else if(player.isFeje())
+            enemy = new NPC(15);
+    }
+
+    public NPC getEnemy() {
+        return enemy;
+    }
+
+    public void update(float dt) {
+        vidaTot = new Label(String.format("%01d", fight.getVidaJugador()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        defensaTot = new Label(String.format("%01d", player.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        ataqueTot = new Label(String.format("%01d", player.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        vidaEnemyTot = new Label(String.format("%01d", enemy.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        ataqueaEnemyTot = new Label(String.format("%01d", enemy.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+    }
+
+    public void mostrarPlayerStat() {
+        table.clear();
         //define a table used to organize our hud's labels
         table = new Table();
         //Top-Align table
@@ -74,9 +139,9 @@ public class OptionsBattle implements Disposable {
 
 
         //add our labels to our table, padding the top, and giving them all equal width with expandX
-        table.add(vida).expandX().padTop(5);
-        table.add(defensa).expandX().padTop(5);
-        table.add(ataque).expandX().padTop(5);
+        table.add(vida).expandX().padTop(10);
+        table.add(defensa).expandX().padTop(10);
+        table.add(ataque).expandX().padTop(10);
         //add a second row to our table
         table.row();
         table.add(vidaTot).expandX();
@@ -85,38 +150,123 @@ public class OptionsBattle implements Disposable {
 
         //add our table to the stage
         stage.addActor(table);
-        mostrarPoderes();
-
+        mostrarEnemyStat();
     }
 
-    public void update(float dt) {
-        fight.opcionPelea();
-        vidaTot = new Label(String.format("%01d", fight.getVidaJugador()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        defensaTot = new Label(String.format("%01d", player.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        ataqueTot = new Label(String.format("%01d", player.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-
-    }
-
-    public void mostrarPoderes(){
-        table.row();
-        table.row();
+    public void mostrarEnemyStat() {
+        //define a table used to organize our hud's labels
+        tableEnemy.clear();
+        //Top-Align table
+        tableEnemy.bottom();
+        //make the table fill the entire stage
+        tableEnemy.setFillParent(true);
 
         //define our labels using the String, and a Label style consisting of a font and color
-       Label armas = new Label("Habilidades", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        vidaEnemyTot = new Label(String.format("%01d", enemy.getDefense()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+        vidaEnemy = new Label("Vida Enemigo", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+        //define our labels using the String, and a Label style consisting of a font and color
+        ataqueaEnemyTot = new Label(String.format("%01d", enemy.getAttack()), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        ataqueEnemy = new Label("Ataque Enemigo", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
 
         //add our labels to our table, padding the top, and giving them all equal width with expandX
-        table.add(armas).expandX().padLeft(5);
-
+        tableEnemy.add(vidaEnemy).expandX().padBottom(10);
+        tableEnemy.add(ataqueEnemy).expandX().padBottom(10);
         //add a second row to our table
-        table.row();
+        tableEnemy.row();
+        tableEnemy.add(vidaEnemyTot).expandX();
+        tableEnemy.add(ataqueaEnemyTot).expandX();
 
-        fight.datosPlayer();
-        for (int i=0;i < fight.getArmasFight().size() ;i++)
-            table.add(fight.getArmasFight().get(i)).expandX();
 
         //add our table to the stage
-        stage.addActor(table);
+        stage.addActor(tableEnemy);
     }
+
+    public void render(float v) {
+        render.Batch.begin();
+        this.gameName.draw();
+        for (Text mTemp : this.armas) {
+            mTemp.draw();
+        }
+
+        render.Batch.end();
+        mostrarEnemyStat();
+        mostrarPlayerStat();
+    }
+
+    public void generatePoderes() {
+        int mFontSize = 15;
+        float mNextY = 0;
+        int mRest = 25;
+        this.gameName.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+        if (player.getArmas().size() > 0) {
+            for (int i = 0; i < player.getArmas().size(); i++) {
+                if (player.getArmas().get(i).getNombre().equals("Espada") || player.getArmas().get(i).getNombre().equals("Flecha") || player.getArmas().get(i).getNombre().equals("Hacha") || player.getArmas().get(i).getNombre().equals("Varita")) {
+                    cantidadArmas++;
+                    this.armas.add(new Text(player.getArmas().get(i).getTipo().getNombre() + " - " + player.getArmas().get(i).getTipo().getAtaque(), mFontSize, Resources.GAME_FONT));
+                    this.armasHash.put(cantidadArmas, player.getArmas().get(i).getTipo().getNombre());
+                }
+            }
+            if (armas.isEmpty()) {
+                this.armas.add(new Text("Puño", mFontSize, Resources.GAME_FONT));
+                this.armasHash.put(cantidadArmas, "Puño");
+                cantidadArmas++;
+                this.armas.add(new Text("Cahetada", mFontSize, Resources.GAME_FONT));
+                this.armasHash.put(cantidadArmas, "Puño");
+                cantidadArmas++;
+            }
+
+        } else {
+            this.armas.add(new Text("Puño", mFontSize, Resources.GAME_FONT));
+            this.armasHash.put(cantidadArmas, "Puño");
+            cantidadArmas++;
+        }
+
+        this.armas.get(0).setCoordinates((Resources.WIDTH / 2) / 2, Resources.HEIGHT - 120);
+        mNextY = this.armas.get(0).getY();
+        for (Text mTemp : this.armas) {
+            mTemp.centerTextScreen();
+            mNextY -= mRest;
+            mTemp.setY(mNextY);
+        }
+        changeOptionColor(0);
+    }
+
+    public void changeOptionColor(int pId) {
+        for (Text mTemp : this.armas) {
+            mTemp.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+            if (pId >= 0) {
+                this.armas.get(pId).setColor(Color.CHARTREUSE);
+                this.actual = pId;
+            }
+        }
+    }
+
+
+    public int executeAction() throws InterruptedException {
+        ArrayList<Arma>ArmasEnemigo = player.getArmas();
+        for (int i = 0; i < player.getArmas().size(); i++) {
+            if (ArmasEnemigo.get(i).getTipo().getNombre().equals(armasHash.get(this.actual + 1))) {
+                return fight.opcionPeleaJugador(ArmasEnemigo.get(i).getTipo().getAtaque(), enemy);
+            }
+        }
+        return 0;
+    }
+
+    public int getActual() {
+        return actual;
+    }
+
+    public void setActual(int actual) {
+        this.actual = actual;
+    }
+
+    public ArrayList<Text> getArmas() {
+        return armas;
+    }
+
     @Override
     public void dispose() {
         stage.dispose();
