@@ -1,5 +1,4 @@
 package com.bisoft12.cenforpg.screen;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
@@ -8,7 +7,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
+import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuPociones;
 import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
@@ -23,7 +24,7 @@ public class MerchantScreen implements Screen {
     private int actual = 0;
     ShapeRenderer border;
     Sound sound;
-
+    private static FabricaCharacter gCharacter;
     public MerchantScreen() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -38,8 +39,10 @@ public class MerchantScreen implements Screen {
     public void show() {
         generateMenu();
         Gdx.input.setInputProcessor(this.input);
-        sound = Gdx.audio.newSound(Gdx.files.internal("music/MerchantMusic.mp3"));
-        /*sound.play();*/
+
+        sound = Gdx.audio.newSound(Gdx.files.internal("music/BackgroundMusic.mp3"));
+        sound.play();
+
     }
 
     @Override
@@ -82,21 +85,25 @@ public class MerchantScreen implements Screen {
     private void executeAction() {
         switch (this.actual) {
             case 0: //Armas
-                Resources.MAIN.setScreen(new Merchant_MenuArmas());//
+                Resources.MAIN.setScreen(new Merchant_MenuArmas());
                 this.dispose();
                 sound.stop();
                 break;
+
             case 1: //Armaduras
                 //Enviar al Patron Prototipo el ID
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 sound.stop();
                 break;
+
             case 2: //Pociones
-                Resources.MAIN.setScreen(new TownScreen());//
+                //gCharacter.get
+                Resources.MAIN.setScreen(new Merchant_MenuPociones());
                 this.dispose();
                 sound.stop();
                 break;
+
             case 3: //Salir
                 Resources.MAIN.setScreen(new CityScreen());
                 this.dispose();
