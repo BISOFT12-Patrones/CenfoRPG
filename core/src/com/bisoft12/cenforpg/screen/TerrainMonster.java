@@ -32,7 +32,7 @@ public class TerrainMonster implements Screen {
 
         input = new Inputs();
         screen = new Pantalla("maps/map/terrainMonster.tmx", 561, 950);
-        this.statusText = new StatusText();
+        this.statusText = new StatusText(false);
         this.dialogs = new Dialogs();
 
         //Para la creacion de box2D en los objetos del mapa
@@ -65,7 +65,7 @@ public class TerrainMonster implements Screen {
         input = new Inputs();
         screen = new Pantalla("maps/map/terrainMonster.tmx", 561, 950);
         this.dialogs = new Dialogs();
-        this.statusText = new StatusText();
+        this.statusText = new StatusText(false);
         //Para la creacion de box2D en los objetos del mapa
         int[] layers = {2, 4};
         //Puerta Dungeon
@@ -122,7 +122,7 @@ public class TerrainMonster implements Screen {
         screen.getCAMERA().position.x = player.getX();
         screen.getCAMERA().position.y = player.getY();
         this.dialogs.setCoordinates((int) player.getX(), (int) player.getY());
-
+        this.statusText.setCoordinates((int) player.getX(), (int) player.getY());
         player.setXFight(screen.getCAMERA().position.x);
         player.setYFight(screen.getCAMERA().position.y);
 
