@@ -29,8 +29,9 @@ public class MonsterZones extends InteractiveTileObject {
         FabricaCharacter gestorCharacter = new FabricaCharacter();
         if (!gestorCharacter.getCharacter().isFight()) {
             if (numero <= 3 || gestorCharacter.getCharacter().isDungeon()) {
-                Resources.MAIN.setScreen(new FightScreen());
                 gestorCharacter.getCharacter().setFight(true);
+                gestor.irBatalla("Batalla");
+
             }
         } else {
             gestorCharacter.getCharacter().setFight(false);
