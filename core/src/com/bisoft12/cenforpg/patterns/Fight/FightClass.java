@@ -57,6 +57,7 @@ public class FightClass {
         if (vidaJugador < 0) {
             jugadorPierde();
             player.setJefe(false);
+            player.setDungeon(false);
             return 2;
         }
         return 0;
