@@ -5,6 +5,8 @@ import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.ProductoAbstra
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.IPrototipo.Arma;
 import com.bisoft12.cenforpg.patterns.Structural.Composite.components.NPC;
 
+import com.bisoft12.cenforpg.screen.HouseScreen;
+import com.bisoft12.cenforpg.screen.TerrainMonster;
 import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
@@ -82,7 +84,8 @@ public class FightClass {
     }
 
     private void jugadorPierde() {
-        Resources.dialog = "Jugador pedio la batalla";
+        Resources.dialog = "Jugador perdio la batalla";
+
     }
 }
 
