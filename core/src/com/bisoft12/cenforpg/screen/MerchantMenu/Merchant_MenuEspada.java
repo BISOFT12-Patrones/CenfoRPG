@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
@@ -26,6 +27,8 @@ public class Merchant_MenuEspada implements Screen {
 
     private GestorPrototipo gestorPrototipo;
 
+    private FabricaCharacter gestorCharacter;
+
     public Merchant_MenuEspada() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -35,6 +38,7 @@ public class Merchant_MenuEspada implements Screen {
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Espada");
         gestorPrototipo = new GestorPrototipo(0, 0, 0, 0);
+        gestorCharacter = new FabricaCharacter();
     }
 
     @Override
@@ -123,13 +127,13 @@ public class Merchant_MenuEspada implements Screen {
         switch (this.actual) {
             case 0:
                 //Enviar al Patron Prototipo el id
-                gestorPrototipo.nuevaArma(0, 5);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(0, 5));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 1:
-                gestorPrototipo.nuevaArma(0, 3);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(0, 3));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();

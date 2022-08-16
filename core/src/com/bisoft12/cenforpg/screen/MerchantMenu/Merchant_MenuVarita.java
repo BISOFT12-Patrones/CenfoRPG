@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.Prototipo.Principal.GestorPrototipo;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
@@ -27,6 +28,8 @@ public class Merchant_MenuVarita implements Screen {
 
     private GestorPrototipo gestorPrototipo;
 
+    private FabricaCharacter gestorCharacter;
+
     public Merchant_MenuVarita() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -36,6 +39,7 @@ public class Merchant_MenuVarita implements Screen {
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Elige el Tipo de Varita");
         gestorPrototipo = new GestorPrototipo(0, 0, 0, 0);
+        gestorCharacter = new FabricaCharacter();
     }
 
     @Override
@@ -123,61 +127,61 @@ public class Merchant_MenuVarita implements Screen {
     private void executeAction() {
         switch (this.actual) {
             case 0: //Recuperacion 5
-                gestorPrototipo.nuevaArma(3, 13);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 13));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 1: //Soplo de hielo
-                gestorPrototipo.nuevaArma(3, 14);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 14));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 2: //Lanzallamas
-                gestorPrototipo.nuevaArma(3, 15);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 15));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 3: //Rama Afilada
-                gestorPrototipo.nuevaArma(3, 16);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 16));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 4: //Ciclon
-                gestorPrototipo.nuevaArma(3, 17);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 17));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 5: //Recuperacion 20%
-                gestorPrototipo.nuevaArma(3, 19);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 19));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 6: //Claridad Mental
-                gestorPrototipo.nuevaArma(3, 18);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 18));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 7: //Vitalidad Grupal
-                gestorPrototipo.nuevaArma(3, 20);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 20));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 8: //Bomba de Hielo
-                gestorPrototipo.nuevaArma(3, 21);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 21));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
                 break;
             case 9: //Fundir
-                gestorPrototipo.nuevaArma(3, 22);
+                gestorCharacter.getCharacter().getArmas().add(gestorPrototipo.nuevaArma(3, 22));
                 System.out.println(gestorPrototipo.obtenerDatos());
                 Resources.MAIN.setScreen(new TerrainMonster());
                 this.dispose();
