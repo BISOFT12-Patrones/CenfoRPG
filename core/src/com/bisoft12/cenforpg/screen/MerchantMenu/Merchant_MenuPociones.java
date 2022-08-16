@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
 import com.bisoft12.cenforpg.io.Inputs;
+import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.patterns.Creational.MetodoFab.principal.Gestor_Pocion;
 import com.bisoft12.cenforpg.screen.CityScreen;
 import com.bisoft12.cenforpg.screen.TerrainMonster;
@@ -24,6 +25,7 @@ public class Merchant_MenuPociones implements Screen {
     private float alpha, sum;
     private int actual = 0;
     private static Gestor_Pocion gPocion;
+    private FabricaCharacter gestorCharacter = new FabricaCharacter();
 
     ShapeRenderer border;
      public Merchant_MenuPociones() {
