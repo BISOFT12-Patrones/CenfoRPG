@@ -6,15 +6,13 @@ import com.bisoft12.cenforpg.utils.Resources;
 
 public class ObservadorC implements Observador {
     private String gNombre;
+
     public ObservadorC(String pN) {
-        gNombre=pN;
+        gNombre = pN;
     }
 
     @Override
     public void irBatalla() {
-        int random = (int) (Math.random() * 10);
-        if (random > 3) {
-            Resources.MAIN.setScreen(new FightScreen());
-        }
+        Resources.MAIN.setScreen(new FightScreen());
     }
 }

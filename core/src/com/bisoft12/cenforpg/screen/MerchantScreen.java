@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.bisoft12.cenforpg.elements.Images;
 import com.bisoft12.cenforpg.elements.Text;
+import com.bisoft12.cenforpg.io.Dialogs;
 import com.bisoft12.cenforpg.io.Inputs;
 import com.bisoft12.cenforpg.patterns.Creational.FabricaAbstracta.Gestor.FabricaCharacter;
 import com.bisoft12.cenforpg.screen.MerchantMenu.Merchant_MenuArmas;
@@ -14,6 +15,7 @@ import com.bisoft12.cenforpg.utils.Render;
 import com.bisoft12.cenforpg.utils.Resources;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MerchantScreen implements Screen {
     private Images back;
@@ -24,7 +26,8 @@ public class MerchantScreen implements Screen {
     private int actual = 0;
     ShapeRenderer border;
     Sound sound;
-    private static FabricaCharacter gCharacter;
+    private FabricaCharacter gestorCharacter = new FabricaCharacter();
+    private Dialogs dialogs;
     public MerchantScreen() {
         this.sum = 0.0008F;
         this.alpha = 0;
@@ -33,16 +36,16 @@ public class MerchantScreen implements Screen {
         this.input = new Inputs();
         this.border = new ShapeRenderer();
         this.gameName = new Text(Resources.GAME_FONT, 50, 450, 50, "Deprisa! \nEligue la mejor opcion:\n");
+        this.dialogs = new Dialogs();
     }
 
     @Override
     public void show() {
         generateMenu();
-        Gdx.input.setInputProcessor(this.input);
-
+        this.dialogs.getImage().setsize(150, Resources.WIDTH);
         sound = Gdx.audio.newSound(Gdx.files.internal("music/BackgroundMusic.mp3"));
         sound.play();
-
+        Gdx.input.setInputProcessor(this.input);
     }
 
     @Override
@@ -53,15 +56,21 @@ public class MerchantScreen implements Screen {
         for (Text mTemp : this.options) {
             mTemp.draw();
         }
+        if (!Objects.equals(Resources.dialog, "")) {
+            this.dialogs.setText(Resources.dialog);
+            this.dialogs.draw();
+        }
         Render.Batch.end();
+        validateMouse();
         validateKeys();
     }
+
     private void validateKeys() {
         try {
             int mTime = 200;
             if (this.input.isDown()) {
                 this.actual++;
-                if (this.actual > 3)
+                if (this.actual > 4)
                     this.actual = 0;
                 changeOptionColor(this.actual);
                 Thread.sleep(mTime);
@@ -69,15 +78,30 @@ public class MerchantScreen implements Screen {
             if (this.input.isUp()) {
                 this.actual--;
                 if (this.actual < 0)
-                    this.actual = 3;
+                    this.actual = 4;
                 Thread.sleep(mTime);
                 changeOptionColor(this.actual);
             }
             if (this.input.isEnter()) {
-                executeAction();
+                if (Resources.dialog.equals(""))
+                    executeAction();
+                else
+                    Resources.dialog = "";
             }
+            Thread.sleep(mTime);
         } catch (InterruptedException e) {
             Render.print(e.toString());
+        }
+    }
+    private void validateMouse() {
+        for (int i = 0; i < this.options.size(); i++) {
+            float mX = this.input.getMouseX(), mY = this.input.getMouseY();
+            Text mTemp = this.options.get(i);
+            if (mX >= mTemp.getX() && mX <= (mTemp.getX() + mTemp.getWidth()))
+                if (mY >= (mTemp.getY() - mTemp.getHeight()) && mY <= mTemp.getY())
+                    changeOptionColor(i);
+            if (this.input.isClicked())
+                executeAction();
         }
     }
 
@@ -98,8 +122,11 @@ public class MerchantScreen implements Screen {
                 break;
 
             case 2: //Pociones
-                //gCharacter.get
-                Resources.MAIN.setScreen(new Merchant_MenuPociones());
+                if (gestorCharacter.getCharacter().getTipeCharacter().equals("Mago")){
+                    Resources.MAIN.setScreen(new Merchant_MenuPociones());
+                }else{
+                    Resources.dialog = "Debes ser un Mago para comprar Pociones";
+                }
                 this.dispose();
                 sound.stop();
                 break;

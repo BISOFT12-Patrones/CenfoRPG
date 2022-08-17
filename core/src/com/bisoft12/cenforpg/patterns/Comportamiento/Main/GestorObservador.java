@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class GestorObservador {
 
     private static HashMap<String, BatallaC> listaBatalla;
+    private Gestor_Memento gestor_memento = new Gestor_Memento();
 
     public GestorObservador() {
         listaBatalla = new HashMap <String, BatallaC>();
@@ -19,6 +20,11 @@ public class GestorObservador {
 
     public void NuevoObservador(String pObservador, String pProducto) {
         listaBatalla.get(pProducto).addObserver(new ObservadorC(pObservador));
+    }
+
+    public void irBatalla(String pObservador){
+        gestor_memento.nuevoPersonaje();
+        listaBatalla.get(pObservador).notifyObservers();
     }
 
     public void limpiaBatallas(){

@@ -70,9 +70,16 @@ public class HouseScreen implements Screen {
     player.draw(render.Batch);
     inputHandler();
 
+    int mTime = 5000;
+
     if (gEstado.Mostrar_Estado().equals("Pelear")) {
-            gMemento.Restaurar_Memento();
-            Resources.MAIN.setScreen(new CityScreen());
+        try {
+            Thread.sleep(mTime);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Resources.MAIN.setScreen(new CityScreen());
+
         } else {
             gEstado.Cambiar_Estado(1); //ID = Estado Recuperar
         }
